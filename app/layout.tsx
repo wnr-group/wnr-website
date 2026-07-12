@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MotionProvider } from "@/components/ui/motion";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -43,12 +44,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${interTight.variable}`}
     >
-      <body className="min-h-dvh flex flex-col bg-cream text-ink">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="min-h-dvh flex flex-col bg-canvas text-body antialiased">
+        <MotionProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

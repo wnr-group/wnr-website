@@ -15,11 +15,6 @@ export default function ArenaOSPage() {
   return (
     <ProductDetail
       product={arenaos}
-      mockMetrics={[
-        { label: "Revenue today", value: "₹64,200" },
-        { label: "Stations live", value: "38/40" },
-        { label: "Avg session", value: "82m" },
-      ]}
       ctaHeading="Ready to run your gaming cafe on ArenaOS?"
       ctaBody="Let's talk about how ArenaOS can transform how you operate."
     />

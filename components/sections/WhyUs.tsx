@@ -1,72 +1,67 @@
-import { Check, X } from "lucide-react";
-import { Section, Eyebrow } from "@/components/ui/Section";
+import { ArrowRight } from "lucide-react";
+import { Section } from "@/components/ui/Section";
 import { whyUs } from "@/content/sections";
 
-/* Section 7 — Why WnR is different. The sharpest contrast on the site:
-   two columns, visually unequal — the WnR side richer and gold-tinted. */
+/* Why WnR is different — a transformation ledger, not a two-column split.
+   Each row reads left-to-right as "the old way → the WnR way": the vendor
+   habit recedes (muted, struck through) and resolves into what we do instead
+   (ink, bold). One flowing column, generous, editorial. */
 export function WhyUs() {
   return (
-    <Section id="why-us" tone="forest">
-      <div className="max-w-2xl">
-        <Eyebrow>{whyUs.eyebrow}</Eyebrow>
-        <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-cream md:text-[2.75rem]">
-          Most companies build and leave.{" "}
-          <span className="text-gold">We build and stay.</span>
-        </h2>
-        <p className="mt-6 text-lg leading-relaxed text-cream/70">{whyUs.subhead}</p>
-      </div>
-
-      {/* contrast table */}
-      <div className="mt-14 grid gap-5 lg:grid-cols-2 lg:gap-6">
-        {/* Them — muted, recessed */}
-        <div className="rounded-2xl border border-white/10 bg-forest-deep/40 p-7 md:p-8">
-          <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-cream/45">
-            Most agencies
-          </h3>
-          <ul className="mt-6 flex flex-col gap-4">
-            {whyUs.contrast.map((row) => (
-              <li key={row.them} className="flex items-start gap-3 text-cream/55">
-                <X size={18} className="mt-0.5 shrink-0 text-cream/25" />
-                <span className="text-[0.95rem]">{row.them}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-7 border-t border-white/10 pt-5 font-display text-lg font-medium text-cream/50">
-            {whyUs.themLabel}
+    <Section id="why-us" tone="canvas">
+      <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="eyebrow">{whyUs.eyebrow}</p>
+          <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.06] text-ink">
+            Most companies build and leave.{" "}
+            <span className="text-forest">We build and stay.</span>
+          </h2>
+          <p className="mt-6 max-w-md text-[length:var(--text-lead)] leading-relaxed text-body">
+            {whyUs.subhead}
           </p>
+
+          <div className="mt-8 flex flex-wrap gap-2.5">
+            {whyUs.chips.map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full border border-line bg-paper px-3.5 py-1.5 text-[0.8rem] font-medium text-body"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Us — richer, gold-tinted, alive */}
-        <div className="relative overflow-hidden rounded-2xl border border-gold/40 bg-gradient-to-br from-forest-2 to-forest p-7 shadow-[0_30px_70px_-30px_rgba(201,162,75,0.35)] md:p-8">
-          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold/10 blur-3xl" />
-          <h3 className="relative font-display text-sm font-semibold uppercase tracking-wide text-gold">
-            WnR
-          </h3>
-          <ul className="relative mt-6 flex flex-col gap-4">
-            {whyUs.contrast.map((row) => (
-              <li key={row.us} className="flex items-start gap-3 text-cream">
-                <Check size={18} className="mt-0.5 shrink-0 text-gold" />
-                <span className="text-[0.95rem] font-medium">{row.us}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="relative mt-7 border-t border-gold/20 pt-5 font-display text-lg font-semibold text-gold">
-            {whyUs.usLabel}
-          </p>
-        </div>
-      </div>
-
-      {/* proof chips */}
-      <ul className="mt-10 flex flex-wrap gap-2.5">
-        {whyUs.chips.map((chip) => (
-          <li
-            key={chip}
-            className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-cream/75"
-          >
-            {chip}
+        <ul className="flex flex-col">
+          {whyUs.contrast.map((row, i) => (
+            <li
+              key={row.us}
+              className="grid grid-cols-1 items-baseline gap-1 border-t border-line py-5 first:border-t-0 first:pt-0 sm:grid-cols-[1fr_auto_1.1fr] sm:gap-5"
+            >
+              <span className="text-[0.95rem] text-muted line-through decoration-line-strong decoration-1">
+                {row.them}
+              </span>
+              <ArrowRight
+                size={16}
+                className="hidden shrink-0 text-forest/50 sm:block"
+                aria-hidden="true"
+              />
+              <span className="font-display text-[1.05rem] font-semibold leading-snug text-ink">
+                {row.us}
+              </span>
+            </li>
+          ))}
+          <li className="mt-6 flex items-center gap-3 rounded-2xl bg-forest-wash px-5 py-4">
+            <span className="text-sm text-muted line-through">
+              {whyUs.themLabel}
+            </span>
+            <ArrowRight size={16} className="shrink-0 text-forest" aria-hidden="true" />
+            <span className="font-display text-base font-semibold text-forest">
+              {whyUs.usLabel}
+            </span>
           </li>
-        ))}
-      </ul>
+        </ul>
+      </div>
     </Section>
   );
 }

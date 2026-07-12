@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/ui/PageHero";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import { Cta } from "@/components/ui/Cta";
 import { culture } from "@/content/sections";
@@ -21,74 +22,60 @@ const openings = [
 export default function CareersPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-forest px-5 pb-20 pt-32 text-cream sm:px-6 md:pb-24 md:pt-40">
-        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-gold/10 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto max-w-[1200px]">
-          <span className="flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-gold">
-            <span className="h-px w-8 bg-gold" />
-            {culture.eyebrow}
-          </span>
-          <h1 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-tight text-cream md:text-6xl">
-            {culture.heading}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream/75">
-            {culture.intro}
-          </p>
-        </div>
-      </section>
+      <PageHero eyebrow={culture.eyebrow} title={culture.heading} lead={culture.intro}>
+        <Cta href="#roles" variant="primary">
+          See open roles
+          <ArrowRight size={16} />
+        </Cta>
+      </PageHero>
 
       {/* How we work */}
-      <Section tone="cream">
+      <Section tone="mist">
         <Eyebrow>How We Work</Eyebrow>
-        <h2 className="mt-5 max-w-2xl font-display text-3xl font-bold leading-tight text-forest md:text-4xl">
+        <h2 className="mt-5 max-w-2xl font-display text-[length:var(--text-h2)] font-bold leading-[1.08] text-ink">
           Philosophy over personalities.
         </h2>
-        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
           {culture.pillars.map((p) => (
-            <article key={p.title} className="flex flex-col gap-4 bg-paper p-8">
-              <span className="h-0.5 w-10 bg-gold" aria-hidden="true" />
-              <h3 className="font-display text-xl font-semibold text-forest">
-                {p.title}
-              </h3>
-              <p className="text-[0.95rem] leading-relaxed text-muted">{p.body}</p>
+            <article
+              key={p.title}
+              className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8"
+            >
+              <span className="h-1 w-10 rounded-full bg-forest" aria-hidden="true" />
+              <h3 className="font-display text-xl font-semibold text-ink">{p.title}</h3>
+              <p className="text-[0.95rem] leading-relaxed text-body">{p.body}</p>
             </article>
           ))}
         </div>
       </Section>
 
       {/* Open roles */}
-      <Section tone="gold-soft">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div className="max-w-2xl">
-            <Eyebrow>Open Roles</Eyebrow>
-            <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-forest md:text-4xl">
-              {culture.recruitCta}
-            </h2>
-          </div>
+      <Section id="roles" tone="canvas">
+        <div className="max-w-2xl">
+          <Eyebrow>Open Roles</Eyebrow>
+          <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.08] text-ink">
+            {culture.recruitCta}
+          </h2>
         </div>
 
-        <ul className="mt-10 divide-y divide-hairline overflow-hidden rounded-2xl border border-hairline bg-paper">
+        <ul className="mt-10 flex flex-col gap-3">
           {openings.map((o) => (
             <li key={o.role}>
               <a
                 href="/contact"
-                className="group flex flex-col gap-2 px-6 py-5 transition-colors hover:bg-gold-soft sm:flex-row sm:items-center sm:justify-between"
+                className="group flex flex-col gap-2 rounded-2xl border border-line bg-paper px-6 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-forest/25 hover:shadow-card sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
-                  <span className="font-display text-lg font-semibold text-forest">
+                  <span className="font-display text-lg font-semibold text-ink">
                     {o.role}
                   </span>
                   <span className="mt-0.5 block text-sm text-muted">
                     {o.team} · {o.location}
                   </span>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-gold">
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest">
                   Apply
-                  <ArrowRight
-                    size={15}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </a>
             </li>
@@ -96,15 +83,15 @@ export default function CareersPage() {
         </ul>
 
         <p className="mt-6 text-sm text-muted">
-          Don&rsquo;t see your role? We&rsquo;re a team of {proofStats[2].value}{" "}
-          and growing — tell us how you&rsquo;d make {company.name} better.
+          Don&rsquo;t see your role? We&rsquo;re a team of {proofStats[2].value} and
+          growing — tell us how you&rsquo;d make {company.name} better.
         </p>
       </Section>
 
       {/* CTA */}
-      <section className="bg-forest-deep px-5 py-24 text-center sm:px-6">
+      <Section tone="wash" className="text-center">
         <div className="mx-auto max-w-2xl">
-          <h2 className="font-display text-3xl font-bold leading-tight text-cream md:text-4xl">
+          <h2 className="font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
             We&rsquo;re building what&rsquo;s next. Want in?
           </h2>
           <div className="mt-9 flex justify-center">
@@ -114,7 +101,7 @@ export default function CareersPage() {
             </Cta>
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }

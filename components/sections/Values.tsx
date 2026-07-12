@@ -9,15 +9,14 @@ const icons: Record<ValueCard["icon"], React.ElementType> = {
   ai: Sparkles,
 };
 
-/* Our principles (landing brief "Why us"). Editorial two-column list on cream —
-   not an icon-card grid. */
-export function Values() {
+/* What we stand for — editorial two-column list on wash, not an icon-card grid. */
+export function Values({ tone = "wash" }: { tone?: "wash" | "mist" | "canvas" }) {
   return (
-    <Section id="values" tone="gold-soft">
+    <Section id="values" tone={tone}>
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="max-w-sm">
           <Eyebrow>What We Stand For</Eyebrow>
-          <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-forest md:text-4xl">
+          <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.08] text-ink">
             The relationship begins where most engagements end.
           </h2>
         </div>
@@ -28,16 +27,14 @@ export function Values() {
             return (
               <div key={v.title} className="flex flex-col gap-3">
                 <dt className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-forest text-gold">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-forest text-white">
                     <Icon size={18} strokeWidth={1.75} />
                   </span>
-                  <span className="font-display text-lg font-semibold text-forest">
+                  <span className="font-display text-lg font-semibold text-ink">
                     {v.title}
                   </span>
                 </dt>
-                <dd className="text-[0.95rem] leading-relaxed text-muted">
-                  {v.body}
-                </dd>
+                <dd className="text-[0.95rem] leading-relaxed text-body">{v.body}</dd>
               </div>
             );
           })}

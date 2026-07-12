@@ -6,8 +6,6 @@ export const problem = {
   eyebrow: "Why We Exist",
   heading: "Businesses don't fail from lack of effort. They drown in complexity.",
   body: "Growing businesses run on WhatsApp threads, Excel sheets, emails, and disconnected software. As teams grow, information scatters, decisions slow down, and no one has a single source of truth. The effort is there. The system isn't.",
-  // The scatter→system animation cycles through these
-  scatter: ["WhatsApp", "Excel", "Emails", "Paper files", "Manual approvals", "Disconnected apps"],
 };
 
 /* ── 4 · What We Build ───────────────────────────────────────────────── */
@@ -15,6 +13,8 @@ export interface Pillar {
   title: string;
   body: string;
   icon: "system" | "ai" | "saas";
+  image: string; // real context photo (under /brand)
+  accent: "forest" | "teal" | "amber"; // category colour
 }
 
 export const whatWeBuild = {
@@ -25,18 +25,24 @@ export const whatWeBuild = {
   pillars: [
     {
       title: "Custom Software & Systems",
-      body: "Bespoke operational platforms, ERP systems, web platforms, and mobile apps — built around your workflows, not off-the-shelf compromises. Fees, attendance, operations, dashboards: one system replacing scattered spreadsheets and WhatsApp groups.",
+      body: "Bespoke operational platforms, ERP systems, web platforms, and mobile apps — built around your workflows, not off-the-shelf compromises. One system replacing scattered spreadsheets and WhatsApp groups.",
       icon: "system",
+      image: "/brand/build-systems.png",
+      accent: "forest",
     },
     {
       title: "AI-Native Workflows",
       body: "AI-enabled automation that removes manual effort and surfaces real operational intelligence — smart approvals, insights, and workflow optimisation built in from the ground up.",
       icon: "ai",
+      image: "/brand/build-ai.png",
+      accent: "teal",
     },
     {
       title: "Vertical SaaS Products",
       body: "Industry-specific operating systems — EduOS, ArenaOS, and more — productised from real operational experience and ready to scale.",
       icon: "saas",
+      image: "/brand/build-saas.png",
+      accent: "amber",
     },
   ] satisfies Pillar[],
   closer: "One partner — from strategy to system to support.",
@@ -53,6 +59,8 @@ export const approach = {
   eyebrow: "Our Approach",
   heading: "We don't start with code. We start with your operations.",
   intro: "Consulting → Systems → SaaS. A four-step method that maps your business before a single line is written.",
+  image: "/brand/approach-workshop.png",
+  imageAlt: "A WnR consultant mapping a client's workflow on a whiteboard during a discovery workshop",
   steps: [
     { num: "01", title: "Map", body: "We map your workflows and pinpoint exactly where time and money leak today." },
     { num: "02", title: "Build", body: "We build the right system around your operations — purpose-built, never a generic tool." },
@@ -140,6 +148,8 @@ export interface CaseStudy {
   title: string;
   body: string;
   result: string;
+  image: string; // real context photo (under /brand)
+  accent: "forest" | "teal" | "amber"; // category colour
 }
 
 export const work = {
@@ -151,18 +161,24 @@ export const work = {
       title: "Campus Recruitment Platform",
       body: "Unified student, recruiter, and admin dashboards with an automated recruitment workflow, approvals, and analytics.",
       result: "~60% reduction in manual processes, faster recruiter coordination, data-driven placement insights.",
+      image: "/brand/case-campus.png",
+      accent: "forest",
     },
     {
       tag: "Textile / Retail",
       title: "D2C E-Commerce Channel",
       body: "SEO-optimised, mobile-friendly storefront with secure payments and order management for a brand moving beyond offline retail.",
       result: "A new direct sales channel, improved discoverability, stronger repeat-purchase loyalty.",
+      image: "/brand/case-retail.png",
+      accent: "amber",
     },
     {
       tag: "Logistics",
       title: "Freight & Customs Operations",
       body: "Automated logistics pipeline — shipment booking, documentation, customs workflow, and live delivery monitoring.",
       result: "Real-time shipment visibility, fewer delays, streamlined customs coordination.",
+      image: "/brand/case-logistics.png",
+      accent: "teal",
     },
   ] satisfies CaseStudy[],
 };

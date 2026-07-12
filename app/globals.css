@@ -5,28 +5,56 @@
 @custom-variant dark (&:is(.dark *));
 
 /* =========================================================================
-   WnR Group — brand system (capabilities deck)
-   Deep forest green base · gold as the single accent · cream light sections
+   WnR Group — "Operational Clarity" system
+   White-dominant canvas · deep forest green as the single accent ·
+   gold as a rare premium touch · green-tinted neutrals · blueprint motif
    ========================================================================= */
 @theme inline {
-  /* Brand palette */
-  --color-forest: #0e3b2e; /* deep forest — dark backgrounds, footer, primary text */
-  --color-forest-2: #16513d; /* lighter forest — cards on dark, hovers */
-  --color-forest-deep: #0a2c22; /* deepest forest — footer, max-contrast bands */
-  --color-gold: #c9a24b; /* the single accent — CTAs, labels, key numbers */
-  --color-gold-ink: #a6822f; /* darker gold — hover/active */
-  --color-gold-soft: #f3ead3; /* pale gold — callout washes on light */
-  --color-cream: #f8f6f0; /* off-white page background (never pure white walls) */
-  --color-paper: #ffffff; /* pure white — cards on cream only */
-  --color-ink: #0e3b2e; /* primary text on light */
-  --color-muted: #5a6660; /* secondary text on light */
-  --color-muted-dark: #aebbb1; /* secondary text on forest */
-  --color-hairline: #d9d4c7; /* 1px dividers / card borders on light */
+  /* ---- Surfaces (white-dominant, faintly green-tinted neutrals) ---- */
+  --color-canvas: #fbfcfb; /* page background — near-white, faint green tint */
+  --color-mist: #f1f5f2; /* alternating sections — soft green mist */
+  --color-mist-2: #e9efeb; /* slightly deeper mist for layering */
+  --color-paper: #ffffff; /* cards / raised surfaces */
 
-  /* Type */
+  /* ---- Ink (green-tinted near-blacks, never pure #000) ---- */
+  --color-ink: #0e1a13; /* headings / primary text on light */
+  --color-body: #3c4a42; /* body copy on light */
+  --color-muted: #66716a; /* secondary text, captions, labels */
+  --color-muted-soft: #9aa39d; /* faint labels / on-dark secondary */
+
+  /* ---- Forest green — the single brand accent ---- */
+  --color-forest: #124734; /* PRIMARY — CTAs, links, icons, key words */
+  --color-forest-deep: #0b2e20; /* deepest — dark bands, footer, CTA hover */
+  --color-forest-bright: #1f7a54; /* brighter interactive / decorative only */
+  --color-forest-wash: #eaf2ec; /* pale green highlight blocks */
+
+  /* ---- Secondary accents — used sparingly to break the mono-green rhythm.
+     Forest stays the brand anchor; teal (cool) + amber (warm) rotate across
+     categories (case tags, industries, product art) so no section is all green. ---- */
+  --color-teal: #0e6b73; /* cool secondary — harmonises with forest */
+  --color-teal-wash: #e6f1f2; /* pale teal highlight block */
+  --color-amber: #b8791f; /* warm secondary — readable on light */
+  --color-amber-wash: #f7efe0; /* pale amber highlight block */
+
+  /* ---- Gold — rare premium accent only (badges, fine rules, awards) ---- */
+  --color-gold: #c9a24b;
+  --color-gold-ink: #a6822f;
+
+  /* ---- Lines ---- */
+  --color-line: #e4eae5; /* hairlines, card borders on light */
+  --color-line-strong: #cdd8d0; /* stronger dividers */
+  --color-line-dark: rgba(255, 255, 255, 0.12); /* on forest */
+
+  /* ---- Type ---- */
   --font-display: var(--font-space-grotesk), system-ui, sans-serif;
   --font-body: var(--font-inter-tight), system-ui, sans-serif;
   --font-sans: var(--font-inter-tight), system-ui, sans-serif;
+
+  /* ---- Fluid type scale ---- */
+  --text-hero: clamp(2.75rem, 5.5vw, 5rem);
+  --text-h2: clamp(2rem, 3.8vw, 3.25rem);
+  --text-h3: clamp(1.3rem, 2vw, 1.6rem);
+  --text-lead: clamp(1.075rem, 1.4vw, 1.3rem);
 
   /* shadcn token bridges (kept so shadcn primitives stay on-brand) */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -58,54 +86,53 @@
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+  --radius-sm: calc(var(--radius) * 0.55);
+  --radius-md: calc(var(--radius) * 0.75);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-xl: calc(var(--radius) * 1.35);
+  --radius-2xl: calc(var(--radius) * 1.75);
+  --radius-3xl: calc(var(--radius) * 2.4);
 }
 
-/* shadcn semantic tokens, retuned to the WnR brand */
+/* shadcn semantic tokens, retuned white-dominant */
 :root {
-  --radius: 0.875rem; /* 14px — cards 12–16px per spec */
-  --background: #f8f6f0;
-  --foreground: #0e3b2e;
+  --radius: 0.875rem; /* 14px */
+  --background: #fbfcfb;
+  --foreground: #0e1a13;
   --card: #ffffff;
-  --card-foreground: #0e3b2e;
+  --card-foreground: #0e1a13;
   --popover: #ffffff;
-  --popover-foreground: #0e3b2e;
-  --primary: #0e3b2e;
-  --primary-foreground: #f8f6f0;
-  --secondary: #f3ead3;
-  --secondary-foreground: #0e3b2e;
-  --muted: #efece4;
-  --muted-foreground: #5a6660;
-  --accent: #f3ead3;
-  --accent-foreground: #0e3b2e;
-  --destructive: #dc2626;
-  --border: #d9d4c7;
-  --input: #d9d4c7;
-  --ring: #c9a24b;
-  --chart-1: #c9a24b;
-  --chart-2: #16513d;
-  --chart-3: #0e3b2e;
-  --chart-4: #a6822f;
-  --chart-5: #5a6660;
-  --sidebar: #0e3b2e;
-  --sidebar-foreground: #f8f6f0;
-  --sidebar-primary: #c9a24b;
-  --sidebar-primary-foreground: #0e3b2e;
-  --sidebar-accent: #16513d;
-  --sidebar-accent-foreground: #f8f6f0;
+  --popover-foreground: #0e1a13;
+  --primary: #124734;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f2;
+  --secondary-foreground: #124734;
+  --muted: #f1f5f2;
+  --muted-foreground: #66716a;
+  --accent: #eaf2ec;
+  --accent-foreground: #124734;
+  --destructive: #c0392b;
+  --border: #e4eae5;
+  --input: #e4eae5;
+  --ring: #124734;
+  --chart-1: #124734;
+  --chart-2: #1f7a54;
+  --chart-3: #c9a24b;
+  --chart-4: #66716a;
+  --chart-5: #0b2e20;
+  --sidebar: #0b2e20;
+  --sidebar-foreground: #f1f5f2;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #0b2e20;
+  --sidebar-accent: #124734;
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.12);
   --sidebar-ring: #c9a24b;
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-ink);
+  background-color: var(--color-canvas);
+  color: var(--color-body);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -115,63 +142,79 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
-  /* Display type: tighten tracking + leading on headings for a sharp, technical feel */
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    text-wrap: balance;
   }
-  /* Gold selection */
+  p {
+    text-wrap: pretty;
+  }
   ::selection {
-    background-color: var(--color-gold);
-    color: var(--color-forest-deep);
+    background-color: var(--color-forest);
+    color: #ffffff;
   }
 }
 
-/* Eyebrow / label utility — gold, uppercase, tracked (used site-wide) */
+/* ---- Eyebrow: forest-green uppercase label with a leading rule ---- */
 @utility eyebrow {
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-forest);
 }
 
-/* Thin gold rule used under section eyebrows */
-@utility gold-rule {
-  display: inline-block;
-  width: 2.5rem;
-  height: 2px;
-  background-color: var(--color-gold);
+/* ---- Blueprint grid texture (subtle "we map your operations" motif) ---- */
+@utility grid-blueprint {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-forest) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-forest) 8%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+@utility grid-blueprint-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-/* ---- Motion: looping micro-animations for the MIS dashboard & hero ---- */
-@keyframes wnr-breathe {
-  0%,
-  100% {
-    transform: scaleY(1);
-    opacity: 0.85;
-  }
-  50% {
-    transform: scaleY(1.12);
-    opacity: 1;
-  }
+/* ---- Soft, brand-tinted elevation (never pure-black shadow) ---- */
+@utility shadow-card {
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--color-forest) 8%, transparent),
+    0 12px 32px -16px color-mix(in oklab, var(--color-forest) 22%, transparent);
+}
+@utility shadow-card-hover {
+  box-shadow:
+    0 2px 4px color-mix(in oklab, var(--color-forest) 10%, transparent),
+    0 24px 48px -20px color-mix(in oklab, var(--color-forest) 30%, transparent);
 }
 
+/* ---- Motion: gentle load reveals (screenshot-safe: complete on load) ---- */
 @keyframes wnr-rise {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
+@keyframes wnr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes wnr-draw {
   from {
     stroke-dashoffset: var(--dash, 1000);
@@ -180,19 +223,21 @@ body {
     stroke-dashoffset: 0;
   }
 }
-
 @keyframes wnr-drift {
   0%,
   100% {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(var(--dx, 6px), var(--dy, -8px));
+    transform: translate(var(--dx, 8px), var(--dy, -10px));
   }
 }
 
 .animate-rise {
   animation: wnr-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-fade {
+  animation: wnr-fade 0.8s ease both;
 }
 
 /* Respect reduced-motion globally */
@@ -205,4 +250,8 @@ body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }

@@ -1,60 +1,111 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Cta } from "@/components/ui/Cta";
-import { OperationalBrain } from "@/components/ui/OperationalBrain";
-import { company } from "@/content/company";
+import { company, proofStats } from "@/content/company";
+import { media } from "@/content/media";
 
+/* Hero — headline-forward, with a real photograph anchoring the right.
+   The photo overlaps a soft forest plate and carries a small floating proof
+   chip, so it reads as an editorial composition, not a boxed illustration. */
 export function Hero() {
+  const img = media.hero;
+
   return (
-    <section className="relative flex min-h-dvh items-center overflow-hidden bg-forest pt-18 text-cream">
-      {/* departments-connecting motion, behind the text, low-contrast */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.55]" aria-hidden="true">
-        <OperationalBrain />
-      </div>
-      {/* warm vignette so text always wins */}
+    <section className="relative overflow-hidden bg-canvas pt-18">
       <div
-        className="pointer-events-none absolute inset-0"
+        className="grid-blueprint pointer-events-none absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent_80%)]"
         aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 15% 30%, rgba(10,44,34,0.35) 0%, rgba(14,59,46,0.85) 55%, #0e3b2e 100%)",
-        }}
       />
 
-      <div className="relative mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-6 md:py-28">
-        <div className="max-w-3xl">
-          <span className="flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-gold">
-            <span className="h-px w-8 bg-gold" />
-            {company.tagline}
+      <div className="relative mx-auto grid max-w-[1200px] items-center gap-12 px-5 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
+        {/* Copy */}
+        <div className="max-w-2xl">
+          <span className="animate-rise inline-flex items-center gap-2 rounded-full border border-line bg-paper/70 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-forest">
+            <span className="h-1.5 w-1.5 rounded-full bg-forest-bright" />
+            {company.tagline} · {company.geography}
           </span>
 
-          <h1 className="mt-6 font-display text-[2.75rem] font-bold leading-[1.05] tracking-tight text-cream sm:text-6xl md:text-7xl">
-            Operational intelligence
+          <h1
+            className="animate-rise mt-6 font-display text-[length:var(--text-hero)] font-bold leading-[1.03] text-ink"
+            style={{ animationDelay: "60ms" }}
+          >
+            The operational brain
             <br />
-            for{" "}
-            <span className="italic text-gold">modern business.</span>
+            of your <span className="text-forest">business.</span>
           </h1>
 
-          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-cream/75 md:text-xl">
+          <p
+            className="animate-rise mt-6 max-w-xl text-[length:var(--text-lead)] leading-relaxed text-body"
+            style={{ animationDelay: "120ms" }}
+          >
             {company.heroBody}
           </p>
 
-          <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <div
+            className="animate-rise mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center"
+            style={{ animationDelay: "180ms" }}
+          >
             <Cta href="/contact" variant="primary" className="px-7 py-3.5 text-base">
               Build Your System
-            </Cta>
-            <Cta href="/#products" variant="ghost" className="group text-base">
-              See What We&rsquo;ve Built
               <ArrowRight
                 size={18}
                 className="transition-transform duration-200 group-hover:translate-x-1"
               />
             </Cta>
+            <Cta href="/products" variant="outline" className="px-6 py-3.5 text-base">
+              See What We&rsquo;ve Built
+            </Cta>
+          </div>
+
+          <dl
+            className="animate-rise mt-12 flex flex-wrap gap-x-10 gap-y-5 border-t border-line pt-7"
+            style={{ animationDelay: "240ms" }}
+          >
+            {proofStats.slice(0, 3).map((s) => (
+              <div key={s.label} className="flex flex-col">
+                <dt className="order-2 mt-1 max-w-[10rem] text-xs leading-snug text-muted">
+                  {s.label}
+                </dt>
+                <dd className="order-1 font-display text-3xl font-bold tracking-tight text-ink">
+                  {s.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {/* Visual — real photograph on a forest plate */}
+        <div className="animate-fade relative" style={{ animationDelay: "160ms" }}>
+          {/* offset forest plate behind the photo */}
+          <div
+            className="absolute -bottom-4 -right-3 -top-4 left-8 rounded-[2rem] bg-forest/8"
+            aria-hidden="true"
+          />
+          {img && (
+            <div className="relative overflow-hidden rounded-[1.75rem] shadow-card-hover ring-1 ring-line">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          )}
+
+          {/* floating proof chip */}
+          <div className="absolute -bottom-5 left-2 flex items-center gap-3 rounded-2xl border border-line bg-paper/95 px-4 py-3 shadow-card backdrop-blur sm:left-4">
+            <span className="font-display text-2xl font-bold tracking-tight text-forest">
+              {proofStats[0].value}
+            </span>
+            <span className="max-w-[8.5rem] text-xs leading-snug text-muted">
+              {proofStats[0].label}
+            </span>
           </div>
         </div>
       </div>
-
-      {/* bottom fade into the proof bar */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-cream/0" />
     </section>
   );
 }

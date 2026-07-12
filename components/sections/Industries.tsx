@@ -1,60 +1,36 @@
-import {
-  GraduationCap,
-  Gamepad2,
-  Truck,
-  ShoppingBag,
-  Ship,
-  Briefcase,
-  UtensilsCrossed,
-  Building2,
-} from "lucide-react";
-import { Section, Eyebrow } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { industries } from "@/content/sections";
 
-const icons: Record<string, React.ElementType> = {
-  "Schools & Education": GraduationCap,
-  "Gaming & Esports": Gamepad2,
-  "Logistics & Freight": Truck,
-  "B2B & D2C E-Commerce": ShoppingBag,
-  Marine: Ship,
-  "Training & Careers": Briefcase,
-  "Food & Marketplace": UtensilsCrossed,
-  "SMB Enterprises": Building2,
-};
-
-/* Section 10 — Industries. Calm grid, gold line-icons, subtle hover lift. */
+/* Industries — an oversized editorial index rather than an icon-card grid.
+   Sector names read as large type in a flowing wrap, each numbered and
+   underlined on hover. Header sits inline with the footnote across the top. */
 export function Industries() {
   return (
-    <Section id="industries" tone="cream">
-      <div className="max-w-2xl">
-        <Eyebrow>{industries.eyebrow}</Eyebrow>
-        <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-forest md:text-[2.75rem]">
-          {industries.heading}
-        </h2>
+    <Section id="industries" tone="canvas">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-xl">
+          <p className="eyebrow">{industries.eyebrow}</p>
+          <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.06] text-ink">
+            {industries.heading}
+          </h2>
+        </div>
+        <p className="max-w-xs text-sm leading-relaxed text-muted">
+          {industries.footnote}
+        </p>
       </div>
 
-      <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {industries.list.map((name) => {
-          const Icon = icons[name] ?? Building2;
-          return (
-            <li key={name}>
-              <div className="group flex h-full flex-col gap-4 rounded-xl border border-hairline bg-paper p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-[0_20px_40px_-28px_rgba(14,59,46,0.4)]">
-                <Icon
-                  size={26}
-                  strokeWidth={1.5}
-                  className="text-gold"
-                  aria-hidden="true"
-                />
-                <span className="font-display text-[0.95rem] font-semibold leading-snug text-forest">
-                  {name}
-                </span>
-              </div>
-            </li>
-          );
-        })}
+      <ul className="mt-14 flex flex-wrap items-baseline gap-x-8 gap-y-5 md:gap-x-12">
+        {industries.list.map((name, i) => (
+          <li key={name} className="group flex items-baseline gap-2.5">
+            <span className="font-display text-xs font-bold tabular-nums text-forest/45">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="font-display text-2xl font-semibold leading-tight tracking-tight text-ink decoration-forest decoration-2 underline-offset-[6px] transition-colors group-hover:text-forest group-hover:underline md:text-[2rem]">
+              {name}
+            </span>
+          </li>
+        ))}
       </ul>
-
-      <p className="mt-10 text-sm text-muted">{industries.footnote}</p>
     </Section>
   );
 }

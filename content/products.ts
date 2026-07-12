@@ -10,6 +10,8 @@ export interface Product {
   features: string[];
   href: string;
   ctaLabel: string;
+  art: string; // vibrant product-brand artwork (under /brand)
+  accent: "teal" | "amber"; // secondary accent tuned to the art
   // Detail-page extras
   target: string;
   moat: string;
@@ -36,6 +38,8 @@ export const products: Product[] = [
     ],
     href: "/products/eduos",
     ctaLabel: "Explore EduOS",
+    art: "/brand/product-eduos.png",
+    accent: "teal",
     target: "Schools with 300–2,000 students. South India + UAE.",
     moat: "Implementation depth + staff training + ongoing operational partnership.",
     revenueLabel: "SaaS Revenue",
@@ -58,6 +62,8 @@ export const products: Product[] = [
     ],
     href: "/products/arenaos",
     ctaLabel: "Explore ArenaOS",
+    art: "/brand/product-arenaos.png",
+    accent: "amber",
     target: "Gaming cafes with 10+ stations. India.",
     moat: "India's only full gaming cafe OS.",
     revenueLabel: "Pipeline",

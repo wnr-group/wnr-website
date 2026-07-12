@@ -15,11 +15,6 @@ export default function EduOSPage() {
   return (
     <ProductDetail
       product={eduos}
-      mockMetrics={[
-        { label: "Fees collected", value: "₹42.8L" },
-        { label: "Attendance", value: "96%" },
-        { label: "Active staff", value: "128" },
-      ]}
       ctaHeading="Ready to bring EduOS to your school?"
       ctaBody="Let's talk about how EduOS can become the operational brain of your institution."
     />

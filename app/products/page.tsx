@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/ui/PageHero";
+import { Cta } from "@/components/ui/Cta";
 import { Products } from "@/components/sections/Products";
-import { FinalCta } from "@/components/sections/FinalCta";
 
 export const metadata: Metadata = {
   title: "Products — Vertical Operating Systems",
@@ -11,10 +13,22 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <>
-      {/* spacing so the fixed header clears the dark section top */}
-      <div className="bg-forest pt-18" aria-hidden="true" />
-      <Products />
-      <FinalCta />
+      <PageHero
+        eyebrow="The Portfolio"
+        title={
+          <>
+            Industry operating systems, <span className="text-forest">productised.</span>
+          </>
+        }
+        lead="We turn real operational experience into vertical SaaS — software that runs an entire category of business, not just one department of it."
+      >
+        <Cta href="/contact" variant="primary">
+          Talk to us
+          <ArrowRight size={16} />
+        </Cta>
+      </PageHero>
+
+      <Products heading="Vertical operating systems, shipping today." />
     </>
   );
 }

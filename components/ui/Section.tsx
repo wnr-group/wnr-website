@@ -1,13 +1,15 @@
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/ui/motion";
 
-type Tone = "cream" | "forest" | "forest-deep" | "gold-soft" | "paper";
+type Tone = "canvas" | "mist" | "paper" | "forest" | "forest-deep" | "wash";
 
 const tones: Record<Tone, string> = {
-  cream: "bg-cream text-ink",
-  forest: "bg-forest text-cream",
-  "forest-deep": "bg-forest-deep text-cream",
-  "gold-soft": "bg-gold-soft text-ink",
-  paper: "bg-paper text-ink",
+  canvas: "bg-canvas text-body",
+  mist: "bg-mist text-body",
+  paper: "bg-paper text-body",
+  wash: "bg-forest-wash text-body",
+  forest: "bg-forest text-white",
+  "forest-deep": "bg-forest-deep text-white",
 };
 
 interface SectionProps {
@@ -15,52 +17,85 @@ interface SectionProps {
   tone?: Tone;
   className?: string;
   containerClassName?: string;
+  /** Remove the max-width container so children can span edge to edge. */
+  bleed?: boolean;
+  /** Fade-up the section content as it scrolls into view. On by default. */
+  reveal?: boolean;
   children: React.ReactNode;
 }
 
 /**
- * Section wrapper enforcing the spec's vertical rhythm
- * (120–160px desktop / 72–96px mobile) and 1200px max content width.
- * scroll-mt offsets the sticky header for anchor links.
+ * Section wrapper — airy vertical rhythm and 1200px max content width.
+ * scroll-mt offsets the sticky header for anchor links. Pass `bleed` for
+ * full-width sections that manage their own inner layout.
  */
 export function Section({
   id,
-  tone = "cream",
+  tone = "canvas",
   className,
   containerClassName,
+  bleed = false,
+  reveal = true,
   children,
 }: SectionProps) {
+  const inner = bleed ? (
+    children
+  ) : (
+    <div className={cn("mx-auto w-full max-w-[1200px]", containerClassName)}>
+      {children}
+    </div>
+  );
+
   return (
     <section
       id={id}
       className={cn(
-        "scroll-mt-20 px-5 py-20 sm:px-6 md:py-28 lg:py-36",
+        "scroll-mt-24 py-20 md:py-28 lg:py-32",
+        !bleed && "px-5 sm:px-6",
         tones[tone],
         className,
       )}
     >
-      <div className={cn("mx-auto w-full max-w-[1200px]", containerClassName)}>
-        {children}
-      </div>
+      {reveal ? <Reveal>{inner}</Reveal> : inner}
     </section>
+  );
+}
+
+/** Constrains inner content to the site's 1200px column — for use inside bleed sections. */
+export function Container({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={cn("mx-auto w-full max-w-[1200px] px-5 sm:px-6", className)}>
+      {children}
+    </div>
   );
 }
 
 interface EyebrowProps {
   children: React.ReactNode;
   className?: string;
+  onDark?: boolean;
 }
 
-/** Gold uppercase label with a leading rule — the consistent section opener. */
-export function Eyebrow({ children, className }: EyebrowProps) {
+/** Uppercase label with a leading rule — the consistent section opener. */
+export function Eyebrow({ children, className, onDark = false }: EyebrowProps) {
   return (
     <span
       className={cn(
-        "flex items-center gap-3 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-gold",
+        "flex items-center gap-3 text-[0.8125rem] font-semibold uppercase tracking-[0.14em]",
+        onDark ? "text-white/70" : "text-forest",
         className,
       )}
     >
-      <span className="h-px w-8 bg-gold" aria-hidden="true" />
+      <span
+        className={cn("h-px w-8", onDark ? "bg-white/40" : "bg-forest")}
+        aria-hidden="true"
+      />
       {children}
     </span>
   );
