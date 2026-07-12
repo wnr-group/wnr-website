@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="relative overflow-hidden bg-canvas pt-18">
+    <section className="relative overflow-hidden bg-canvas pt-24">
       <div
         className="grid-blueprint pointer-events-none absolute inset-0 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent_70%)]"
         aria-hidden="true"

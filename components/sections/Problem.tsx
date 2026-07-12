@@ -31,7 +31,7 @@ const unified = ["Operations", "Approvals", "Reporting", "Communication"];
    calm forest "source of truth" card. Replaces the old floating-pills split. */
 export function Problem() {
   return (
-    <Section tone="canvas">
+    <Section tone="canvas" className="pt-4 md:pt-6 lg:pt-8">
       <p className="eyebrow">{problem.eyebrow}</p>
 
       <div className="mt-8 grid items-center gap-x-16 gap-y-12 lg:grid-cols-[1fr_1.05fr]">

@@ -16,6 +16,10 @@
   --color-mist-2: #e9efeb; /* slightly deeper mist for layering */
   --color-paper: #ffffff; /* cards / raised surfaces */
 
+  /* ---- Cream — warm surface for the floating navbar (CBTS-style) ---- */
+  --color-cream: #f4f1ea; /* warm off-white bar */
+  --color-cream-line: #e3ddce; /* warm hairline on cream */
+
   /* ---- Ink (green-tinted near-blacks, never pure #000) ---- */
   --color-ink: #0e1a13; /* headings / primary text on light */
   --color-body: #3c4a42; /* body copy on light */
@@ -254,4 +258,18 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ---- A/B hero gating ----------------------------------------------------
+   Both hero variants render in the DOM; the pre-paint script in the root
+   layout sets data-hero on <html>. We reveal exactly one. Default (attribute
+   missing / JS off) shows variant A. No flash: this is resolved before paint. */
+[data-hero-variant="B"] {
+  display: none;
+}
+[data-hero="B"] [data-hero-variant="A"] {
+  display: none;
+}
+[data-hero="B"] [data-hero-variant="B"] {
+  display: block;
 }

@@ -11,13 +11,16 @@ export function Hero() {
   const img = media.hero;
 
   return (
-    <section className="relative overflow-hidden bg-canvas pt-18">
+    <section
+      data-hero-variant="A"
+      className="relative overflow-hidden bg-canvas pt-20"
+    >
       <div
         className="grid-blueprint pointer-events-none absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent_80%)]"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto grid max-w-[1200px] items-center gap-12 px-5 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
+      <div className="relative mx-auto grid max-w-[1200px] items-center gap-12 px-5 pb-4 pt-6 sm:px-6 md:pb-6 md:pt-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
         {/* Copy */}
         <div className="max-w-2xl">
           <span className="animate-rise inline-flex items-center gap-2 rounded-full border border-line bg-paper/70 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-forest">

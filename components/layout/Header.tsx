@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { AnimatePresence, m } from "motion/react";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Cta } from "@/components/ui/Cta";
 import { cn } from "@/lib/utils";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 type NavItem = {
   href: string;
@@ -66,15 +69,16 @@ export function Header() {
 
   return (
     <>
-      <header
-        className={cn(
-          "fixed inset-x-0 top-0 z-50 bg-canvas/85 backdrop-blur-md transition-all duration-300",
-          scrolled || menuOpen
-            ? "border-b border-line shadow-[0_1px_20px_-8px_rgba(18,71,52,0.18)]"
-            : "border-b border-transparent",
-        )}
-      >
-        <div className="mx-auto flex h-18 max-w-[1200px] items-center justify-between px-5 sm:px-6">
+      {/* Floating cream card that hovers over the page (CBTS-style) */}
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6 sm:pt-4">
+        <div
+          className={cn(
+            "mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 rounded-2xl border pl-4 pr-3 backdrop-blur transition-all duration-300 sm:pl-5 sm:pr-4",
+            scrolled || menuOpen
+              ? "border-cream-line bg-cream/95 shadow-[0_14px_44px_-18px_rgba(18,71,52,0.32)]"
+              : "border-cream-line/70 bg-cream/85 shadow-[0_10px_34px_-20px_rgba(18,71,52,0.28)]",
+          )}
+        >
           <Link href="/" aria-label="WnR Group — home">
             <Logo />
           </Link>
@@ -163,38 +167,59 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile overlay */}
-      {menuOpen && (
-        <div className="fixed inset-0 top-18 z-40 flex flex-col overflow-y-auto bg-canvas px-5 py-6 lg:hidden">
-          {nav.map((item) => (
-            <div key={item.href} className="border-b border-line">
-              <Link
-                href={item.href}
-                className="flex items-center justify-between py-4 font-display text-xl font-semibold text-ink"
+      {/* Mobile overlay — floating cream panel below the bar */}
+      <AnimatePresence>
+        {menuOpen && (
+          <m.div
+            className="fixed inset-x-4 top-[4.75rem] z-40 flex max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto rounded-2xl border border-cream-line bg-cream px-5 py-4 shadow-[0_20px_50px_-20px_rgba(18,71,52,0.35)] sm:inset-x-6 lg:hidden"
+            initial={{ opacity: 0, y: -12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.98 }}
+            transition={{ duration: 0.28, ease: EASE }}
+            style={{ transformOrigin: "top" }}
+          >
+            {nav.map((item, i) => (
+              <m.div
+                key={item.href}
+                className="border-b border-cream-line/70 last:border-b-0"
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: EASE, delay: 0.06 + i * 0.05 }}
               >
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className="-mt-1 flex flex-col gap-1 pb-4 pl-1">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="flex items-center gap-2 py-2 text-[0.95rem] text-body"
-                    >
-                      <ArrowRight size={14} className="text-forest" />
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <Cta href="/contact" variant="primary" className="mt-6 w-full py-4 text-base">
-            Let&rsquo;s Talk
-          </Cta>
-        </div>
-      )}
+                <Link
+                  href={item.href}
+                  className="flex items-center justify-between py-4 font-display text-xl font-semibold text-ink"
+                >
+                  {item.label}
+                </Link>
+                {item.children && (
+                  <div className="-mt-1 flex flex-col gap-1 pb-4 pl-1">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="flex items-center gap-2 py-2 text-[0.95rem] text-body"
+                      >
+                        <ArrowRight size={14} className="text-forest" />
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </m.div>
+            ))}
+            <m.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease: EASE, delay: 0.06 + nav.length * 0.05 }}
+            >
+              <Cta href="/contact" variant="primary" className="mt-6 w-full py-4 text-base">
+                Let&rsquo;s Talk
+              </Cta>
+            </m.div>
+          </m.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
