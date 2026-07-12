@@ -60,7 +60,7 @@ export const approach = {
   heading: "We don't start with code. We start with your operations.",
   intro: "Consulting → Systems → SaaS. A four-step method that maps your business before a single line is written.",
   image: "/brand/approach-workshop.png",
-  imageAlt: "A WnR consultant mapping a client's workflow on a whiteboard during a discovery workshop",
+  imageAlt: "Two WnR consultants in discussion during a client discovery session",
   steps: [
     { num: "01", title: "Map", body: "We map your workflows and pinpoint exactly where time and money leak today." },
     { num: "02", title: "Build", body: "We build the right system around your operations — purpose-built, never a generic tool." },
