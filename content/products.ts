@@ -17,6 +17,12 @@ export interface Product {
   moat: string;
   revenueLabel: string;
   revenueValue: string;
+  // In-page product hero extras
+  overview: string;
+  businessProblem: string;
+  solution: string;
+  industries: string[];
+  technology: string[];
 }
 
 export const products: Product[] = [
@@ -44,6 +50,19 @@ export const products: Product[] = [
     moat: "Implementation depth + staff training + ongoing operational partnership.",
     revenueLabel: "SaaS Revenue",
     revenueValue: "₹1,000/month per school post-implementation",
+    overview:
+      "EduOS is the single operating system a school runs on — fees, attendance, academics, staff operations, and parent communication in one connected platform, configured to how the school actually works rather than forcing a generic template.",
+    businessProblem:
+      "Schools run fees, attendance, and parent communication across disconnected spreadsheets, paper registers, and ad-hoc WhatsApp groups. Nothing reconciles automatically, and the gaps leak revenue and staff hours every term.",
+    solution:
+      "EduOS unifies fee collection, attendance, academic workflows, staff operations, and parent communication into one implemented platform, configured against the school's real processes during onboarding rather than a one-size-fits-all setup.",
+    industries: ["K-12 Schools", "Higher Education", "Coaching Institutes"],
+    technology: [
+      "Cloud-hosted platform",
+      "Role-based admin dashboards",
+      "Mobile parent portal",
+      "Payment gateway integration",
+    ],
   },
   {
     slug: "arenaos",
@@ -68,6 +87,19 @@ export const products: Product[] = [
     moat: "India's only full gaming cafe OS.",
     revenueLabel: "Pipeline",
     revenueValue: "Productised SaaS for chains across India",
+    overview:
+      "ArenaOS is the full business operating system for gaming cafes — station and session booking, real-time revenue tracking, and operational business intelligence in one system, in place of billing software that only records what was charged.",
+    businessProblem:
+      "Gaming cafe owners typically run on billing tools that log transactions but say nothing about station utilization, peak hours, or true business performance — decisions get made on gut feel, not data.",
+    solution:
+      "ArenaOS combines station and session management with real-time revenue tracking and operational dashboards, giving owners a live, accurate read on how the business is performing, with UPI and GST-ready billing built in.",
+    industries: ["Gaming Cafes", "Esports Lounges", "Entertainment Centers"],
+    technology: [
+      "Cloud-hosted platform",
+      "Real-time analytics dashboards",
+      "UPI & GST-ready billing",
+      "Station & session management engine",
+    ],
   },
 ];
 
