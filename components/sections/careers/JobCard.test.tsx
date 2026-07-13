@@ -29,7 +29,7 @@ describe("JobCard", () => {
     const applyLink = screen.getByRole("link", { name: /apply for senior full-stack engineer/i });
     expect(applyLink).toHaveAttribute(
       "href",
-      "/contact?inquiry=careers&role=Senior%20Full-Stack%20Engineer",
+      "/careers/apply?role=Senior%20Full-Stack%20Engineer",
     );
   });
 });

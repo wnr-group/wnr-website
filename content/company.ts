@@ -10,6 +10,9 @@ export const company = {
   geography: "Tamil Nadu → India → Europe",
   hq: "Tamil Nadu, India",
   category: "Tech Company & Services",
+  email: "admin@wnradvisory.com",
+  phone: "+91 9080121533",
+  address: "115 D, First Floor, TIDEL Park, No.4, Rajiv Gandhi Salai, Taramani, Chennai - 600113",
 
   heroBody:
     "We build the operational brain of your business — custom platforms, AI-native workflows, and vertical SaaS products that replace scattered tools with one intelligent system. We don't just build it. We implement it, train your team, and stay.",

@@ -5,7 +5,7 @@ import { Cta } from "@/components/ui/Cta";
 import type { JobCardProps } from "./types";
 
 export function JobCard({ job }: JobCardProps) {
-  const applyHref = `/contact?inquiry=careers&role=${encodeURIComponent(job.title)}`;
+  const applyHref = `/careers/apply?role=${encodeURIComponent(job.title)}`;
 
   return (
     <article className="flex h-full flex-col gap-5 rounded-2xl border border-line bg-paper p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-forest/25 hover:shadow-card">

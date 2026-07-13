@@ -93,6 +93,20 @@ export function Footer() {
               Reach
             </h3>
             <p className="text-sm leading-relaxed text-white/70">{company.geography}</p>
+            <div className="flex flex-col gap-1 text-xs text-white/55">
+              <a
+                href={`mailto:${company.email}`}
+                className="transition-colors hover:text-white hover:underline underline-offset-2"
+              >
+                {company.email}
+              </a>
+              <a
+                href={`tel:${company.phone.replace(/\s+/g, "")}`}
+                className="transition-colors hover:text-white hover:underline underline-offset-2"
+              >
+                {company.phone}
+              </a>
+            </div>
             <Link
               href="/contact"
               className="mt-1 inline-flex items-center gap-1 text-sm font-semibold text-white transition-colors hover:text-white/80"

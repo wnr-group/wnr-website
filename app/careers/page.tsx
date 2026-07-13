@@ -117,7 +117,7 @@ export default function CareersPage() {
           </h2>
           <p className="mt-4 text-body">{careersCta.body}</p>
           <div className="mt-9 flex justify-center">
-            <Cta href="/contact?inquiry=careers" variant="primary" className="px-8 py-4 text-base">
+            <Cta href="/careers/apply" variant="primary" className="px-8 py-4 text-base">
               {careersCta.ctaLabel}
               <ArrowRight size={18} />
             </Cta>
