@@ -1,3 +1,5 @@
+"use client";
+
 // components/sections/products/ProductGrid.tsx
 import { ProductCard } from "./ProductCard";
 import type { ProductGridProps } from "./types";
