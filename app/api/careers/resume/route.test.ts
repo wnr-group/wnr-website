@@ -27,11 +27,13 @@ describe("POST /api/careers/resume", () => {
   });
 
   it("rejects a missing file", async () => {
+    const formData = new FormData();
     const request = new Request("http://localhost/api/careers/resume", {
       method: "POST",
       headers: { "x-forwarded-for": "203.0.113.21" },
-      body: new FormData(),
+      body: formData,
     });
+    vi.spyOn(request, "formData").mockResolvedValue(formData);
     const response = await POST(request);
     expect(response.status).toBe(400);
   });
