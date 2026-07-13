@@ -29,8 +29,12 @@ export function useProductSelection() {
   const close = useCallback(() => {
     setSelected((current) => {
       if (current) {
-        const trigger = triggerRefs.current.get(current.slug);
-        requestAnimationFrame(() => trigger?.focus());
+        const slug = current.slug;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            triggerRefs.current.get(slug)?.focus();
+          });
+        });
       }
       return null;
     });
