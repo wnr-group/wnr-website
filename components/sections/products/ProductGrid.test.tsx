@@ -6,6 +6,7 @@ import type { Product } from "./types";
 
 vi.mock("next/image", () => ({
   default: (props: Record<string, unknown>) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { fill: _fill, ...rest } = props;
     // eslint-disable-next-line @next/next/no-img-element
     return <img alt={(rest.alt as string) ?? ""} {...rest} />;

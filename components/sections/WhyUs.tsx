@@ -33,7 +33,7 @@ export function WhyUs() {
         </div>
 
         <ul className="flex flex-col">
-          {whyUs.contrast.map((row, i) => (
+          {whyUs.contrast.map((row) => (
             <li
               key={row.us}
               className="grid grid-cols-1 items-baseline gap-1 border-t border-line py-5 first:border-t-0 first:pt-0 sm:grid-cols-[1fr_auto_1.1fr] sm:gap-5"
