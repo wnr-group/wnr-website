@@ -1,3 +1,5 @@
+"use client";
+
 // components/sections/products/ProductHero.tsx
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
