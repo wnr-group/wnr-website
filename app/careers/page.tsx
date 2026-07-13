@@ -1,102 +1,124 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
-import { Section, Eyebrow } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { Cta } from "@/components/ui/Cta";
-import { culture } from "@/content/sections";
-import { company, proofStats } from "@/content/company";
+import { WhyWorkWithUs } from "@/components/sections/careers/WhyWorkWithUs";
+import { Benefits } from "@/components/sections/careers/Benefits";
+import { Culture } from "@/components/sections/careers/Culture";
+import { HiringProcess } from "@/components/sections/careers/HiringProcess";
+import { JobList } from "@/components/sections/careers/JobList";
+import { careersHero, careersCta, openings, type Job } from "@/content/careers";
+import { media } from "@/content/media";
 
 export const metadata: Metadata = {
   title: "Careers — Build What's Next",
   description:
     "Join a team obsessed with how businesses actually work. We're 25+ engineers, strategists, and operators building vertical operating systems.",
+  alternates: { canonical: "/careers" },
+  openGraph: {
+    title: "Careers — Build What's Next",
+    description: "Join a team obsessed with how businesses actually work.",
+    url: "/careers",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Careers — Build What's Next",
+    description: "Join a team obsessed with how businesses actually work.",
+  },
 };
 
-const openings = [
-  { role: "Senior Full-Stack Engineer", team: "WnR Systems", location: "Tamil Nadu / Remote" },
-  { role: "Operations Consultant", team: "WnR Consulting", location: "Tamil Nadu" },
-  { role: "AI/ML Engineer", team: "WnR AI Labs", location: "Remote, India" },
-  { role: "Product Designer", team: "WnR Systems", location: "Tamil Nadu / Remote" },
-];
+const EMPLOYMENT_TYPE_SCHEMA: Record<Job["employmentType"], string> = {
+  "Full-time": "FULL_TIME",
+  "Part-time": "PART_TIME",
+  Contract: "CONTRACTOR",
+  Internship: "INTERN",
+};
 
 export default function CareersPage() {
+  const img = media.careers;
+
+  const jobPostingSchema = openings.map((job) => ({
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: job.title,
+    description: job.description,
+    employmentType: EMPLOYMENT_TYPE_SCHEMA[job.employmentType],
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "WnR Group",
+      sameAs: "https://wnrgroup.com",
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: job.location,
+    },
+  }));
+
   return (
     <>
-      <PageHero eyebrow={culture.eyebrow} title={culture.heading} lead={culture.intro}>
-        <Cta href="#roles" variant="primary">
-          See open roles
+      {jobPostingSchema.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
+        />
+      )}
+
+      <PageHero
+        eyebrow={careersHero.eyebrow}
+        title={careersHero.heading}
+        lead={careersHero.lead}
+        aside={
+          img && (
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-line shadow-card">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
+          )
+        }
+      >
+        <Cta href="#openings" variant="primary">
+          {careersHero.ctaLabel}
           <ArrowRight size={16} />
         </Cta>
       </PageHero>
 
-      {/* How we work */}
-      <Section tone="mist">
-        <Eyebrow>How We Work</Eyebrow>
-        <h2 className="mt-5 max-w-2xl font-display text-[length:var(--text-h2)] font-bold leading-[1.08] text-ink">
-          Philosophy over personalities.
-        </h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {culture.pillars.map((p) => (
-            <article
-              key={p.title}
-              className="flex flex-col gap-4 rounded-2xl border border-line bg-paper p-8"
-            >
-              <span className="h-1 w-10 rounded-full bg-forest" aria-hidden="true" />
-              <h3 className="font-display text-xl font-semibold text-ink">{p.title}</h3>
-              <p className="text-[0.95rem] leading-relaxed text-body">{p.body}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+      <WhyWorkWithUs />
+      <Benefits />
+      <Culture />
+      <HiringProcess />
 
-      {/* Open roles */}
-      <Section id="roles" tone="canvas">
+      <Section id="openings" tone="canvas">
         <div className="max-w-2xl">
-          <Eyebrow>Open Roles</Eyebrow>
+          <p className="eyebrow">Current Openings</p>
           <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.08] text-ink">
-            {culture.recruitCta}
+            {openings.length > 0
+              ? "Open roles at WnR Group."
+              : "No openings right now — but talent always has a seat."}
           </h2>
         </div>
-
-        <ul className="mt-10 flex flex-col gap-3">
-          {openings.map((o) => (
-            <li key={o.role}>
-              <a
-                href="/contact"
-                className="group flex flex-col gap-2 rounded-2xl border border-line bg-paper px-6 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-forest/25 hover:shadow-card sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div>
-                  <span className="font-display text-lg font-semibold text-ink">
-                    {o.role}
-                  </span>
-                  <span className="mt-0.5 block text-sm text-muted">
-                    {o.team} · {o.location}
-                  </span>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest">
-                  Apply
-                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <p className="mt-6 text-sm text-muted">
-          Don&rsquo;t see your role? We&rsquo;re a team of {proofStats[2].value} and
-          growing — tell us how you&rsquo;d make {company.name} better.
-        </p>
+        <div className="mt-10">
+          <JobList jobs={openings} />
+        </div>
       </Section>
 
-      {/* CTA */}
       <Section tone="wash" className="text-center">
         <div className="mx-auto max-w-2xl">
           <h2 className="font-display text-3xl font-bold leading-tight text-ink md:text-4xl">
-            We&rsquo;re building what&rsquo;s next. Want in?
+            {careersCta.heading}
           </h2>
+          <p className="mt-4 text-body">{careersCta.body}</p>
           <div className="mt-9 flex justify-center">
-            <Cta href="/contact" variant="primary" className="px-8 py-4 text-base">
-              Get in Touch
+            <Cta href="/contact?inquiry=careers" variant="primary" className="px-8 py-4 text-base">
+              {careersCta.ctaLabel}
               <ArrowRight size={18} />
             </Cta>
           </div>
