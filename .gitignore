@@ -1,6 +1,9 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# ==============================================================================
+# WnR Group Website — .gitignore
+# Next.js 16 (Turbopack) · React 19 · TypeScript · Tailwind CSS v4 · Vitest
+# ==============================================================================
 
-# dependencies
+# ---- Dependencies & Package Managers -----------------------------------------
 /node_modules
 /.pnp
 .pnp.*
@@ -9,38 +12,86 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.pnpm-store/
 
-# testing
-/coverage
-
-# next.js
+# ---- Next.js Core & Build Outputs --------------------------------------------
 /.next/
 /out/
+/build/
+/dist/
+/.cache/
 
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
+# ---- TypeScript --------------------------------------------------------------
 *.tsbuildinfo
 next-env.d.ts
 
-# local agent / skill tooling (not part of the website)
-/.agents
-/.claude
+# ---- Testing & Coverage (Vitest / Testing Library) ---------------------------
+/coverage/
+/.nyc_output/
+test-results/
+vitest.config.ts.timestamp-*
+vite.config.ts.timestamp-*
+
+# ---- Environment Variables & Secrets -----------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+
+# ---- Logs & Traces -----------------------------------------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+trace-turbopack*
+.turbopack-trace*
+
+# ---- AI Agent, Skill & IDE Tooling / Scratch Workspace -----------------------
+/.agents/
+/.claude/
+/.gemini/
+/.superpowers/
+/scratch/
 /skills-lock.json
+.cursor/
+.cursorrules
+
+# ---- Editor & IDE Configuration ----------------------------------------------
+/.vscode/*
+!/.vscode/settings.json
+!/.vscode/tasks.json
+!/.vscode/launch.json
+!/.vscode/extensions.json
+/.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*~
+
+# ---- OS Files & Metadata (Windows / macOS / Linux) ---------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# macOS / Linux
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# ---- Cloud Providers & Deployment Tools --------------------------------------
+.vercel/
+.netlify/

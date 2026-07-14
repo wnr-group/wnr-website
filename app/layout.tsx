@@ -54,6 +54,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       data-hero="A"
       className={`${spaceGrotesk.variable} ${interTight.variable}`}
+      suppressHydrationWarning
     >
       <body className="min-h-dvh flex flex-col bg-canvas text-body antialiased">
         <Script id="wnr-hero-ab" strategy="beforeInteractive">

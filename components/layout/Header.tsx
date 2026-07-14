@@ -63,6 +63,7 @@ export function Header() {
 
   // Close menus on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resetting navigation menu state when route changes via useEffect is expected behavior
     setMenuOpen(false);
     setOpenGroup(null);
   }, [pathname]);

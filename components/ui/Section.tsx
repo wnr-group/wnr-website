@@ -21,6 +21,15 @@ interface SectionProps {
   bleed?: boolean;
   /** Fade-up the section content as it scrolls into view. On by default. */
   reveal?: boolean;
+  /**
+   * Viewport threshold that triggers the reveal (forwarded to Reveal's
+   * `amount`). Defaults to a fraction (0.2) of the wrapped content's height —
+   * fine for normal sections, but that fraction can exceed the viewport
+   * height for very tall content and never fire. Pass `"some"` for sections
+   * whose content height is unbounded/variable, so the reveal triggers as
+   * soon as any part enters view instead of a fixed fraction of the whole.
+   */
+  revealAmount?: number | "some" | "all";
   children: React.ReactNode;
 }
 
@@ -36,6 +45,7 @@ export function Section({
   containerClassName,
   bleed = false,
   reveal = true,
+  revealAmount,
   children,
 }: SectionProps) {
   const inner = bleed ? (
@@ -56,7 +66,7 @@ export function Section({
         className,
       )}
     >
-      {reveal ? <Reveal>{inner}</Reveal> : inner}
+      {reveal ? <Reveal amount={revealAmount}>{inner}</Reveal> : inner}
     </section>
   );
 }

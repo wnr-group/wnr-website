@@ -33,7 +33,7 @@ export function Reveal({
   className?: string;
   y?: number;
   delay?: number;
-  amount?: number;
+  amount?: number | "some" | "all";
 }) {
   return (
     <m.div
