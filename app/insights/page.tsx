@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section, Eyebrow } from "@/components/ui/Section";
-import { work } from "@/content/sections";
-import { cn } from "@/lib/utils";
-
-const accentText: Record<string, string> = {
-  forest: "text-forest-bright",
-  teal: "text-teal",
-  amber: "text-amber",
-};
+import { CaseStudiesSection } from "@/components/insights/CaseStudiesSection";
 
 export const metadata: Metadata = {
   title: "Insights — Case Studies & Perspective",
@@ -49,57 +41,7 @@ export default function InsightsPage() {
         lead="Case studies from real deployments and our perspective on building AI-native operational systems."
       />
 
-      {/* Case studies */}
-      <Section tone="canvas">
-        <Eyebrow>{work.eyebrow}</Eyebrow>
-        <h2 className="mt-5 max-w-2xl font-display text-[length:var(--text-h2)] font-bold leading-[1.08] text-ink">
-          {work.heading}
-        </h2>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {work.cases.map((c) => (
-            <article
-              key={c.title}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-paper transition-all duration-300 hover:-translate-y-1 hover:shadow-card"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden">
-                <Image
-                  src={c.image}
-                  alt={c.title}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-4 p-7">
-                <div className="flex items-start justify-between gap-3">
-                  <span
-                    className={cn(
-                      "text-xs font-bold uppercase tracking-[0.16em]",
-                      accentText[c.accent],
-                    )}
-                  >
-                    {c.tag}
-                  </span>
-                  <ArrowUpRight
-                    size={18}
-                    className="text-muted transition-colors group-hover:text-forest"
-                  />
-                </div>
-                <h3 className="font-display text-lg font-semibold leading-snug text-ink">
-                  {c.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-body">{c.body}</p>
-                <p className="mt-auto border-t border-line pt-4 text-sm font-medium text-ink">
-                  <span className={cn("font-semibold", accentText[c.accent])}>
-                    Result ·{" "}
-                  </span>
-                  {c.result}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </Section>
+      <CaseStudiesSection />
 
       {/* Perspective / newsletter feed */}
       <Section tone="mist">

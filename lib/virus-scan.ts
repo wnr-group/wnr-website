@@ -21,7 +21,7 @@ export interface VirusScanResult {
  * Current implementation: stub — always returns clean.
  * Replace the body of this function to integrate a real scanner.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- stub function ignores parameter until real scanner is integrated
 export async function scanResume(_bytes: Uint8Array): Promise<VirusScanResult> {
   // TODO: integrate a real virus scanner (ClamAV, VirusTotal, etc.)
   // Example Resend/ClamAV integration:

@@ -5,9 +5,9 @@ import type { Product } from "./types";
 
 vi.mock("next/image", () => ({
   default: (props: Record<string, unknown>) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- stripping fill prop before spreading onto native img
     const { fill: _fill, ...rest } = props;
-    // eslint-disable-next-line @next/next/no-img-element
+    // eslint-disable-next-line @next/next/no-img-element -- mock of next/image for test environment
     return <img alt={(rest.alt as string) ?? ""} {...rest} />;
   },
 }));

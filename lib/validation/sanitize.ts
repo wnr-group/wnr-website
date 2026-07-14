@@ -96,8 +96,7 @@ export function sanitizeAll<T extends Record<string, unknown>>(
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       const value = obj[key];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (result as any)[key] =
+      (result as Record<string, unknown>)[key] =
         value === null || value === undefined
           ? ""
           : typeof value === "string"

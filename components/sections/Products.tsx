@@ -1,6 +1,14 @@
 import { Section } from "@/components/ui/Section";
 import { products, futureProducts } from "@/content/products";
-import { ProductsSection } from "@/components/sections/products/ProductsSection";
+import dynamic from "next/dynamic";
+
+const ProductsSection = dynamic(
+  () =>
+    import("@/components/sections/products/ProductsSection").then(
+      (mod) => mod.ProductsSection
+    ),
+  { ssr: true }
+);
 
 /* Products — an interactive grid: click a card to open its full detail
    in place (ProductsSection), no navigation. Future products close the
