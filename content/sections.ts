@@ -58,7 +58,7 @@ export interface ApproachStep {
 export const approach = {
   eyebrow: "Our Approach",
   heading: "We don't start with code. We start with your operations.",
-  intro: "Consulting → Systems → SaaS. A four-step method that maps your business before a single line is written.",
+  intro: "A four-step method that maps your business before a single line is written.",
   image: "/brand/approach-workshop.webp",
   imageAlt: "Two WnR consultants in discussion during a client discovery session",
   steps: [

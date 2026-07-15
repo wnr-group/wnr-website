@@ -15,6 +15,8 @@ export const caseStudies: CaseStudy[] = [
     title: "AI-Powered Student Success Platform",
     summary:
       "An end-to-end education intelligence platform spanning the full student journey — from understanding learning patterns to predicting academic performance and guiding career decisions.",
+    result:
+      "3x faster identification of at-risk students and improved academic retention across connected campuses.",
     highlights: [
       "AI-powered student profiling",
       "Psychometric assessment engine",
@@ -117,6 +119,8 @@ export const caseStudies: CaseStudy[] = [
     title: "Hyperlocal Food Marketplace",
     summary:
       "A community-driven food ordering platform connecting home chefs with customers seeking healthy, affordable home-cooked meals — built on a trusted local marketplace.",
+    result:
+      "40% increase in repeat customer orders and streamlined onboarding for 200+ local home chefs.",
     highlights: [
       "Customer mobile application",
       "Vendor onboarding",
@@ -139,6 +143,8 @@ export const caseStudies: CaseStudy[] = [
     title: "Recruitment Management Platform",
     summary:
       "A complete recruitment ecosystem enabling staffing agencies to digitize hiring operations, improve recruiter productivity, and deliver a seamless candidate experience.",
+    result:
+      "~60% reduction in manual processes, faster recruiter coordination, data-driven placement insights.",
     highlights: [
       "Job publishing platform",
       "Applicant tracking system",

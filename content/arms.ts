@@ -1,29 +1,48 @@
 // Section 8 — Our divisions. Three operating arms, presented as live divisions.
 
+export interface ArmProduct {
+  name: string;
+  href: string;
+}
+
 export interface Arm {
   name: string;
   slug: string;
+  summary: string;
   description: string;
+  products?: ArmProduct[];
+  flow?: string;
 }
 
 export const arms: Arm[] = [
   {
     name: "WnR Systems",
     slug: "systems",
+    summary:
+      "Custom operational builds, ERPs, web platforms, mobile apps. Generates revenue that funds product development.",
     description:
-      "Builds the custom ERP platforms, business software, web applications, and mobile solutions our clients run on.",
+      "Custom operational builds, ERPs, web platforms, mobile apps. Generates revenue that funds product development.",
+    products: [
+      { name: "WnR EduOS", href: "/products/eduos" },
+      { name: "WnR ArenaOS", href: "/products/arenaos" },
+    ],
   },
   {
     name: "WnR Consulting",
     slug: "consulting",
+    summary:
+      "Operational advisory. Map workflows, identify losses, prescribe the right system before any code is written.",
     description:
-      "Studies business operations, identifies workflow challenges, and designs the right operational strategy before any software is built.",
+      "Operational advisory. Map workflows, identify losses, prescribe the right system before any code is written.",
+    flow: "Consulting → Systems → SaaS.",
   },
   {
     name: "WnR AI Labs",
     slug: "ai-labs",
+    summary:
+      "Builds the AI and automation layer powering all products. the intelligence inside everything WnR builds.",
     description:
-      "Develops the AI-native technologies and automation that power every WnR product and solution — the intelligence layer across the portfolio.",
+      "Builds the AI and automation layer powering all products. the intelligence inside everything WnR builds.",
   },
 ];
 

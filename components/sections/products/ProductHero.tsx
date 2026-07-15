@@ -36,15 +36,17 @@ export function ProductHero({ product, onClose, heroRef }: ProductHeroProps) {
           <ArrowLeft size={16} />
           Back to products
         </button>
-        <span
-          className={cn(
-            "inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
-            a.chip,
-          )}
-        >
-          <span className={cn("h-1.5 w-1.5 rounded-full", a.dot)} />
-          {product.label}
-        </span>
+        {product.label ? (
+          <span
+            className={cn(
+              "inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
+              a.chip,
+            )}
+          >
+            <span className={cn("h-1.5 w-1.5 rounded-full", a.dot)} />
+            {product.label}
+          </span>
+        ) : null}
       </div>
 
       <div className="grid gap-0 lg:grid-cols-2">

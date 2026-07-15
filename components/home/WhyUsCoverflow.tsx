@@ -8,7 +8,7 @@ import { whyUsItems, type WhyUsItem } from "@/data/why-us";
 import { ValueCard } from "./ValueCard";
 
 const COVERFLOW_CONFIG = {
-  autoplayIntervalMs: 4800,
+  autoplayIntervalMs: 3000,
   swipeThresholdDistance: 45,
   swipeThresholdVelocity: 250,
   perspectivePx: 1200,

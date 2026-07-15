@@ -14,7 +14,7 @@ const ProductsSection = dynamic(
    in place (ProductsSection), no navigation. Future products close the
    section as a quiet strip, unchanged from before. */
 export function Products({
-  heading = "Vertical operating systems, shipping today.",
+  heading = "Vertical operating systems.",
 }: {
   heading?: string;
 }) {

@@ -100,12 +100,6 @@ export function Footer() {
               >
                 {company.email}
               </a>
-              <a
-                href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                className="transition-colors hover:text-white hover:underline underline-offset-2"
-              >
-                {company.phone}
-              </a>
             </div>
             <Link
               href="/contact"

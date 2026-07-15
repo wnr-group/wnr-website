@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Building2, MessageCircle, Mail, Phone } from "lucide-react";
+import { MapPin, Building2, MessageCircle, Mail } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Section";
 import { ContactForm } from "@/components/ContactForm";
 import { company } from "@/content/company";
@@ -7,15 +7,15 @@ import { company } from "@/content/company";
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact WnR Group",
-  description: "Reach out to WnR Group for business enquiries, digital transformation, AI, cloud, and more.",
+  name: "Contact WnR Tech",
+  description: "Reach out to WnR Tech for business enquiries, digital transformation, AI, cloud, and more.",
   url: "https://wnrgroup.com/contact",
 };
 
 export const metadata: Metadata = {
   title: "Contact — Let's Talk About Your Operations",
   description:
-    "Tell us about your business. We'll tell you how we can help. WnR Group — Tamil Nadu → India → Europe.",
+    "Tell us about your business. We'll tell you how we can help. WnR Tech — Tamil Nadu → India → Europe.",
   alternates: { canonical: "/contact" },
 };
 
@@ -68,18 +68,6 @@ export default function ContactPage() {
                     className="hover:text-forest underline underline-offset-2"
                   >
                     {company.email}
-                  </a>
-                }
-              />
-              <Detail
-                icon={<Phone size={18} />}
-                label="Phone"
-                value={
-                  <a
-                    href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                    className="hover:text-forest underline underline-offset-2"
-                  >
-                    {company.phone}
                   </a>
                 }
               />

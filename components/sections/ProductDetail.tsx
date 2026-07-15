@@ -26,7 +26,7 @@ export function ProductDetail({
       <PageHero
         eyebrow={product.label}
         title={product.name}
-        lead={product.oneLiner}
+        lead={product.heroBody || product.oneLiner}
         aside={
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-line shadow-card">
             <Image
@@ -44,6 +44,11 @@ export function ProductDetail({
           <p className="-mt-3 font-display text-xl font-semibold text-forest">
             {product.tagline}
           </p>
+          {product.strapline && (
+            <p className="-mt-4 font-display text-base font-semibold tracking-wide text-ink">
+              {product.strapline}
+            </p>
+          )}
           <div className="flex flex-wrap items-center gap-4">
             <Cta href="/contact" variant="primary">
               {product.ctaLabel}

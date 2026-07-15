@@ -61,7 +61,7 @@ export function Logo({
             className="font-display text-lg font-bold tracking-tight"
             style={{ color: wordColor }}
           >
-            WnR Group
+            WnR Tech
           </span>
           <span
             className="text-[10px] font-medium uppercase tracking-[0.18em]"

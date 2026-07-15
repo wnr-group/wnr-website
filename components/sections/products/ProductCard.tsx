@@ -34,15 +34,17 @@ export function ProductCard({ product, onSelect, registerTrigger }: ProductCardP
           />
         </div>
         <div className="flex flex-1 flex-col gap-3 p-7">
-          <span
-            className={cn(
-              "inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
-              a.chip,
-            )}
-          >
-            <span className={cn("h-1.5 w-1.5 rounded-full", a.dot)} />
-            {product.label}
-          </span>
+          {product.label ? (
+            <span
+              className={cn(
+                "inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide",
+                a.chip,
+              )}
+            >
+              <span className={cn("h-1.5 w-1.5 rounded-full", a.dot)} />
+              {product.label}
+            </span>
+          ) : null}
           <h3 className="font-display text-xl font-bold text-ink">{product.name}</h3>
           <p className={cn("font-display text-base font-semibold", a.tagline)}>
             {product.tagline}

@@ -10,12 +10,6 @@ export interface BrandImage {
 }
 
 export const media: Record<string, BrandImage | null> = {
-  hero: {
-    src: "/brand/photo-team.webp",
-    alt: "Two WnR colleagues reviewing a live operational dashboard together in a bright office",
-    width: 1920,
-    height: 1086,
-  },
   office: {
     src: "/brand/photo-office.webp",
     alt: "A calm, modern WnR workspace — glass meeting rooms, warm wood, forest-green furniture and daylight",

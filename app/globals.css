@@ -37,6 +37,7 @@
      categories (case tags, industries, product art) so no section is all green. ---- */
   --color-teal: #0e6b73; /* cool secondary — harmonises with forest */
   --color-teal-wash: #e6f1f2; /* pale teal highlight block */
+  --color-teal-bright: #16e0ab; /* bright cyan-teal for WCAG AA on-dark headlines & accents */
   --color-amber: #b8791f; /* warm secondary — readable on light */
   --color-amber-wash: #f7efe0; /* pale amber highlight block */
 
@@ -188,6 +189,17 @@ body {
   background-size: 56px 56px;
 }
 
+/* ---- Soft diagonal gradient wash for stats section (token-based) ---- */
+@utility gradient-stat-wash {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-teal-wash) 0%,
+    var(--color-forest-wash) 55%,
+    var(--color-mist) 100%
+  );
+}
+
+
 /* ---- Soft, brand-tinted elevation (never pure-black shadow) ---- */
 @utility shadow-card {
   box-shadow:
@@ -260,16 +272,3 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ---- A/B hero gating ----------------------------------------------------
-   Both hero variants render in the DOM; the pre-paint script in the root
-   layout sets data-hero on <html>. We reveal exactly one. Default (attribute
-   missing / JS off) shows variant A. No flash: this is resolved before paint. */
-[data-hero-variant="B"] {
-  display: none;
-}
-[data-hero="B"] [data-hero-variant="A"] {
-  display: none;
-}
-[data-hero="B"] [data-hero-variant="B"] {
-  display: block;
-}

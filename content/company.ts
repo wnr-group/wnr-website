@@ -2,7 +2,7 @@
 // Copy is taken verbatim from the WnR Website Build Spec + landing brief.
 
 export const company = {
-  name: "WnR Group",
+  name: "WnR Tech",
   wordmark: "WnR",
   motto: "Wisdom & Results",
   tagline: "Building What's Next",
@@ -11,7 +11,6 @@ export const company = {
   hq: "Tamil Nadu, India",
   category: "Tech Company & Services",
   email: "admin@wnradvisory.com",
-  phone: "+91 9080121533",
   address: "115 D, First Floor, TIDEL Park, No.4, Rajiv Gandhi Salai, Taramani, Chennai - 600113",
 
   heroBody:

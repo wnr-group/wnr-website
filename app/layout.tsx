@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Space_Grotesk, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider } from "@/components/ui/motion";
-
-/* A/B hero picker. Runs before paint so there is no flash and no hydration
-   mismatch: it only sets an attribute on <html>, which CSS reads to reveal the
-   right variant. First-ever visit → A (the current design); every reload after
-   that strictly alternates A→B→A. JS-disabled falls back to A (the default). */
-const heroABScript = `(function(){try{var k="wnr-hero-variant";var last=localStorage.getItem(k);var next=last==="A"?"B":"A";localStorage.setItem(k,next);document.documentElement.setAttribute("data-hero",next);}catch(e){document.documentElement.setAttribute("data-hero","A");}})();`;
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -52,14 +45,10 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      data-hero="A"
       className={`${spaceGrotesk.variable} ${interTight.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh flex flex-col bg-canvas text-body antialiased">
-        <Script id="wnr-hero-ab" strategy="beforeInteractive">
-          {heroABScript}
-        </Script>
         <MotionProvider>
           <Header />
           <main className="flex-1">{children}</main>

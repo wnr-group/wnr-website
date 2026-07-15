@@ -13,6 +13,8 @@ export interface Product {
   art: string; // vibrant product-brand artwork (under /brand)
   accent: "teal" | "amber"; // secondary accent tuned to the art
   // Detail-page extras
+  heroBody?: string;
+  strapline?: string;
   target: string;
   moat: string;
   revenueLabel: string;
@@ -29,8 +31,11 @@ export const products: Product[] = [
   {
     slug: "eduos",
     name: "EduOS",
-    label: "Live · Vertical SaaS",
+    label: "",
     tagline: "The operating brain for schools.",
+    heroBody:
+      "Fees, attendance, academics, staff, and parent communication in one platform. But EduOS isn't just running your school today — every year it runs, it understands your students better. Built for where education is going, not where it's been.",
+    strapline: "Beyond School. Beyond Marks. Beyond Tomorrow.",
     oneLiner:
       "Fees, attendance, academics, staff operations, and parent communication — one platform replacing spreadsheets, registers, and four WhatsApp groups. Configured to each school's real workflows.",
     roi: "The ROI is concrete: an 800-student school loses around ₹9.6L a year in leaky systems. EduOS recovers it.",
@@ -67,8 +72,10 @@ export const products: Product[] = [
   {
     slug: "arenaos",
     name: "ArenaOS",
-    label: "Live · Vertical SaaS",
-    tagline: "The full business OS for gaming cafes.",
+    label: "",
+    tagline: "The operating system for booking-led businesses.",
+    heroBody:
+      "Wherever customers book a station, a court, or an hour — ArenaOS runs it. Billing tools tell you what you charged; ArenaOS tells you how the business is actually performing. Built for every venue that runs on time and space.",
     oneLiner:
       "Billing tools tell you what you charged. ArenaOS tells you how your business is actually performing — station booking, real-time revenue, and operational BI in one system.",
     roi: "Station & session management · Real-time revenue tracking · Operational dashboards & BI · UPI and GST ready.",

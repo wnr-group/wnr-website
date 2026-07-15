@@ -8,7 +8,13 @@ import { cn } from "@/lib/utils";
    photo carries the vibrancy the old ghost-number band lacked. Defaults to a
    dark anchor band on the homepage; pass tone="mist" on pages that already
    end on a dark footer to avoid stacking two dark blocks. */
-export function Approach({ tone = "forest-deep" }: { tone?: "forest-deep" | "mist" }) {
+export function Approach({
+  tone = "forest-deep",
+  priority = false,
+}: {
+  tone?: "forest-deep" | "mist";
+  priority?: boolean;
+}) {
   const dark = tone === "forest-deep";
 
   return (
@@ -24,7 +30,8 @@ export function Approach({ tone = "forest-deep" }: { tone?: "forest-deep" | "mis
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
-                loading="lazy"
+                priority={priority}
+                loading={priority ? "eager" : "lazy"}
               />
             </div>
             <span

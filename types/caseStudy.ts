@@ -31,6 +31,8 @@ export interface CaseStudy {
   title: string;
   /** 2–3 line summary. */
   summary: string;
+  /** Quantifiable outcome or metric (e.g. ~60% reduction in manual processes). */
+  result?: string;
   /** 3–5 solution highlights, most representative first. */
   highlights: string[];
   /**
