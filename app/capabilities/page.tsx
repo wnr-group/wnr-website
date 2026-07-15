@@ -6,7 +6,6 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Cta } from "@/components/ui/Cta";
 import { Approach } from "@/components/sections/Approach";
-import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
 import { arms, divisions } from "@/content/arms";
 
 export const metadata: Metadata = {
@@ -133,8 +132,6 @@ export default function CapabilitiesPage() {
           </Section>
         );
       })}
-
-      <CaseStudiesSection />
 
       <Approach tone="mist" priority />
     </>
