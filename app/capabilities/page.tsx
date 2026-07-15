@@ -85,7 +85,7 @@ export default function CapabilitiesPage() {
                   {arm.name}
                 </h2>
                 <p className="mt-5 max-w-2xl text-[length:var(--text-lead)] leading-relaxed text-body">
-                  {arm.description}
+                  {arm.description ?? arm.summary}
                 </p>
               </div>
             </div>

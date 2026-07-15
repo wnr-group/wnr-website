@@ -53,7 +53,13 @@ export function HeroVideo() {
               document.getElementById("contact");
             if (el) {
               e.preventDefault();
-              el.scrollIntoView({ behavior: "smooth", block: "center" });
+              const prefersReduced = window.matchMedia(
+                "(prefers-reduced-motion: reduce)",
+              ).matches;
+              el.scrollIntoView({
+                behavior: prefersReduced ? "auto" : "smooth",
+                block: "center",
+              });
             }
           }}
           className="group inline-flex items-center justify-center gap-2 rounded-full bg-forest px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_-14px_rgba(18,71,52,0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"

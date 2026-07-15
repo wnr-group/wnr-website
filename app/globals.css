@@ -256,8 +256,13 @@ body {
   animation: wnr-fade 0.8s ease both;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Respect reduced-motion globally */
 @media (prefers-reduced-motion: reduce) {
+  html,
   *,
   *::before,
   *::after {
@@ -266,9 +271,5 @@ body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-html {
-  scroll-behavior: smooth;
 }
 

@@ -30,8 +30,7 @@ export function Approach({
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
-                priority={priority}
-                loading={priority ? "eager" : "lazy"}
+                preload={priority}
               />
             </div>
             <span

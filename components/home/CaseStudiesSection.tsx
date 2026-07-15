@@ -7,57 +7,72 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/motion";
 
-interface CaseStudyCardData {
-  id: string;
+import type { CaseStudy } from "@/types/caseStudy";
+import { caseStudies } from "@/data/caseStudies";
+
+interface CaseStudyCardData extends CaseStudy {
   category: string;
   headline: string;
-  summary: string;
-  result?: string;
   image: string;
   alt: string;
   href: string;
   categoryToneClass: string;
 }
 
-// Featured large card (Left column, ~58% width, strongest quantifiable metric)
-const featuredCaseStudy: CaseStudyCardData = {
-  id: "recruitment-management-platform",
-  category: "EDUCATION / HR TECH",
-  headline: "Recruitment Management Platform",
-  summary:
-    "Unified student, recruiter, and admin dashboards with an automated recruitment workflow, approvals, and analytics.",
-  result:
-    "~60% reduction in manual processes, faster recruiter coordination, data-driven placement insights.",
-  image: "/case-studies/recruitment-management-platform.png",
-  alt: "Recruitment Management Platform dashboard showing candidate pipeline and automated hiring operations",
-  href: "/insights#case-studies",
-  categoryToneClass: "text-teal-bright",
+interface CaseStudyPresentation {
+  category: string;
+  categoryToneClass: string;
+  alt: string;
+  image?: string;
+  href?: string;
+}
+
+const presentationMap: Record<string, CaseStudyPresentation> = {
+  "recruitment-management-platform": {
+    category: "EDUCATION / HR TECH",
+    categoryToneClass: "text-teal-bright",
+    alt: "Recruitment Management Platform dashboard showing candidate pipeline and automated hiring operations",
+  },
+  "student-success-platform": {
+    category: "EDUCATION & DIGITAL LEARNING",
+    categoryToneClass: "text-[#34d399]",
+    alt: "AI-Powered Student Success Platform interface predicting academic performance and student analytics",
+  },
+  "hyperlocal-food-marketplace": {
+    category: "TEXTILE / RETAIL & COMMERCE",
+    categoryToneClass: "text-[color:var(--color-amber)]",
+    alt: "Hyperlocal Food Marketplace mobile application interface connecting home chefs with local customers",
+  },
 };
 
+function getCaseStudyCard(id: string): CaseStudyCardData {
+  const study = caseStudies.find((s) => s.id === id);
+  if (!study) {
+    throw new Error(`Case study not found: ${id}`);
+  }
+  const meta = presentationMap[id] ?? {
+    category: study.industry,
+    categoryToneClass: "text-forest",
+    alt: study.title,
+  };
+  return {
+    ...study,
+    category: meta.category,
+    headline: study.title,
+    image: meta.image ?? study.image ?? "",
+    alt: meta.alt,
+    href: meta.href ?? "/insights#case-studies",
+    categoryToneClass: meta.categoryToneClass,
+  };
+}
+
+// Featured large card (Left column, ~58% width, strongest quantifiable metric)
+const featuredCaseStudy = getCaseStudyCard("recruitment-management-platform");
+
 // Stacked right cards (~42% width, stacked vertically)
-const stackedCaseStudies: CaseStudyCardData[] = [
-  {
-    id: "student-success-platform",
-    category: "EDUCATION & DIGITAL LEARNING",
-    headline: "AI-Powered Student Success Platform",
-    summary:
-      "An end-to-end education intelligence platform predicting academic performance and student analytics.",
-    image: "/case-studies/ai-powered-student-platform.png",
-    alt: "AI-Powered Student Success Platform interface predicting academic performance and student analytics",
-    href: "/insights#case-studies",
-    categoryToneClass: "text-[#34d399]", // Luminous variant of --color-forest for AA contrast on dark photo overlay
-  },
-  {
-    id: "hyperlocal-food-marketplace",
-    category: "TEXTILE / RETAIL & COMMERCE",
-    headline: "Hyperlocal Food Marketplace",
-    summary:
-      "A community-driven food ordering mobile application connecting home chefs with local customers.",
-    image: "/case-studies/hyperlocal-food-platform.png",
-    alt: "Hyperlocal Food Marketplace mobile application interface connecting home chefs with local customers",
-    href: "/insights#case-studies",
-    categoryToneClass: "text-[color:var(--color-amber)]",
-  },
+const stackedCaseStudies = [
+  getCaseStudyCard("student-success-platform"),
+  getCaseStudyCard("hyperlocal-food-marketplace"),
 ];
 
 type Tone = "canvas" | "mist" | "paper" | "wash" | "forest" | "forest-deep";
