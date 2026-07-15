@@ -1,9 +1,12 @@
+import React from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowRight, Boxes, Compass, Cpu } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Cta } from "@/components/ui/Cta";
 import { Approach } from "@/components/sections/Approach";
+import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
 import { arms, divisions } from "@/content/arms";
 
 export const metadata: Metadata = {
@@ -86,7 +89,30 @@ export default function CapabilitiesPage() {
                 </h2>
                 <p className="mt-5 max-w-2xl text-[length:var(--text-lead)] leading-relaxed text-body">
                   {arm.description}
+                  {arm.flow && (
+                    <span className="block mt-2 font-medium text-ink">
+                      {arm.flow}
+                    </span>
+                  )}
                 </p>
+                {arm.products && arm.products.length > 0 && (
+                  <p className="mt-3.5 max-w-2xl text-[length:var(--text-lead)] font-medium leading-relaxed text-forest">
+                    <span>Products: </span>
+                    {arm.products.map((prod, idx) => (
+                      <React.Fragment key={prod.name}>
+                        <Link
+                          href={prod.href}
+                          className="underline decoration-forest/60 underline-offset-4 hover:opacity-80 transition-opacity"
+                        >
+                          {prod.name}
+                        </Link>
+                        {idx < (arm.products?.length ?? 0) - 1 && (
+                          <span className="mx-1.5 opacity-60">·</span>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -108,7 +134,9 @@ export default function CapabilitiesPage() {
         );
       })}
 
-      <Approach tone="mist" />
+      <CaseStudiesSection />
+
+      <Approach tone="mist" priority />
     </>
   );
 }
