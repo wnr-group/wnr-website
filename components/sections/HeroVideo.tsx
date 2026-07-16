@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-/* Full-bleed video banner hero.
-   The clip stays paused on the poster frame under prefers-reduced-motion. */
+/* Full-bleed video banner hero with production-grade autoplay resiliency,
+   visibility state management, and dynamic prefers-reduced-motion compliance. */
 export function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -11,14 +11,44 @@ export function HeroVideo() {
     const v = videoRef.current;
     if (!v) return;
 
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (prefersReduced) return; // honour the OS setting — poster frame stays
+    // Explicitly enforce DOM muted and playsInline properties for iOS/Safari strict policies
+    v.muted = true;
+    v.defaultMuted = true;
+    v.playsInline = true;
 
-    v.play().catch(() => {
-      /* Autoplay blocked — the poster frame remains, which is a fine fallback. */
-    });
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const handlePlayback = () => {
+      if (!videoRef.current) return;
+      if (mediaQuery.matches) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch(() => {
+          /* Autoplay blocked or low-power mode active — poster frame acts as fallback */
+        });
+      }
+    };
+
+    // Initial check on mount
+    handlePlayback();
+
+    // Listen for OS reduced-motion toggles while on page
+    mediaQuery.addEventListener("change", handlePlayback);
+
+    // Resume playback smoothly when tab regains focus (e.g. returning from background/sleep)
+    const handleVisibilityChange = () => {
+      if (document.hidden || mediaQuery.matches) {
+        videoRef.current?.pause();
+      } else {
+        videoRef.current?.play().catch(() => {});
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handlePlayback);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   return (
@@ -27,6 +57,7 @@ export function HeroVideo() {
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
         poster="/brand/hero-loop-poster.webp"
+        autoPlay
         muted
         loop
         playsInline
@@ -34,8 +65,15 @@ export function HeroVideo() {
         aria-hidden="true"
         tabIndex={-1}
       >
+        <source src="/brand/wnr-video.mp4" type="video/mp4" />
         <source src="/brand/wnr-sfx.mp4" type="video/mp4" />
       </video>
+
+      {/* Subtle dark wash overlay for visual depth and top navigation contrast */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-black/15"
+        aria-hidden="true"
+      />
 
       {/* Smooth transition into the next section */}
       <div
