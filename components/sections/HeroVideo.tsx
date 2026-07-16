@@ -16,6 +16,14 @@ export function HeroVideo() {
     v.defaultMuted = true;
     v.playsInline = true;
 
+    // Ensure the browser media pipeline loads the mapped video source immediately
+    if (
+      v.readyState === 0 ||
+      v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE
+    ) {
+      v.load();
+    }
+
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const handlePlayback = () => {
@@ -55,6 +63,7 @@ export function HeroVideo() {
     <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-canvas pt-24">
       <video
         ref={videoRef}
+        src="/brand/wnr-video.mp4"
         className="absolute inset-0 h-full w-full object-cover"
         poster="/brand/hero-loop-poster.webp"
         autoPlay
@@ -66,7 +75,6 @@ export function HeroVideo() {
         tabIndex={-1}
       >
         <source src="/brand/wnr-video.mp4" type="video/mp4" />
-        <source src="/brand/wnr-sfx.mp4" type="video/mp4" />
       </video>
 
       {/* Subtle dark wash overlay for visual depth and top navigation contrast */}
