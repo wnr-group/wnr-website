@@ -7,15 +7,15 @@ import { company } from "@/content/company";
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact WnR Tech",
-  description: "Reach out to WnR Tech for business enquiries, digital transformation, AI, cloud, and more.",
-  url: "https://wnrgroup.com/contact",
+  name: "Contact WnRTech",
+  description: "Reach out to WnRTech for business enquiries, digital transformation, AI, cloud, and more.",
+  url: "https://wnrtech.com/contact",
 };
 
 export const metadata: Metadata = {
   title: "Contact — Let's Talk About Your Operations",
   description:
-    "Tell us about your business. We'll tell you how we can help. WnR Tech — Tamil Nadu → India → Europe.",
+    "Tell us about your business. We'll tell you how we can help. WnRTech — Operational intelligence for modern business.",
   alternates: { canonical: "/contact" },
 };
 

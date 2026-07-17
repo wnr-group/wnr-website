@@ -442,7 +442,7 @@ export function CareerApplicationForm({ initialRole = "" }: CareerApplicationFor
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-6"
-      aria-label="Career Application — WnR Group"
+      aria-label="Career Application — WnRTech"
       noValidate
     >
       {/* Draft restore banner */}
@@ -646,7 +646,7 @@ export function CareerApplicationForm({ initialRole = "" }: CareerApplicationFor
           <textarea
             {...inputProps("coverLetter")}
             rows={4}
-            placeholder="Tell us why you'd be a great fit for WnR Group…"
+            placeholder="Tell us why you'd be a great fit for WnRTech…"
             className={`${fieldBase} resize-none`}
           />,
         )}

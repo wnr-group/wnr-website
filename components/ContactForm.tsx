@@ -103,7 +103,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-5"
-      aria-label="Contact WnR Group — Let's Talk"
+      aria-label="Contact WnRTech — Let's Talk"
       noValidate
     >
       {/* Error summary */}

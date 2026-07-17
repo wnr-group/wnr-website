@@ -71,14 +71,14 @@ export const EMAILS_ENABLED = getBool("EMAILS_ENABLED", false);
 /** Sender address shown on all outgoing emails. */
 export const EMAIL_FROM = getString(
   "EMAIL_FROM",
-  "noreply@wnrgroup.com",
+  "noreply@wnrtech.com",
 );
 
 /** HR / internal notification recipient. */
-export const HR_EMAIL = getString("HR_EMAIL", "careers@wnrgroup.com");
+export const HR_EMAIL = getString("HR_EMAIL", "careers@wnrtech.com");
 
 /** Sales / internal contact notification recipient. */
-export const SALES_EMAIL = getString("SALES_EMAIL", "hello@wnrgroup.com");
+export const SALES_EMAIL = getString("SALES_EMAIL", "hello@wnrtech.com");
 
 // ── Upload / storage ─────────────────────────────────────────────────────────
 

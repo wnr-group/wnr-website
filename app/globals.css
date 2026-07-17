@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* =========================================================================
-   WnR Group — "Operational Clarity" system
+   WnRTech — "Operational Clarity" system
    White-dominant canvas · deep forest green as the single accent ·
    gold as a rare premium touch · green-tinted neutrals · blueprint motif
    ========================================================================= */
@@ -254,6 +254,9 @@ body {
 }
 .animate-fade {
   animation: wnr-fade 0.8s ease both;
+}
+.animate-draw {
+  animation: wnr-draw 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 html {

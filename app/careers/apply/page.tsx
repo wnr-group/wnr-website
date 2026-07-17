@@ -5,20 +5,20 @@ import { Eyebrow } from "@/components/ui/Section";
 import { CareerApplicationForm } from "@/components/CareerApplicationForm";
 
 export const metadata: Metadata = {
-  title: "Apply — Careers at WnR Group",
+  title: "Apply — Careers at WnRTech",
   description:
-    "Submit your application to WnR Group. We review every application and respond within 5 business days if there's a match.",
+    "Submit your application to WnRTech. We review every application and respond within 5 business days if there's a match.",
   alternates: { canonical: "/careers/apply" },
   openGraph: {
-    title: "Apply — Careers at WnR Group",
-    description: "Submit your application to WnR Group.",
+    title: "Apply — Careers at WnRTech",
+    description: "Submit your application to WnRTech.",
     url: "/careers/apply",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Apply — Careers at WnR Group",
-    description: "Submit your application to WnR Group.",
+    title: "Apply — Careers at WnRTech",
+    description: "Submit your application to WnRTech.",
   },
 };
 
@@ -38,19 +38,19 @@ export default async function CareersApplyPage({ searchParams }: ApplyPageProps)
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://wnrgroup.com",
+        item: "https://wnrtech.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Careers",
-        item: "https://wnrgroup.com/careers",
+        item: "https://wnrtech.com/careers",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Apply",
-        item: "https://wnrgroup.com/careers/apply",
+        item: "https://wnrtech.com/careers/apply",
       },
     ],
   };
@@ -58,9 +58,9 @@ export default async function CareersApplyPage({ searchParams }: ApplyPageProps)
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "WnR Group",
-    url: "https://wnrgroup.com",
-    sameAs: ["https://wnrgroup.com"],
+    name: "WnRTech",
+    url: "https://wnrtech.com",
+    sameAs: ["https://wnrtech.com"],
   };
 
   return (

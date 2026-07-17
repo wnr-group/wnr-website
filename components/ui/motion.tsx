@@ -28,12 +28,14 @@ export function Reveal({
   y = 16,
   delay = 0,
   amount = 0.2,
+  onViewportEnter,
 }: {
   children: React.ReactNode;
   className?: string;
   y?: number;
   delay?: number;
   amount?: number | "some" | "all";
+  onViewportEnter?: () => void;
 }) {
   return (
     <m.div
@@ -42,6 +44,7 @@ export function Reveal({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount }}
       transition={{ duration: 0.55, ease: EASE, delay }}
+      onViewportEnter={onViewportEnter}
     >
       {children}
     </m.div>

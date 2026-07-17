@@ -20,9 +20,9 @@ export function Approach({
   return (
     <Section id="approach" tone={tone} bleed>
       <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          {/* discovery-workshop photograph */}
-          <div className="relative">
+        <div className="grid items-center gap-10 lg:grid-cols-1 lg:gap-16">
+          {/* discovery-workshop photograph — visible only on mobile/tablet below lg */}
+          <div className="relative lg:hidden">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-card-hover ring-1 ring-black/5 sm:aspect-[4/3] lg:aspect-[4/5]">
               <Image
                 src={approach.image}
@@ -56,16 +56,19 @@ export function Approach({
             >
               {approach.heading}
             </h2>
-            <p
-              className={cn(
-                "mt-5 max-w-md text-[length:var(--text-lead)] leading-relaxed",
-                dark ? "text-white/70" : "text-body",
-              )}
-            >
-              {approach.intro}
-            </p>
+            {approach.intro ? (
+              <p
+                className={cn(
+                  "mt-5 max-w-md text-[length:var(--text-lead)] leading-relaxed",
+                  dark ? "text-white/70" : "text-body",
+                )}
+              >
+                {approach.intro}
+              </p>
+            ) : null}
 
-            <ol className="mt-10 flex flex-col">
+            {/* Vertical Stepper — mobile & tablet (hidden on desktop lg:+) */}
+            <ol className="mt-10 flex flex-col lg:hidden">
               {approach.steps.map((step, i) => (
                 <li
                   key={step.num}
@@ -79,10 +82,10 @@ export function Approach({
                 >
                   <span
                     className={cn(
-                      "relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold tabular-nums ring-1",
+                      "relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold tabular-nums ring-1 transition-colors duration-200 motion-reduce:transition-none",
                       dark
-                        ? "bg-forest-bright/15 text-forest-bright ring-forest-bright/25"
-                        : "bg-forest-wash text-forest ring-forest/15",
+                        ? "bg-forest-bright/15 text-forest-bright ring-forest-bright/25 group-hover:bg-forest-bright group-hover:text-forest-deep"
+                        : "bg-forest-wash text-forest ring-forest/15 group-hover:bg-forest group-hover:text-white",
                     )}
                   >
                     {step.num}
@@ -100,6 +103,51 @@ export function Approach({
                       className={cn(
                         "mt-2 max-w-lg text-[0.95rem] leading-relaxed",
                         dark ? "text-white/70" : "text-body",
+                      )}
+                    >
+                      {step.body}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            {/* Horizontal 4-step flow with gold connectors — desktop only (hidden below lg) */}
+            <ol className="mt-14 hidden lg:grid lg:grid-cols-4 lg:gap-8 relative">
+              {approach.steps.map((step, i) => (
+                <li key={step.num} className="group relative flex flex-col">
+                  {/* Horizontal gold connector line on desktop between nodes */}
+                  {i < approach.steps.length - 1 && (
+                    <div
+                      className="absolute top-6 left-12 w-[calc(100%-3rem)] h-[2px] bg-gold flex items-center justify-end pr-1"
+                      aria-hidden="true"
+                    >
+                      <span className="w-2 h-2 border-t-2 border-r-2 border-gold rotate-45 transform translate-x-1" />
+                    </div>
+                  )}
+                  <span
+                    className={cn(
+                      "relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold tabular-nums ring-2 shadow-sm transition-all duration-300 motion-reduce:transition-none",
+                      dark
+                        ? "bg-forest-deep text-gold ring-gold/60 group-hover:ring-gold group-hover:bg-gold group-hover:text-forest-deep"
+                        : "bg-paper text-gold-ink ring-gold/60 group-hover:ring-gold group-hover:bg-gold group-hover:text-white"
+                    )}
+                  >
+                    {step.num}
+                  </span>
+                  <div className="pt-6">
+                    <h3
+                      className={cn(
+                        "font-display text-xl font-semibold",
+                        dark ? "text-white" : "text-ink"
+                      )}
+                    >
+                      {step.title}
+                    </h3>
+                    <p
+                      className={cn(
+                        "mt-3 text-[0.95rem] leading-relaxed",
+                        dark ? "text-white/70" : "text-body"
                       )}
                     >
                       {step.body}

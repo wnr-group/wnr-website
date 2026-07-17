@@ -5,7 +5,7 @@ interface LogoProps {
 }
 
 /**
- * WnR Group logo — a forest-green ring with a forward "›" motif (what's next),
+ * WnRTech logo — a forest-green ring with a forward "›" motif,
  * paired with the wordmark. Inline SVG so it recolors per section.
  * Default renders for LIGHT backgrounds (green mark, ink wordmark).
  */
@@ -46,7 +46,7 @@ export function Logo({
           fill={mark}
           fillOpacity={light ? "0.12" : "0.08"}
         />
-        {/* forward bracket — "what's next" */}
+        {/* forward bracket */}
         <path
           d="M16 13.5 L25 20 L16 26.5"
           stroke={mark}
@@ -61,7 +61,7 @@ export function Logo({
             className="font-display text-lg font-bold tracking-tight"
             style={{ color: wordColor }}
           >
-            WnR Tech
+            WnRTech
           </span>
           <span
             className="text-[10px] font-medium uppercase tracking-[0.18em]"

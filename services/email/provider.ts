@@ -19,7 +19,7 @@ import { StubEmailProvider } from "./stub.provider";
 export interface EmailProvider {
   /**
    * Confirmation email sent to the job applicant.
-   * Subject: "Application received — WnR Group"
+   * Subject: "Application received — WnRTech"
    */
   sendCandidateConfirmation(
     to: string,
@@ -38,7 +38,7 @@ export interface EmailProvider {
 
   /**
    * Thank-you email sent to the enquirer after contact form submission.
-   * Subject: "We've received your enquiry — WnR Group"
+   * Subject: "We've received your enquiry — WnRTech"
    */
   sendCustomerConfirmation(
     to: string,
