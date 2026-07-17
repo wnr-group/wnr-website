@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function CapabilitiesWorkflow() {
   return (
-    <Section id="approach" tone="mist" className="py-24 md:py-36 border-b border-line overflow-hidden">
+    <Section id="approach" bleed tone="mist" className="py-24 md:py-36 border-b border-line overflow-hidden">
       <Container>
         {/* Header */}
         <Reveal className="max-w-3xl mb-16 md:mb-24">
@@ -32,7 +32,7 @@ export function CapabilitiesWorkflow() {
                 <StaggerItem key={step.num} className="h-full relative">
                   {/* Horizontal SVG connector line between steps */}
                   {!isLast && (
-                    <div className="absolute top-7 left-[3.5rem] w-[calc(100%-3rem)] h-6 z-0 flex items-center overflow-visible">
+                    <div className="absolute top-7 left-[3.5rem] w-[calc(100%-1.5rem)] h-6 z-0 flex items-center overflow-visible">
                       <m.svg
                         className="w-full h-1 overflow-visible"
                         viewBox="0 0 100 2"
@@ -94,7 +94,7 @@ export function CapabilitiesWorkflow() {
         {/* Mobile & Tablet Vertical Connected Timeline (visible on lg and below) */}
         <div className="lg:hidden relative">
           {/* Vertical progress connector dropping down the left side */}
-          <div className="absolute left-[1.625rem] top-8 bottom-8 w-0.5 z-0 flex justify-center overflow-visible">
+          <div className="absolute left-[3rem] top-8 bottom-8 w-0.5 z-0 flex justify-center overflow-visible">
             <m.svg
               className="w-0.5 h-full overflow-visible"
               viewBox="0 0 2 400"

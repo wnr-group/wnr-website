@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Terminal, Cpu, Compass, Layers, Sparkles } from "lucide-react";
+import { Terminal, Cpu, Layers } from "lucide-react";
 import { Section, Container, Eyebrow } from "@/components/ui/Section";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { aboutInsideWnr } from "@/content/about";

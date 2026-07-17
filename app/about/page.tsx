@@ -9,10 +9,10 @@ import { AboutInsideWnr } from "@/components/about/AboutInsideWnr";
 import { AboutRoadmap } from "@/components/about/AboutRoadmap";
 import { AboutEduOsAnchor } from "@/components/about/AboutEduOsAnchor";
 import { AboutCta } from "@/components/about/AboutCta";
-import { aboutHero, aboutMission } from "@/content/about";
+import { aboutHero } from "@/content/about";
 
 export const metadata: Metadata = {
-  title: "About Us — Operational Intelligence & Enterprise Systems | WnR Group",
+  title: "About Us — Operational Intelligence & Enterprise Systems",
   description: aboutHero.lead,
 };
 

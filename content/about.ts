@@ -20,9 +20,9 @@ export const aboutAwards = {
   eyebrow: "AWARDS & RECOGNITION",
   heading: "Recognized for operational excellence and workplace culture.",
   featuredAward: {
-    title: "Glassdoor’s Best Places to Work in 2026",
-    quoteBadge: "'GLASSDOOR'S BEST PLACES TO WORK 2026'",
-    body: "Our people have spoken, and we're proud to be recognized on Glassdoor's Best Places to Work list in the U.S. Since the rankings debuted in 2009, Bain has consistently been the top-ranked consulting firm and has earned the #1 overall spot a record seven times.",
+    title: "Redex People Power Award",
+    quoteBadge: "'PEOPLE POWER AWARD RECIPIENT'",
+    body: "Recognized for building an engineering and consulting culture obsessed with deep workflow understanding and long-term client outcomes. Our engineers sit with operations before writing a single line of code.",
   },
   recognitions: [
     {
@@ -36,12 +36,6 @@ export const aboutAwards = {
       title: "Official Technology Partner — Testio",
       description: "Trusted enterprise integration and quality assurance partnership across high-performance software systems.",
       year: "Certified Partner",
-    },
-    {
-      badge: "Workplace Leadership",
-      title: "Glassdoor's Best Places to Work",
-      description: "Honored among top-tier consulting and technology firms for employee empowerment and operational depth.",
-      year: "2026",
     },
   ],
 };

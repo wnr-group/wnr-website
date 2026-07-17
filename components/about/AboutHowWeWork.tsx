@@ -20,8 +20,8 @@ export function AboutHowWeWork() {
           </h2>
         </Reveal>
 
-        {/* DESKTOP TIMELINE: Horizontal connected 4-step flow (lg+) */}
-        <div className="hidden lg:block relative">
+        {/* DESKTOP TIMELINE: Horizontal connected 4-step flow (lg+) - marked aria-hidden so screen readers use the semantic list below */}
+        <div className="hidden lg:block relative" aria-hidden="true">
           {/* Horizontal animated connecting line running behind nodes */}
           <div className="absolute top-10 left-[12%] right-[12%] h-0.5 bg-line z-0">
             <m.div
@@ -34,14 +34,14 @@ export function AboutHowWeWork() {
           </div>
 
           <Stagger className="grid grid-cols-4 gap-8 relative z-10" stagger={0.15}>
-            {aboutHowWeWork.principles.map((principle, idx) => (
+            {aboutHowWeWork.principles.map((principle) => (
               <StaggerItem key={principle.number} className="flex flex-col items-center text-center">
                 {/* Step Circle Node */}
                 <div className="h-20 w-20 rounded-full border-4 border-paper bg-forest text-white font-display text-2xl font-black flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-110 mb-8">
                   {principle.number}
                 </div>
 
-                <div className="rounded-3xl border border-line bg-paper p-7 shadow-sm hover:shadow-md transition-all duration-300 w-full flex-1 flex flex-col justify-start text-left">
+                <div className={cn("rounded-3xl border border-line bg-paper p-7 shadow-sm transition-all duration-300 hover:shadow-card-hover w-full flex-1 flex flex-col justify-start text-left")}>
                   <h3 className="font-display text-xl font-bold text-ink leading-snug">
                     {principle.title}
                   </h3>
@@ -54,10 +54,10 @@ export function AboutHowWeWork() {
           </Stagger>
         </div>
 
-        {/* MOBILE & TABLET TIMELINE: Vertical timeline below lg */}
-        <div className="lg:hidden relative pl-8 sm:pl-12">
+        {/* MOBILE & TABLET & SCREEN READER TIMELINE: Semantic ol list */}
+        <ol className="lg:hidden relative pl-8 sm:pl-12 space-y-10">
           {/* Vertical progress line */}
-          <div className="absolute top-4 bottom-4 left-3 sm:left-4 w-0.5 bg-line">
+          <div className="absolute top-4 bottom-4 left-3 sm:left-4 w-0.5 bg-line" aria-hidden="true">
             <m.div
               className="w-full bg-[linear-gradient(to_bottom,var(--color-forest),var(--color-teal),#c9a24b)]"
               initial={{ height: "0%" }}
@@ -67,26 +67,24 @@ export function AboutHowWeWork() {
             />
           </div>
 
-          <Stagger className="flex flex-col gap-10" stagger={0.15}>
-            {aboutHowWeWork.principles.map((principle) => (
-              <StaggerItem key={principle.number} className="relative">
-                {/* Node point on the vertical line */}
-                <div className="absolute -left-8 sm:-left-12 top-0 h-8 w-8 rounded-full border-2 border-paper bg-forest text-white font-display text-xs font-bold flex items-center justify-center shadow">
-                  {principle.number}
-                </div>
+          {aboutHowWeWork.principles.map((principle) => (
+            <li key={principle.number} className="relative">
+              {/* Node point on the vertical line */}
+              <div className="absolute -left-8 sm:-left-12 top-0 h-8 w-8 rounded-full border-2 border-paper bg-forest text-white font-display text-xs font-bold flex items-center justify-center shadow" aria-hidden="true">
+                {principle.number}
+              </div>
 
-                <div className="rounded-3xl border border-line bg-paper p-6 sm:p-8 shadow-sm">
-                  <h3 className="font-display text-xl font-bold text-ink leading-snug">
-                    {principle.title}
-                  </h3>
-                  <p className="mt-3 text-[0.95rem] text-body leading-relaxed">
-                    {principle.body}
-                  </p>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
+              <div className={cn("rounded-3xl border border-line bg-paper p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-card")}>
+                <h3 className="font-display text-xl font-bold text-ink leading-snug">
+                  {principle.title}
+                </h3>
+                <p className="mt-3 text-[0.95rem] text-body leading-relaxed">
+                  {principle.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </Container>
     </Section>
   );

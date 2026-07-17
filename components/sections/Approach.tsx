@@ -119,7 +119,7 @@ export function Approach({
                   {/* Horizontal gold connector line on desktop between nodes */}
                   {i < approach.steps.length - 1 && (
                     <div
-                      className="absolute top-6 left-12 w-[calc(100%-3rem)] h-[2px] bg-gold flex items-center justify-end pr-1"
+                      className="absolute top-6 left-12 w-[calc(100%-1rem)] h-[2px] bg-gold flex items-center justify-end pr-1"
                       aria-hidden="true"
                     >
                       <span className="w-2 h-2 border-t-2 border-r-2 border-gold rotate-45 transform translate-x-1" />

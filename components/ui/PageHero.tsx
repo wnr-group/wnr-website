@@ -9,7 +9,7 @@ export function PageHero({
   children,
   aside,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: React.ReactNode;
   lead?: React.ReactNode;
   children?: React.ReactNode;
@@ -34,7 +34,7 @@ export function PageHero({
         }
       >
         <div className={aside ? "max-w-2xl" : "max-w-3xl"}>
-          <Eyebrow>{eyebrow}</Eyebrow>
+          {eyebrow && eyebrow.trim() !== "" && <Eyebrow>{eyebrow}</Eyebrow>}
           <h1 className="mt-5 font-display text-[length:var(--text-hero)] font-bold leading-[1.05] text-ink">
             {title}
           </h1>

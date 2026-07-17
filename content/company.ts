@@ -11,6 +11,7 @@ export const company = {
   hq: "Chennai",
   category: "Tech Company & Services",
   email: "admin@wnradvisory.com",
+  phone: "+91 44 4556 6778",
   address: "115 D, First Floor, TIDEL Park, No.4, Rajiv Gandhi Salai, Taramani, Chennai - 600113",
 
   heroBody:

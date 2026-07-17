@@ -30,7 +30,7 @@ export default function CapabilitiesPage() {
       <CapabilitiesWorkflow />
 
       {/* 7. Executive CTA Envelope */}
-      <Section id="capabilities-cta" tone="canvas" className="py-24 md:py-36 text-center border-t border-line overflow-hidden">
+      <Section id="capabilities-cta" bleed tone="canvas" className="py-24 md:py-36 text-center border-t border-line overflow-hidden">
         <Container>
           <Reveal className="mx-auto max-w-4xl rounded-3xl border border-forest/25 bg-[linear-gradient(135deg,var(--color-paper)_0%,var(--color-forest-wash)_100%)] p-10 sm:p-14 md:p-20 shadow-card relative overflow-hidden">
             <div

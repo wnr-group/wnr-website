@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { Compass, Eye, Sparkles, Layers } from "lucide-react";
+import { Compass, Eye } from "lucide-react";
 import { Section, Container, Eyebrow } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/motion";
 import { aboutMission, aboutVision } from "@/content/about";
+import { cn } from "@/lib/utils";
 
 export function AboutMissionVision() {
   return (
@@ -13,7 +14,7 @@ export function AboutMissionVision() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           {/* Mission Block */}
           <Reveal className="h-full" delay={0.1}>
-            <div className="group relative h-full flex flex-col justify-between rounded-3xl border border-line bg-paper p-8 sm:p-12 shadow-card hover:shadow-lg transition-shadow duration-300">
+            <div className={cn("group relative h-full flex flex-col justify-between rounded-3xl border border-line bg-paper p-8 sm:p-12 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1")}>
               <div
                 className="grid-blueprint pointer-events-none absolute inset-0 opacity-20"
                 aria-hidden="true"
@@ -26,9 +27,9 @@ export function AboutMissionVision() {
                   </div>
                 </div>
 
-                <h3 className="mt-8 font-display text-2xl sm:text-3xl md:text-[2.25rem] font-bold leading-[1.15] text-ink tracking-tight">
+                <h2 className="mt-8 font-display text-2xl sm:text-3xl md:text-[2.25rem] font-bold leading-[1.15] text-ink tracking-tight">
                   {aboutMission.heading}
-                </h3>
+                </h2>
               </div>
 
               <div className="mt-12 pt-6 border-t border-line/60 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-muted">
@@ -40,7 +41,7 @@ export function AboutMissionVision() {
 
           {/* Vision Block */}
           <Reveal className="h-full" delay={0.2}>
-            <div className="group relative h-full flex flex-col justify-between rounded-3xl border border-forest/30 bg-[linear-gradient(135deg,var(--color-forest)_0%,var(--color-forest-deep)_100%)] p-8 sm:p-12 text-white shadow-card hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <div className={cn("group relative h-full flex flex-col justify-between rounded-3xl border border-forest/30 bg-[linear-gradient(135deg,var(--color-forest)_0%,var(--color-forest-deep)_100%)] p-8 sm:p-12 text-white shadow-card transition-all duration-300 overflow-hidden hover:shadow-card-hover hover:-translate-y-1")}>
               <div
                 className="grid-blueprint pointer-events-none absolute inset-0 opacity-30 [mask-image:linear-gradient(to_bottom,white,transparent)]"
                 aria-hidden="true"
@@ -58,9 +59,9 @@ export function AboutMissionVision() {
                   </div>
                 </div>
 
-                <h3 className="mt-8 font-display text-2xl sm:text-3xl md:text-[2.25rem] font-bold leading-[1.15] text-white tracking-tight">
+                <h2 className="mt-8 font-display text-2xl sm:text-3xl md:text-[2.25rem] font-bold leading-[1.15] text-white tracking-tight">
                   {aboutVision.heading}
-                </h3>
+                </h2>
               </div>
 
               <div className="relative z-10 mt-12 pt-6 border-t border-white/15 flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-white/70">

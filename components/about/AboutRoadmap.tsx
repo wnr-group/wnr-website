@@ -2,7 +2,7 @@
 
 import React from "react";
 import { m } from "motion/react";
-import { Compass, Sparkles, Layers, ArrowRight, Globe } from "lucide-react";
+import { Sparkles, Layers, ArrowRight, Globe } from "lucide-react";
 import { Section, Container, Eyebrow } from "@/components/ui/Section";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { aboutWhereWeAreGoing } from "@/content/about";
@@ -113,7 +113,7 @@ export function AboutRoadmap() {
                     </div>
 
                     {isThird && (
-                      <div className="relative z-10 mt-8 pt-6 border-t border-white/15 flex items-center justify-between text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#c9a24b]">
+                      <div className="relative z-10 mt-8 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#c9a24b]">
                         <span>Compounding Geographic Scale</span>
                         <span className="flex items-center gap-2">
                           Tamil Nadu <ArrowRight size={14} /> India <ArrowRight size={14} /> Europe

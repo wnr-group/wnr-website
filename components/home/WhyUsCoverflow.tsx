@@ -98,28 +98,37 @@ interface WhyUsCoverflowProps {
 export function WhyUsCoverflow({ items = whyUsItems }: WhyUsCoverflowProps = {}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isUserNavigation, setIsUserNavigation] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const total = items.length;
 
   const touchStartX = useRef<number | null>(null);
   const touchStartTime = useRef<number | null>(null);
 
+  const advanceAutoplay = useCallback(() => {
+    if (total <= 1) return;
+    setIsUserNavigation(false);
+    setActiveIndex((prev) => (prev + 1) % total);
+  }, [total]);
+
   const handleNext = useCallback(() => {
     if (total <= 1) return;
+    setIsUserNavigation(true);
     setActiveIndex((prev) => (prev + 1) % total);
   }, [total]);
 
   const handlePrev = useCallback(() => {
     if (total <= 1) return;
+    setIsUserNavigation(true);
     setActiveIndex((prev) => (prev - 1 + total) % total);
   }, [total]);
 
   // Autoplay loop
   useEffect(() => {
     if (isPaused || shouldReduceMotion || total <= 1) return;
-    const timer = setInterval(handleNext, COVERFLOW_CONFIG.autoplayIntervalMs);
+    const timer = setInterval(advanceAutoplay, COVERFLOW_CONFIG.autoplayIntervalMs);
     return () => clearInterval(timer);
-  }, [isPaused, shouldReduceMotion, total, handleNext]);
+  }, [isPaused, shouldReduceMotion, total, advanceAutoplay]);
 
   // Keyboard navigation
   const handleKeyDown = useCallback(
@@ -185,7 +194,7 @@ export function WhyUsCoverflow({ items = whyUsItems }: WhyUsCoverflowProps = {})
       className="relative flex flex-col items-center w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest rounded-3xl"
     >
       {/* Screen Reader Live Region */}
-      <div aria-live="polite" className="sr-only">
+      <div aria-live={isUserNavigation ? "polite" : "off"} className="sr-only">
         {activeItem
           ? `Principle ${activeIndex + 1} of ${total}: ${activeItem.title}. ${activeItem.description}`
           : ""}
@@ -245,6 +254,7 @@ export function WhyUsCoverflow({ items = whyUsItems }: WhyUsCoverflowProps = {})
                 isGreen={index % 2 === 0}
                 onClick={() => {
                   if (!isActive) {
+                    setIsUserNavigation(true);
                     setActiveIndex(index);
                   }
                 }}
@@ -276,7 +286,10 @@ export function WhyUsCoverflow({ items = whyUsItems }: WhyUsCoverflowProps = {})
                   role="tab"
                   aria-selected={isCurrent}
                   aria-label={`Go to principle ${index + 1}: ${item.title}`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    setIsUserNavigation(true);
+                    setActiveIndex(index);
+                  }}
                   className={cn(
                     "h-2.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest",
                     isCurrent ? "w-8 bg-forest" : "w-2.5 bg-line-strong hover:bg-forest/50"

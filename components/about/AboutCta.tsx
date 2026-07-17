@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Sparkles, Briefcase, MessageSquare } from "lucide-react";
+import { ArrowRight, Briefcase, MessageSquare } from "lucide-react";
 import { Section, Container, Eyebrow } from "@/components/ui/Section";
 import { Cta } from "@/components/ui/Cta";
 import { Reveal } from "@/components/ui/motion";

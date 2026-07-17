@@ -39,7 +39,7 @@ const presentationMap: Record<string, CaseStudyPresentation> = {
     alt: "AI-Powered Student Success Platform interface predicting academic performance and student analytics",
   },
   "hyperlocal-food-marketplace": {
-    category: "TEXTILE / RETAIL & COMMERCE",
+    category: "FOOD / RETAIL & COMMERCE",
     categoryToneClass: "text-[color:var(--color-amber)]",
     alt: "Hyperlocal Food Marketplace mobile application interface connecting home chefs with local customers",
   },

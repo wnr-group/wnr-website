@@ -24,7 +24,7 @@ export function ProductDetail({
   return (
     <>
       <PageHero
-        eyebrow={product.label}
+        eyebrow={product.label || undefined}
         title={product.name}
         lead={product.heroBody || product.oneLiner}
         aside={

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Sparkles } from "lucide-react";
-import { Section, Container, Eyebrow } from "@/components/ui/Section";
+import { Section, Container } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/motion";
 import { aboutWhatWeBelieve } from "@/content/about";
 

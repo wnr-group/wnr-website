@@ -26,16 +26,23 @@ export function useCountUp({
   const ref = useRef<HTMLSpanElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const hasAnimatedRef = useRef(false);
+  const activeControlsRef = useRef<{ stop: () => void } | null>(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || hasAnimatedRef.current) return;
+    if (!el) return;
 
     if (shouldReduceMotion) {
+      if (activeControlsRef.current) {
+        activeControlsRef.current.stop();
+        activeControlsRef.current = null;
+      }
       el.textContent = `${end.toLocaleString()}${suffix}`;
       hasAnimatedRef.current = true;
       return;
     }
+
+    if (hasAnimatedRef.current) return;
 
     // Immediately set initial zero state upon mounting on the client
     el.textContent = `0${suffix}`;
@@ -69,8 +76,10 @@ export function useCountUp({
             if (ref.current) {
               ref.current.textContent = `${end.toLocaleString()}${suffix}`;
             }
+            activeControlsRef.current = null;
           },
         });
+        activeControlsRef.current = controls;
       }
     };
 
@@ -85,6 +94,10 @@ export function useCountUp({
     return () => {
       window.removeEventListener("scroll", checkAndAnimate);
       window.removeEventListener("resize", checkAndAnimate);
+      if (activeControlsRef.current) {
+        activeControlsRef.current.stop();
+        activeControlsRef.current = null;
+      }
     };
   }, [end, suffix, duration, delay, shouldReduceMotion]);
 

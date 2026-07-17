@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import { m } from "motion/react";
-import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
-import { Section, Container, Eyebrow } from "@/components/ui/Section";
-import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
+import { Sparkles, ArrowRight } from "lucide-react";
+import { Section, Container } from "@/components/ui/Section";
+import { Reveal } from "@/components/ui/motion";
 import { aboutEduOsAnchor } from "@/content/about";
 import { cn } from "@/lib/utils";
 
@@ -84,7 +83,7 @@ export function AboutEduOsAnchor() {
                 The Compounding Intelligence Loop
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center justify-between relative">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center justify-between relative">
                 {progression.map((step, idx) => {
                   const isLast = idx === progression.length - 1;
                   return (
@@ -93,7 +92,7 @@ export function AboutEduOsAnchor() {
                       className={cn(
                         "group flex flex-col items-center justify-center rounded-2xl p-5 sm:p-6 transition-all duration-300 relative border",
                         isLast
-                          ? "bg-[linear-gradient(135deg,#c9a24b_0%,#a6822f_100%)] text-ink border-[#c9a24b] shadow-lg scale-105"
+                          ? "bg-[linear-gradient(135deg,#c9a24b_0%,#a6822f_100%)] text-ink border-[#c9a24b] shadow-lg sm:scale-105"
                           : "bg-white/5 text-white border-white/10 hover:border-white/30 hover:bg-white/10"
                       )}
                     >
@@ -109,9 +108,9 @@ export function AboutEduOsAnchor() {
                         Step 0{idx + 1}
                       </div>
 
-                      {/* Arrow to next node on sm screens */}
+                      {/* Arrow to next node on large screens */}
                       {!isLast && (
-                        <div className="hidden sm:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 h-7 w-7 rounded-full bg-forest border border-white/20 items-center justify-center text-white shadow">
+                        <div className="hidden lg:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-10 h-7 w-7 rounded-full bg-forest border border-white/20 items-center justify-center text-white shadow" aria-hidden="true">
                           <ArrowRight size={13} />
                         </div>
                       )}

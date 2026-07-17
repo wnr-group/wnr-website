@@ -18,7 +18,7 @@ export function CapabilitiesArchitecture() {
   const isProductsHighlighted = isSystemsHovered || isAiLabsHovered;
 
   return (
-    <Section id="architecture" tone="canvas" className="py-20 md:py-32 border-b border-line overflow-hidden">
+    <Section id="architecture" bleed tone="canvas" className="py-20 md:py-32 border-b border-line overflow-hidden">
       <Container>
         {/* Section Header */}
         <Reveal className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
@@ -51,9 +51,9 @@ export function CapabilitiesArchitecture() {
                     "linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-deep) 100%)",
                 }}
               >
-                <span className="font-display text-xl font-bold tracking-tight">WnR Group</span>
+                <span className="font-display text-xl font-bold tracking-tight">WnRTech</span>
                 <span className="text-xs uppercase tracking-widest text-forest-bright font-semibold mt-0.5">
-                  Parent Entity · WnR Tech
+                  Parent Entity · WnR Group
                 </span>
               </div>
             </Reveal>
@@ -359,9 +359,9 @@ export function CapabilitiesArchitecture() {
                   "linear-gradient(135deg, var(--color-forest) 0%, var(--color-forest-deep) 100%)",
               }}
             >
-              <span className="font-display text-lg font-bold tracking-tight">WnR Group</span>
+              <span className="font-display text-lg font-bold tracking-tight">WnRTech</span>
               <span className="text-[11px] uppercase tracking-widest text-forest-bright font-semibold mt-0.5">
-                Parent Entity · WnR Tech
+                Parent Entity · WnR Group
               </span>
             </div>
 
@@ -388,11 +388,11 @@ export function CapabilitiesArchitecture() {
               </Link>
 
               {/* ARM 02 */}
-              <Link
-                href="#systems"
-                className="flex flex-col rounded-2xl border border-line bg-canvas p-4 sm:p-5 active:bg-forest-wash/60 transition-colors"
-              >
-                <div className="flex items-start gap-4">
+              <div className="flex flex-col rounded-2xl border border-line bg-canvas p-4 sm:p-5 transition-colors">
+                <Link
+                  href="#systems"
+                  className="flex items-start gap-4 active:opacity-80 transition-opacity"
+                >
                   <div className="h-10 w-10 shrink-0 rounded-xl bg-forest-wash text-forest flex items-center justify-center">
                     <Layers size={20} strokeWidth={1.75} />
                   </div>
@@ -403,18 +403,24 @@ export function CapabilitiesArchitecture() {
                       Custom ERP systems, web platforms, and mobile builds.
                     </p>
                   </div>
-                </div>
+                </Link>
 
                 {/* Mobile Products Under Systems */}
                 <div className="mt-4 pt-3 border-t border-line/60 grid grid-cols-2 gap-2">
-                  <span className="flex items-center justify-center rounded-xl bg-forest-wash/50 py-2 px-3 text-center font-display font-semibold text-xs text-forest">
+                  <Link
+                    href="/products/eduos"
+                    className="flex items-center justify-center rounded-xl bg-forest-wash/50 py-2 px-3 text-center font-display font-semibold text-xs text-forest hover:bg-forest hover:text-white transition-colors"
+                  >
                     EduOS
-                  </span>
-                  <span className="flex items-center justify-center rounded-xl bg-forest-wash/50 py-2 px-3 text-center font-display font-semibold text-xs text-forest">
+                  </Link>
+                  <Link
+                    href="/products/arenaos"
+                    className="flex items-center justify-center rounded-xl bg-forest-wash/50 py-2 px-3 text-center font-display font-semibold text-xs text-forest hover:bg-forest hover:text-white transition-colors"
+                  >
                     ArenaOS
-                  </span>
+                  </Link>
                 </div>
-              </Link>
+              </div>
 
               {/* ARM 03 */}
               <Link

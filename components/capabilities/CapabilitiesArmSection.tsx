@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import { Compass, Layers, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
@@ -65,6 +63,7 @@ export function CapabilitiesArmSection() {
           <Section
             key={arm.slug}
             id={arm.slug}
+            bleed
             tone={index % 2 === 0 ? "canvas" : "mist"}
             className="py-24 md:py-36 border-b border-line overflow-hidden"
           >

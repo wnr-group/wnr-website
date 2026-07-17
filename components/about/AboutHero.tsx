@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowRight, Sparkles, Layers, ShieldCheck } from "lucide-react";
-import { Eyebrow, Container } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Section";
 import { Cta } from "@/components/ui/Cta";
 import { Reveal } from "@/components/ui/motion";
 import { aboutHero } from "@/content/about";
@@ -60,9 +60,9 @@ export function AboutHero() {
 
           {/* Quick trust metrics / badges below CTA */}
           <Reveal y={24} delay={0.5}>
-            <div className="mt-16 pt-8 border-t border-line/80 grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 w-full max-w-3xl text-left">
+            <div className="mt-16 pt-8 border-t border-line/80 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-3xl text-left">
               <div className="flex items-start gap-3">
-                <div className="mt-1 rounded-lg bg-forest/10 p-2 text-forest">
+                <div className="mt-1 rounded-lg bg-forest/10 p-2 text-forest shrink-0">
                   <Layers size={18} />
                 </div>
                 <div>
@@ -71,7 +71,7 @@ export function AboutHero() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="mt-1 rounded-lg bg-teal/10 p-2 text-teal">
+                <div className="mt-1 rounded-lg bg-teal/10 p-2 text-teal shrink-0">
                   <ShieldCheck size={18} />
                 </div>
                 <div>
@@ -79,8 +79,8 @@ export function AboutHero() {
                   <div className="text-xs text-muted mt-0.5">We stay until full adoption</div>
                 </div>
               </div>
-              <div className="col-span-2 md:col-span-1 flex items-start gap-3">
-                <div className="mt-1 rounded-lg bg-amber/10 p-2 text-amber">
+              <div className="flex items-start gap-3">
+                <div className="mt-1 rounded-lg bg-amber/10 p-2 text-amber shrink-0">
                   <Sparkles size={18} />
                 </div>
                 <div>

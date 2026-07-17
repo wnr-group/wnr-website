@@ -61,12 +61,12 @@ export function HeroVideo() {
 
   return (
     <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-canvas pt-24">
+      <h1 className="sr-only">WnRTech — Operational intelligence for modern business.</h1>
       <video
         ref={videoRef}
         src="/brand/wnr-video.mp4"
         className="absolute inset-0 h-full w-full object-cover"
         poster="/brand/hero-loop-poster.webp"
-        autoPlay
         muted
         loop
         playsInline

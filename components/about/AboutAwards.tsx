@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Award, CheckCircle2, Star, Trophy, Sparkles } from "lucide-react";
+import { Award, CheckCircle2, Star, Trophy } from "lucide-react";
 import { Section, Container, Eyebrow } from "@/components/ui/Section";
-import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
+import { Reveal } from "@/components/ui/motion";
 import { aboutAwards } from "@/content/about";
 import { cn } from "@/lib/utils";
 
@@ -24,7 +24,7 @@ export function AboutAwards() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Featured Award Artwork & Quote Card (Concentrix/Glassdoor reference) */}
           <Reveal className="lg:col-span-7 h-full" delay={0.1}>
-            <div className="group relative h-full rounded-3xl border border-line bg-paper p-8 sm:p-12 shadow-card hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between">
+            <div className={cn("group relative h-full rounded-3xl border border-line bg-paper p-8 sm:p-12 shadow-card transition-all duration-300 overflow-hidden flex flex-col justify-between hover:shadow-card-hover hover:-translate-y-1")}>
               {/* Oversized background graphic / Gold accent badge details */}
               <div
                 className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#c9a24b]/15 blur-3xl group-hover:bg-[#c9a24b]/25 transition-all duration-500"
@@ -43,7 +43,7 @@ export function AboutAwards() {
                     <Trophy size={14} className="text-[#c9a24b]" />
                     <span>Featured Recognition</span>
                   </div>
-                  <div className="flex items-center gap-1 text-[#c9a24b]">
+                  <div className="flex items-center gap-1 text-[#c9a24b]" aria-label="5 out of 5 rating">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} size={16} fill="#c9a24b" />
                     ))}
@@ -51,9 +51,9 @@ export function AboutAwards() {
                 </div>
 
                 {/* Large award artwork / badge typography */}
-                <div className="my-6 rounded-2xl bg-[linear-gradient(135deg,#0e1a13_0%,#124734_100%)] p-6 sm:p-8 text-white shadow-inner relative overflow-hidden">
+                <div className="my-6 rounded-2xl bg-[linear-gradient(135deg,#0e1a13_0%,#124734_100%)] p-6 sm:p-8 text-white shadow-inner relative overflow-hidden group-hover:shadow-md transition-shadow">
                   <div
-                    className="grid-blueprint pointer-events-none absolute inset-0 opacity-25"
+                    className="grid-blueprint pointer-events-none absolute inset-0 opacity-25 group-hover:scale-105 transition-transform duration-700"
                     aria-hidden="true"
                   />
                   <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -79,7 +79,7 @@ export function AboutAwards() {
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-line flex items-center justify-between text-xs font-medium text-muted">
+              <div className="mt-8 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-muted">
                 <span>Verified Employee & Client Satisfaction</span>
                 <span className="inline-flex items-center gap-1.5 text-forest font-semibold">
                   <CheckCircle2 size={15} />
@@ -93,7 +93,7 @@ export function AboutAwards() {
           <div className="lg:col-span-5 flex flex-col gap-6 justify-between">
             {recognitions.map((rec, index) => (
               <Reveal key={rec.title} y={16} delay={0.2 + index * 0.1}>
-                <div className="group rounded-3xl border border-line bg-paper p-6 sm:p-7 shadow-sm hover:shadow-md hover:border-forest/40 transition-all duration-300">
+                <div className={cn("group rounded-3xl border border-line bg-paper p-6 sm:p-7 shadow-sm transition-all duration-300 hover:shadow-card hover:-translate-y-0.5 hover:border-forest/40")}>
                   <div className="flex items-center justify-between gap-3 mb-3">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-mist px-3 py-1 text-xs font-semibold uppercase tracking-wider text-forest">
                       <Award size={13} className="text-forest-bright" />

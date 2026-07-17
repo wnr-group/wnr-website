@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Building2, MessageCircle, Mail } from "lucide-react";
+import { MapPin, Building2, MessageCircle, Mail, Phone } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Section";
 import { ContactForm } from "@/components/ContactForm";
 import { company } from "@/content/company";
@@ -68,6 +68,18 @@ export default function ContactPage() {
                     className="hover:text-forest underline underline-offset-2"
                   >
                     {company.email}
+                  </a>
+                }
+              />
+              <Detail
+                icon={<Phone size={18} />}
+                label="Phone"
+                value={
+                  <a
+                    href={`tel:${company.phone.replace(/[^0-9+]/g, "")}`}
+                    className="hover:text-forest underline underline-offset-2"
+                  >
+                    {company.phone}
                   </a>
                 }
               />
