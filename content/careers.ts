@@ -16,7 +16,7 @@ export interface Job {
 export const careersHero = {
   eyebrow: "Careers",
   heading: "Build your future with WnRTech.",
-  lead: "We're 25+ engineers, strategists, and operators building the operating systems businesses actually run on. Come build intelligent systems with us.",
+  lead: "We're 23+ engineers, strategists, and operators building the operating systems businesses actually run on. Come build intelligent systems with us.",
   ctaLabel: "Explore Opportunities",
 };
 
@@ -44,7 +44,7 @@ export const whyWorkWithUs = {
     },
     {
       title: "A small, senior team",
-      body: "25+ people, no layers of management between you and the decision. You'll work directly with the founders and the client.",
+      body: "23+ people, no layers of management between you and the decision. You'll work directly with the founders and the client.",
       icon: "team",
     },
   ] satisfies CareersReason[],
@@ -60,11 +60,6 @@ export const benefits = {
   eyebrow: "Benefits",
   heading: "What you get.",
   items: [
-    {
-      title: "Health coverage",
-      body: "Group health insurance for you and your family from day one.",
-      icon: "health",
-    },
     {
       title: "Flexible hours",
       body: "Remote-friendly roles and flexible schedules built around outcomes, not desk time.",

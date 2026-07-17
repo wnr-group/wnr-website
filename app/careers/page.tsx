@@ -11,7 +11,7 @@ import { openings, type Job } from "@/content/careers";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Join a team obsessed with how businesses actually work. We're 25+ engineers, strategists, and operators building vertical operating systems.",
+    "Join a team obsessed with how businesses actually work. We're 23+ engineers, strategists, and operators building vertical operating systems.",
   alternates: { canonical: "/careers" },
   openGraph: {
     title: "Careers",

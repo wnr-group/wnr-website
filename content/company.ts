@@ -10,7 +10,7 @@ export const company = {
   geography: "Worldwide",
   hq: "Chennai",
   category: "Tech Company & Services",
-  email: "admin@wnradvisory.com",
+  email: "admin@wnrtech.com",
   phone: "+91 44 4556 6778",
   address: "115 D, First Floor, TIDEL Park, No.4, Rajiv Gandhi Salai, Taramani, Chennai - 600113",
 
@@ -35,7 +35,7 @@ export interface ProofStat {
 export const proofStats: ProofStat[] = [
   { value: "73+", label: "Clients served across industries" },
   { value: "2", label: "Live vertical SaaS products (EduOS · ArenaOS)" },
-  { value: "25+", label: "Engineers, sales & support" },
+  { value: "23+", label: "Engineers, sales & support" },
   { value: "3", label: "Operating arms (Systems · Consulting · AI Labs)" },
 ];
 

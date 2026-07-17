@@ -109,7 +109,7 @@ export const aboutHowWeWork = {
 export const aboutInsideWnr = {
   eyebrow: "INSIDE WNR",
   heading: "A team obsessed with how businesses actually work.",
-  body: "We're 25+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
+  body: "We're 23+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
   culturePillars: [
     {
       title: "We map before we build",

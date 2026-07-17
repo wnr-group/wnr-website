@@ -28,7 +28,7 @@ describe("StatsSection", () => {
 
     expect(screen.getByText("73+")).toBeInTheDocument();
     expect(screen.getByText("2")).toBeInTheDocument();
-    expect(screen.getByText("25+")).toBeInTheDocument();
+    expect(screen.getByText("23+")).toBeInTheDocument();
   });
 
   it("renders within the gradient-stat-wash container and has proper aria label", () => {

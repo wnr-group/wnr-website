@@ -57,13 +57,13 @@ export function AboutChaosToClarity() {
             </div>
 
             {/* Interactive State Control Pills */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2 rounded-3xl sm:rounded-full border border-line bg-mist p-1.5 shadow-inner">
+            <div className="mt-8 flex flex-wrap items-center justify-center sm:justify-start gap-2 rounded-3xl sm:rounded-full border border-line bg-mist p-1.5 shadow-inner w-full sm:w-fit">
               <button
                 type="button"
                 aria-pressed={!isClarity}
                 onClick={() => setIsClarity(false)}
                 className={cn(
-                  "inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer",
+                  "inline-flex items-center justify-center gap-2 rounded-full px-4 sm:px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer flex-1 sm:flex-initial",
                   !isClarity
                     ? "bg-[#b8791f] text-white shadow-md scale-105"
                     : "text-muted hover:text-ink"
@@ -77,7 +77,7 @@ export function AboutChaosToClarity() {
                 aria-pressed={isClarity}
                 onClick={() => setIsClarity(true)}
                 className={cn(
-                  "inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer",
+                  "inline-flex items-center justify-center gap-2 rounded-full px-4 sm:px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer flex-1 sm:flex-initial",
                   isClarity
                     ? "bg-forest text-white shadow-md scale-105"
                     : "text-muted hover:text-ink"
@@ -91,7 +91,7 @@ export function AboutChaosToClarity() {
 
           {/* Right Column: Animated Chaos vs Clarity Node Diagram */}
           <Reveal className="lg:col-span-7 w-full" delay={0.2}>
-            <div className="relative w-full rounded-3xl border border-line bg-paper p-6 sm:p-12 shadow-card overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col items-center justify-center">
+            <div className="relative w-full rounded-3xl border border-line bg-paper p-5 sm:p-12 shadow-card overflow-hidden min-h-[520px] sm:min-h-[520px] flex flex-col items-center justify-center">
               {/* Background Blueprint Grid */}
               <div
                 className={cn(
@@ -102,7 +102,7 @@ export function AboutChaosToClarity() {
               />
 
               {/* Status Header inside diagram */}
-              <div className="absolute top-5 sm:top-6 left-5 sm:left-6 right-5 sm:right-6 flex flex-wrap items-center justify-between gap-3 z-20">
+              <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-wrap items-center justify-between gap-3 z-20">
                 <div className="flex items-center gap-2.5">
                   <span
                     className={cn(
@@ -125,7 +125,7 @@ export function AboutChaosToClarity() {
               </div>
 
               {/* Diagram Canvas */}
-              <div className="relative w-full max-w-xl min-h-[380px] sm:min-h-[360px] aspect-[16/11] my-10 flex items-center justify-center">
+              <div className="relative w-full max-w-xl min-h-[440px] sm:min-h-[360px] sm:aspect-[16/11] my-10 flex items-center justify-center">
                 <AnimatePresence mode="wait">
                   {!isClarity ? (
                     /* CHAOS STATE: Scattered disconnected nodes representing all 6 tools */
@@ -137,80 +137,128 @@ export function AboutChaosToClarity() {
                       transition={{ duration: 0.4 }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      {/* Broken red/amber friction lines */}
-                      <svg viewBox="0 0 512 360" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
-                        <line x1="18%" y1="18%" x2="78%" y2="78%" stroke="#b8791f" strokeWidth="1.5" strokeDasharray="4 4" />
-                        <line x1="82%" y1="18%" x2="28%" y2="78%" stroke="#b8791f" strokeWidth="1.5" strokeDasharray="4 4" />
-                        <line x1="50%" y1="10%" x2="50%" y2="90%" stroke="#b8791f" strokeWidth="1.5" strokeDasharray="4 4" />
-                      </svg>
+                      {/* Mobile / Narrow Screen Stacked Grid (< sm) */}
+                      <div className="flex sm:hidden flex-col items-center justify-between gap-5 w-full py-4 relative z-10">
+                        <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs">
+                          <div className="flex flex-col items-center gap-1 rounded-xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 shadow-md text-center">
+                            <MessageSquare size={16} className="text-[#b8791f]" />
+                            <span className="font-display text-[10px] font-bold text-ink leading-tight">WhatsApp Threads</span>
+                          </div>
+                          <div className="flex flex-col items-center gap-1 rounded-xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 shadow-md text-center">
+                            <FileSpreadsheet size={16} className="text-[#b8791f]" />
+                            <span className="font-display text-[10px] font-bold text-ink leading-tight">Excel Sheets</span>
+                          </div>
+                        </div>
 
-                      {/* Top Left: WhatsApp threads */}
-                      <m.div
-                        animate={{ y: [-4, 6, -4], x: [-3, 3, -3] }}
-                        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                        className="absolute top-[2%] left-[1%] sm:left-[3%] flex flex-col items-center gap-1 rounded-xl sm:rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 sm:p-3 shadow-md text-center max-w-[105px] sm:max-w-[130px] z-10"
-                      >
-                        <MessageSquare size={18} className="text-[#b8791f]" />
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink leading-tight">WhatsApp Threads</span>
-                      </m.div>
+                        <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs">
+                          <div className="flex flex-col items-center gap-1 rounded-xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 shadow-md text-center">
+                            <Mail size={16} className="text-[#b8791f]" />
+                            <span className="font-display text-[10px] font-bold text-ink leading-tight">Scattered Emails</span>
+                          </div>
+                          <div className="flex flex-col items-center gap-1 rounded-xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 shadow-md text-center">
+                            <Layers size={16} className="text-[#b8791f]" />
+                            <span className="font-display text-[10px] font-bold text-ink leading-tight">Disconnected Software</span>
+                          </div>
+                        </div>
 
-                      {/* Top Right: Excel sheets */}
-                      <m.div
-                        animate={{ y: [5, -5, 5], x: [3, -3, 3] }}
-                        transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-                        className="absolute top-[2%] right-[1%] sm:right-[3%] flex flex-col items-center gap-1 rounded-xl sm:rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 sm:p-3 shadow-md text-center max-w-[105px] sm:max-w-[130px] z-10"
-                      >
-                        <FileSpreadsheet size={18} className="text-[#b8791f]" />
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink leading-tight">Excel Sheets</span>
-                      </m.div>
+                        {/* Friction indicator center badge */}
+                        <div className="z-20 rounded-full border-2 border-dashed border-[#b8791f] bg-paper px-4 py-2.5 shadow-lg text-center flex flex-col items-center max-w-[180px]">
+                          <AlertCircle size={20} className="text-[#b8791f] animate-bounce" />
+                          <span className="font-display text-xs font-black uppercase tracking-wider text-ink mt-1">
+                            No Single Truth
+                          </span>
+                          <span className="text-[10px] text-muted">Decisions slow down</span>
+                        </div>
 
-                      {/* Mid Left: Scattered emails */}
-                      <m.div
-                        animate={{ y: [-5, 4, -5] }}
-                        transition={{ repeat: Infinity, duration: 3.6, ease: "easeInOut" }}
-                        className="absolute top-[40%] left-[0%] sm:left-[2%] flex flex-col items-center gap-1 rounded-xl sm:rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 sm:p-3 shadow-md text-center max-w-[105px] sm:max-w-[130px] z-10"
-                      >
-                        <Mail size={18} className="text-[#b8791f]" />
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink leading-tight">Scattered Emails</span>
-                      </m.div>
+                        <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs">
+                          <div className="flex flex-col items-center gap-1 rounded-xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 shadow-md text-center">
+                            <Database size={16} className="text-[#b8791f]" />
+                            <span className="font-display text-[10px] font-bold text-ink leading-tight">Siloed Databases</span>
+                          </div>
+                          <div className="flex flex-col items-center gap-1 rounded-xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 shadow-md text-center">
+                            <Workflow size={16} className="text-[#b8791f]" />
+                            <span className="font-display text-[10px] font-bold text-ink leading-tight">Manual Approvals</span>
+                          </div>
+                        </div>
+                      </div>
 
-                      {/* Mid Right: Disconnected software */}
-                      <m.div
-                        animate={{ y: [4, -4, 4] }}
-                        transition={{ repeat: Infinity, duration: 4.1, ease: "easeInOut" }}
-                        className="absolute top-[40%] right-[0%] sm:right-[2%] flex flex-col items-center gap-1 rounded-xl sm:rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 sm:p-3 shadow-md text-center max-w-[105px] sm:max-w-[130px] z-10"
-                      >
-                        <Layers size={18} className="text-[#b8791f]" />
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink leading-tight">Disconnected Software</span>
-                      </m.div>
+                      {/* Desktop / Tablet Layout (sm:+) */}
+                      <div className="hidden sm:flex absolute inset-0 items-center justify-center">
+                        {/* Broken red/amber friction lines */}
+                        <svg viewBox="0 0 512 360" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
+                          <line x1="18%" y1="18%" x2="78%" y2="78%" stroke="#b8791f" strokeWidth="1.5" strokeDasharray="4 4" />
+                          <line x1="82%" y1="18%" x2="28%" y2="78%" stroke="#b8791f" strokeWidth="1.5" strokeDasharray="4 4" />
+                          <line x1="50%" y1="10%" x2="50%" y2="90%" stroke="#b8791f" strokeWidth="1.5" strokeDasharray="4 4" />
+                        </svg>
 
-                      {/* Bottom Left: Siloed databases */}
-                      <m.div
-                        animate={{ y: [-6, 4, -6] }}
-                        transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut" }}
-                        className="absolute bottom-[2%] left-[4%] sm:left-[8%] flex flex-col items-center gap-1 rounded-xl sm:rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 sm:p-3 shadow-md text-center max-w-[105px] sm:max-w-[130px] z-10"
-                      >
-                        <Database size={18} className="text-[#b8791f]" />
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink leading-tight">Siloed Databases</span>
-                      </m.div>
+                        {/* Top Left: WhatsApp threads */}
+                        <m.div
+                          animate={{ y: [-4, 6, -4], x: [-3, 3, -3] }}
+                          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                          className="absolute top-[2%] left-[3%] flex flex-col items-center gap-1 rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-3 shadow-md text-center max-w-[130px] z-10"
+                        >
+                          <MessageSquare size={18} className="text-[#b8791f]" />
+                          <span className="font-display text-xs font-bold text-ink leading-tight">WhatsApp Threads</span>
+                        </m.div>
 
-                      {/* Bottom Right: Manual approval chains */}
-                      <m.div
-                        animate={{ y: [6, -4, 6] }}
-                        transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut" }}
-                        className="absolute bottom-[2%] right-[4%] sm:right-[8%] flex flex-col items-center gap-1 rounded-xl sm:rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-2 sm:p-3 shadow-md text-center max-w-[105px] sm:max-w-[130px] z-10"
-                      >
-                        <Workflow size={18} className="text-[#b8791f]" />
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink leading-tight">Manual Approvals</span>
-                      </m.div>
+                        {/* Top Right: Excel sheets */}
+                        <m.div
+                          animate={{ y: [5, -5, 5], x: [3, -3, 3] }}
+                          transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+                          className="absolute top-[2%] right-[3%] flex flex-col items-center gap-1 rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-3 shadow-md text-center max-w-[130px] z-10"
+                        >
+                          <FileSpreadsheet size={18} className="text-[#b8791f]" />
+                          <span className="font-display text-xs font-bold text-ink leading-tight">Excel Sheets</span>
+                        </m.div>
 
-                      {/* Friction indicator center badge */}
-                      <div className="z-20 rounded-full border-2 border-dashed border-[#b8791f] bg-paper px-4 sm:px-6 py-2.5 sm:py-3 shadow-lg text-center flex flex-col items-center max-w-[180px] sm:max-w-xs">
-                        <AlertCircle size={22} className="text-[#b8791f] animate-bounce" />
-                        <span className="font-display text-xs font-black uppercase tracking-wider text-ink mt-1">
-                          No Single Truth
-                        </span>
-                        <span className="text-[10px] sm:text-[11px] text-muted">Decisions slow down</span>
+                        {/* Mid Left: Scattered emails */}
+                        <m.div
+                          animate={{ y: [-5, 4, -5] }}
+                          transition={{ repeat: Infinity, duration: 3.6, ease: "easeInOut" }}
+                          className="absolute top-[40%] left-[2%] flex flex-col items-center gap-1 rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-3 shadow-md text-center max-w-[130px] z-10"
+                        >
+                          <Mail size={18} className="text-[#b8791f]" />
+                          <span className="font-display text-xs font-bold text-ink leading-tight">Scattered Emails</span>
+                        </m.div>
+
+                        {/* Mid Right: Disconnected software */}
+                        <m.div
+                          animate={{ y: [4, -4, 4] }}
+                          transition={{ repeat: Infinity, duration: 4.1, ease: "easeInOut" }}
+                          className="absolute top-[40%] right-[2%] flex flex-col items-center gap-1 rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-3 shadow-md text-center max-w-[130px] z-10"
+                        >
+                          <Layers size={18} className="text-[#b8791f]" />
+                          <span className="font-display text-xs font-bold text-ink leading-tight">Disconnected Software</span>
+                        </m.div>
+
+                        {/* Bottom Left: Siloed databases */}
+                        <m.div
+                          animate={{ y: [-6, 4, -6] }}
+                          transition={{ repeat: Infinity, duration: 3.8, ease: "easeInOut" }}
+                          className="absolute bottom-[2%] left-[8%] flex flex-col items-center gap-1 rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-3 shadow-md text-center max-w-[130px] z-10"
+                        >
+                          <Database size={18} className="text-[#b8791f]" />
+                          <span className="font-display text-xs font-bold text-ink leading-tight">Siloed Databases</span>
+                        </m.div>
+
+                        {/* Bottom Right: Manual approval chains */}
+                        <m.div
+                          animate={{ y: [6, -4, 6] }}
+                          transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut" }}
+                          className="absolute bottom-[2%] right-[8%] flex flex-col items-center gap-1 rounded-2xl border border-[#b8791f]/40 bg-[#f7efe0] p-3 shadow-md text-center max-w-[130px] z-10"
+                        >
+                          <Workflow size={18} className="text-[#b8791f]" />
+                          <span className="font-display text-xs font-bold text-ink leading-tight">Manual Approvals</span>
+                        </m.div>
+
+                        {/* Friction indicator center badge */}
+                        <div className="z-20 rounded-full border-2 border-dashed border-[#b8791f] bg-paper px-6 py-3 shadow-lg text-center flex flex-col items-center max-w-xs">
+                          <AlertCircle size={22} className="text-[#b8791f] animate-bounce" />
+                          <span className="font-display text-xs font-black uppercase tracking-wider text-ink mt-1">
+                            No Single Truth
+                          </span>
+                          <span className="text-[11px] text-muted">Decisions slow down</span>
+                        </div>
                       </div>
                     </m.div>
                   ) : (
@@ -223,122 +271,188 @@ export function AboutChaosToClarity() {
                       transition={{ duration: 0.4 }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      {/* Animated green connector lines flowing into center from 6 directions */}
-                      <svg viewBox="0 0 512 360" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
-                        <m.path
-                          d="M 90 50 L 256 180"
-                          stroke="var(--color-forest)"
-                          strokeWidth="2.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.5 }}
-                        />
-                        <m.path
-                          d="M 420 50 L 256 180"
-                          stroke="var(--color-forest)"
-                          strokeWidth="2.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.5, delay: 0.08 }}
-                        />
-                        <m.path
-                          d="M 60 180 L 256 180"
-                          stroke="var(--color-forest)"
-                          strokeWidth="2.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.5, delay: 0.16 }}
-                        />
-                        <m.path
-                          d="M 452 180 L 256 180"
-                          stroke="var(--color-forest)"
-                          strokeWidth="2.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.5, delay: 0.24 }}
-                        />
-                        <m.path
-                          d="M 110 310 L 256 180"
-                          stroke="var(--color-forest)"
-                          strokeWidth="2.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.5, delay: 0.32 }}
-                        />
-                        <m.path
-                          d="M 400 310 L 256 180"
-                          stroke="var(--color-forest)"
-                          strokeWidth="2.5"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.5, delay: 0.4 }}
-                        />
-                      </svg>
+                      {/* Mobile / Narrow Screen Responsive Grid & SVG (< sm) */}
+                      <div className="flex sm:hidden flex-col items-center justify-between gap-5 w-full py-4 relative z-10">
+                        <svg viewBox="0 0 320 440" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
+                          <m.path d="M 80 30 L 160 220" stroke="var(--color-forest)" strokeWidth="2.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5 }} />
+                          <m.path d="M 240 30 L 160 220" stroke="var(--color-forest)" strokeWidth="2.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.08 }} />
+                          <m.path d="M 80 110 L 160 220" stroke="var(--color-forest)" strokeWidth="2.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.16 }} />
+                          <m.path d="M 240 110 L 160 220" stroke="var(--color-forest)" strokeWidth="2.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.24 }} />
+                          <m.path d="M 80 410 L 160 220" stroke="var(--color-forest)" strokeWidth="2.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.32 }} />
+                          <m.path d="M 240 410 L 160 220" stroke="var(--color-forest)" strokeWidth="2.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.4 }} />
+                        </svg>
 
-                      {/* Harmonized input nodes */}
-                      <div className="absolute top-[4%] left-[2%] sm:left-[5%] flex items-center gap-2 rounded-xl sm:rounded-2xl border border-forest/30 bg-forest-wash px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-sm text-left z-10">
-                        <div className="rounded-lg bg-forest text-white p-1">
-                          <MessageSquare size={13} />
+                        <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs z-10">
+                          <div className="flex items-center gap-2 rounded-xl border border-forest/30 bg-forest-wash px-2.5 py-1.5 shadow-sm text-left">
+                            <div className="rounded-lg bg-forest text-white p-1 shrink-0"><MessageSquare size={12} /></div>
+                            <span className="font-display text-[10px] font-bold text-ink">Unified Chat</span>
+                          </div>
+                          <div className="flex items-center gap-2 rounded-xl border border-forest/30 bg-forest-wash px-2.5 py-1.5 shadow-sm text-left">
+                            <div className="rounded-lg bg-forest text-white p-1 shrink-0"><FileSpreadsheet size={12} /></div>
+                            <span className="font-display text-[10px] font-bold text-ink">Live Tables</span>
+                          </div>
                         </div>
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink">Unified Chat</span>
+
+                        <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs z-10">
+                          <div className="flex items-center gap-2 rounded-xl border border-forest/30 bg-forest-wash px-2.5 py-1.5 shadow-sm text-left">
+                            <div className="rounded-lg bg-forest text-white p-1 shrink-0"><Mail size={12} /></div>
+                            <span className="font-display text-[10px] font-bold text-ink">Automated Alerts</span>
+                          </div>
+                          <div className="flex items-center gap-2 rounded-xl border border-forest/30 bg-forest-wash px-2.5 py-1.5 shadow-sm text-left">
+                            <div className="rounded-lg bg-forest text-white p-1 shrink-0"><Layers size={12} /></div>
+                            <span className="font-display text-[10px] font-bold text-ink">Connected APIs</span>
+                          </div>
+                        </div>
+
+                        {/* Central Operational Brain Node */}
+                        <m.div
+                          initial={{ scale: 0.8 }}
+                          animate={{ scale: [1, 1.03, 1] }}
+                          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                          className="z-20 flex flex-col items-center justify-center rounded-2xl border-2 border-forest bg-[linear-gradient(135deg,var(--color-forest)_0%,var(--color-forest-deep)_100%)] px-5 py-4 text-white shadow-xl text-center max-w-[200px]"
+                        >
+                          <div className="inline-flex items-center justify-center rounded-full bg-white/20 p-2 mb-1.5">
+                            <Sparkles size={20} className="text-forest-bright" />
+                          </div>
+                          <span className="font-display text-base font-black tracking-tight">
+                            WnR Operational Brain
+                          </span>
+                          <span className="text-[10px] uppercase tracking-widest text-forest-wash font-medium mt-1">
+                            {aboutWhyWeExist.claritySystem}
+                          </span>
+                        </m.div>
+
+                        <div className="grid grid-cols-2 gap-2.5 w-full max-w-xs z-10">
+                          <div className="flex items-center gap-2 rounded-xl border border-forest/30 bg-forest-wash px-2.5 py-1.5 shadow-sm text-left">
+                            <div className="rounded-lg bg-forest text-white p-1 shrink-0"><Database size={12} /></div>
+                            <span className="font-display text-[10px] font-bold text-ink">Single Database</span>
+                          </div>
+                          <div className="flex items-center gap-2 rounded-xl border border-forest/30 bg-forest-wash px-2.5 py-1.5 shadow-sm text-left">
+                            <div className="rounded-lg bg-forest text-white p-1 shrink-0"><Workflow size={12} /></div>
+                            <span className="font-display text-[10px] font-bold text-ink">Smart Approvals</span>
+                          </div>
+                        </div>
                       </div>
 
-                      <div className="absolute top-[4%] right-[2%] sm:right-[5%] flex items-center gap-2 rounded-xl sm:rounded-2xl border border-forest/30 bg-forest-wash px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-sm text-left z-10">
-                        <div className="rounded-lg bg-forest text-white p-1">
-                          <FileSpreadsheet size={13} />
-                        </div>
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink">Live Tables</span>
-                      </div>
+                      {/* Desktop / Tablet Layout & SVG (sm:+) */}
+                      <div className="hidden sm:flex absolute inset-0 items-center justify-center">
+                        {/* Animated green connector lines flowing into center from 6 directions */}
+                        <svg viewBox="0 0 512 360" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
+                          <m.path
+                            d="M 90 50 L 256 180"
+                            stroke="var(--color-forest)"
+                            strokeWidth="2.5"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.5 }}
+                          />
+                          <m.path
+                            d="M 420 50 L 256 180"
+                            stroke="var(--color-forest)"
+                            strokeWidth="2.5"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.5, delay: 0.08 }}
+                          />
+                          <m.path
+                            d="M 60 180 L 256 180"
+                            stroke="var(--color-forest)"
+                            strokeWidth="2.5"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.5, delay: 0.16 }}
+                          />
+                          <m.path
+                            d="M 452 180 L 256 180"
+                            stroke="var(--color-forest)"
+                            strokeWidth="2.5"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.5, delay: 0.24 }}
+                          />
+                          <m.path
+                            d="M 110 310 L 256 180"
+                            stroke="var(--color-forest)"
+                            strokeWidth="2.5"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.5, delay: 0.32 }}
+                          />
+                          <m.path
+                            d="M 400 310 L 256 180"
+                            stroke="var(--color-forest)"
+                            strokeWidth="2.5"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                          />
+                        </svg>
 
-                      <div className="absolute top-[42%] left-[0%] sm:left-[2%] flex items-center gap-2 rounded-xl sm:rounded-2xl border border-forest/30 bg-forest-wash px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-sm text-left z-10">
-                        <div className="rounded-lg bg-forest text-white p-1">
-                          <Mail size={13} />
+                        {/* Harmonized input nodes */}
+                        <div className="absolute top-[4%] left-[5%] flex items-center gap-2 rounded-2xl border border-forest/30 bg-forest-wash px-3 py-2 shadow-sm text-left z-10">
+                          <div className="rounded-lg bg-forest text-white p-1">
+                            <MessageSquare size={13} />
+                          </div>
+                          <span className="font-display text-xs font-bold text-ink">Unified Chat</span>
                         </div>
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink">Automated Alerts</span>
-                      </div>
 
-                      <div className="absolute top-[42%] right-[0%] sm:right-[2%] flex items-center gap-2 rounded-xl sm:rounded-2xl border border-forest/30 bg-forest-wash px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-sm text-left z-10">
-                        <div className="rounded-lg bg-forest text-white p-1">
-                          <Layers size={13} />
+                        <div className="absolute top-[4%] right-[5%] flex items-center gap-2 rounded-2xl border border-forest/30 bg-forest-wash px-3 py-2 shadow-sm text-left z-10">
+                          <div className="rounded-lg bg-forest text-white p-1">
+                            <FileSpreadsheet size={13} />
+                          </div>
+                          <span className="font-display text-xs font-bold text-ink">Live Tables</span>
                         </div>
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink">Connected APIs</span>
-                      </div>
 
-                      <div className="absolute bottom-[4%] left-[4%] sm:left-[8%] flex items-center gap-2 rounded-xl sm:rounded-2xl border border-forest/30 bg-forest-wash px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-sm text-left z-10">
-                        <div className="rounded-lg bg-forest text-white p-1">
-                          <Database size={13} />
+                        <div className="absolute top-[42%] left-[2%] flex items-center gap-2 rounded-2xl border border-forest/30 bg-forest-wash px-3 py-2 shadow-sm text-left z-10">
+                          <div className="rounded-lg bg-forest text-white p-1">
+                            <Mail size={13} />
+                          </div>
+                          <span className="font-display text-xs font-bold text-ink">Automated Alerts</span>
                         </div>
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink">Single Database</span>
-                      </div>
 
-                      <div className="absolute bottom-[4%] right-[4%] sm:right-[8%] flex items-center gap-2 rounded-xl sm:rounded-2xl border border-forest/30 bg-forest-wash px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-sm text-left z-10">
-                        <div className="rounded-lg bg-forest text-white p-1">
-                          <Workflow size={13} />
+                        <div className="absolute top-[42%] right-[2%] flex items-center gap-2 rounded-2xl border border-forest/30 bg-forest-wash px-3 py-2 shadow-sm text-left z-10">
+                          <div className="rounded-lg bg-forest text-white p-1">
+                            <Layers size={13} />
+                          </div>
+                          <span className="font-display text-xs font-bold text-ink">Connected APIs</span>
                         </div>
-                        <span className="font-display text-[10px] sm:text-xs font-bold text-ink">Smart Approvals</span>
-                      </div>
 
-                      {/* Central Operational Brain Node */}
-                      <m.div
-                        initial={{ scale: 0.8 }}
-                        animate={{ scale: [1, 1.03, 1] }}
-                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                        className="z-20 flex flex-col items-center justify-center rounded-2xl sm:rounded-3xl border-2 border-forest bg-[linear-gradient(135deg,var(--color-forest)_0%,var(--color-forest-deep)_100%)] px-5 sm:px-8 py-4 sm:py-6 text-white shadow-xl text-center max-w-[200px] sm:max-w-xs"
-                      >
-                        <div className="inline-flex items-center justify-center rounded-full bg-white/20 p-2.5 mb-2">
-                          <Sparkles size={24} className="text-forest-bright" />
+                        <div className="absolute bottom-[4%] left-[8%] flex items-center gap-2 rounded-2xl border border-forest/30 bg-forest-wash px-3 py-2 shadow-sm text-left z-10">
+                          <div className="rounded-lg bg-forest text-white p-1">
+                            <Database size={13} />
+                          </div>
+                          <span className="font-display text-xs font-bold text-ink">Single Database</span>
                         </div>
-                        <span className="font-display text-base sm:text-lg font-black tracking-tight">
-                          WnR Operational Brain
-                        </span>
-                        <span className="text-xs uppercase tracking-widest text-forest-wash font-medium mt-1">
-                          {aboutWhyWeExist.claritySystem}
-                        </span>
-                        <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-forest-bright/30 px-3 py-1 text-[11px] font-semibold text-white">
-                          <CheckCircle2 size={13} />
-                          <span>Real-Time Clarity</span>
+
+                        <div className="absolute bottom-[4%] right-[8%] flex items-center gap-2 rounded-2xl border border-forest/30 bg-forest-wash px-3 py-2 shadow-sm text-left z-10">
+                          <div className="rounded-lg bg-forest text-white p-1">
+                            <Workflow size={13} />
+                          </div>
+                          <span className="font-display text-xs font-bold text-ink">Smart Approvals</span>
                         </div>
-                      </m.div>
+
+                        {/* Central Operational Brain Node */}
+                        <m.div
+                          initial={{ scale: 0.8 }}
+                          animate={{ scale: [1, 1.03, 1] }}
+                          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                          className="z-20 flex flex-col items-center justify-center rounded-3xl border-2 border-forest bg-[linear-gradient(135deg,var(--color-forest)_0%,var(--color-forest-deep)_100%)] px-8 py-6 text-white shadow-xl text-center max-w-xs"
+                        >
+                          <div className="inline-flex items-center justify-center rounded-full bg-white/20 p-2.5 mb-2">
+                            <Sparkles size={24} className="text-forest-bright" />
+                          </div>
+                          <span className="font-display text-lg font-black tracking-tight">
+                            WnR Operational Brain
+                          </span>
+                          <span className="text-xs uppercase tracking-widest text-forest-wash font-medium mt-1">
+                            {aboutWhyWeExist.claritySystem}
+                          </span>
+                          <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-forest-bright/30 px-3 py-1 text-[11px] font-semibold text-white">
+                            <CheckCircle2 size={13} />
+                            <span>Real-Time Clarity</span>
+                          </div>
+                        </m.div>
+                      </div>
                     </m.div>
                   )}
                 </AnimatePresence>

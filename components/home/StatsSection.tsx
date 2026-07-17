@@ -39,10 +39,10 @@ function StatItem({ value, label, index }: StatItemProps) {
 /**
  * Homepage Stats Section (`StatsSection`)
  * 3-column evenly-spaced layout (Reference Image 1 style) with soft diagonal gradient wash (`gradient-stat-wash`).
- * Renders the 3 confirmed stats (`73+`, `2`, `25+`) with scroll-triggered count-up animation.
+ * Renders the 3 confirmed stats (`73+`, `2`, `23+`) with scroll-triggered count-up animation.
  */
 export function StatsSection() {
-  // Take exactly the 3 approved stats: 73+, 2, 25+
+  // Take exactly the 3 approved stats: 73+, 2, 23+
   const homeStats = proofStats.slice(0, 3);
 
   return (

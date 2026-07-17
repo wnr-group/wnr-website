@@ -68,7 +68,7 @@ export function CareersHero() {
                   <Users2 size={18} />
                 </span>
                 <div>
-                  <div className="font-display text-sm font-bold text-ink">25+ Team Members</div>
+                  <div className="font-display text-sm font-bold text-ink">23+ Team Members</div>
                   <div className="mt-0.5 text-xs text-muted">Engineers, strategists, operators</div>
                 </div>
               </div>

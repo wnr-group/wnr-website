@@ -201,7 +201,7 @@ export const culture = {
   eyebrow: "Inside WnR",
   heading: "A team obsessed with how businesses actually work.",
   intro:
-    "We're 25+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
+    "We're 23+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
   pillars: [
     { title: "We map before we build", body: "Every engineer here learns the business first. We sit with operations, watch the workflow, and find the leak before we write a line of code." },
     { title: "We stay for the outcome", body: "We measure ourselves in time saved and money recovered — not features shipped. The work isn't done at deployment; it's done when it's adopted." },
