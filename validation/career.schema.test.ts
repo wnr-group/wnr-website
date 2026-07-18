@@ -62,7 +62,7 @@ describe("validateCareerApplication", () => {
         portfolioUrl: "https://github.com/janedoe",
         noticePeriod: "30 days",
         heardAboutUs: "LinkedIn",
-        coverLetter: "I would love to join WnR Group because...",
+        coverLetter: "I would love to join WnRTech because...",
         expectedCtc: "1200000",
       }),
     );

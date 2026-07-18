@@ -80,7 +80,7 @@ export function Header() {
               : "border-cream-line/70 bg-cream/85 shadow-[0_10px_34px_-20px_rgba(18,71,52,0.28)]",
           )}
         >
-          <Link href="/" aria-label="WnR Group — home">
+          <Link href="/" aria-label="WnRTech — home">
             <Logo />
           </Link>
 

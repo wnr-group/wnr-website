@@ -1,25 +1,23 @@
-import { Hero } from "@/components/sections/Hero";
 import { HeroVideo } from "@/components/sections/HeroVideo";
-import { WhyUsSection } from "@/components/home/WhyUsSection";
-import { WhatWeBuild } from "@/components/sections/WhatWeBuild";
-import { Approach } from "@/components/sections/Approach";
 import { Products } from "@/components/sections/Products";
-import { PhotoBand } from "@/components/sections/PhotoBand";
-import { Industries } from "@/components/sections/Industries";
-import { Work } from "@/components/sections/Work";
+import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
+import { ThreeArmSection } from "@/components/home/ThreeArmSection";
+import { WhyUsSection } from "@/components/home/WhyUsSection";
+import { StatsSection } from "@/components/home/StatsSection";
+import { ContactSection } from "@/components/home/ContactSection";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
       <HeroVideo />
-      <WhyUsSection />
-      <WhatWeBuild />
-      <Approach />
       <Products />
-      <PhotoBand />
-      <Industries />
-      <Work showLink />
+      <CaseStudiesSection />
+      <ThreeArmSection />
+      <WhyUsSection />
+      <StatsSection />
+      <ContactSection />
     </>
   );
 }
+
+

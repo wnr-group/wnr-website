@@ -7,7 +7,7 @@ const job: Job = {
   id: "senior-fullstack-engineer",
   title: "Senior Full-Stack Engineer",
   department: "WnR Systems",
-  location: "Tamil Nadu / Remote",
+  location: "Remote / Hybrid",
   employmentType: "Full-time",
   experience: "4-7 years",
   description: "Own features end-to-end across our client platforms.",
@@ -18,7 +18,7 @@ describe("JobCard", () => {
     render(<JobCard job={job} />);
     expect(screen.getByText("Senior Full-Stack Engineer")).toBeInTheDocument();
     expect(screen.getByText("WnR Systems")).toBeInTheDocument();
-    expect(screen.getByText("Tamil Nadu / Remote")).toBeInTheDocument();
+    expect(screen.getByText("Remote / Hybrid")).toBeInTheDocument();
     expect(screen.getByText("Full-time")).toBeInTheDocument();
     expect(screen.getByText("4-7 years")).toBeInTheDocument();
     expect(screen.getByText(/own features end-to-end/i)).toBeInTheDocument();

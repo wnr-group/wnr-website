@@ -15,8 +15,8 @@ export interface Job {
 
 export const careersHero = {
   eyebrow: "Careers",
-  heading: "Build your future with WnR Group.",
-  lead: "We're 25+ engineers, strategists, and operators building the operating systems businesses actually run on. Come build what's next with us.",
+  heading: "Build your future with WnRTech.",
+  lead: "We're 23+ engineers, strategists, and operators building the operating systems businesses actually run on. Come build intelligent systems with us.",
   ctaLabel: "Explore Opportunities",
 };
 
@@ -44,7 +44,7 @@ export const whyWorkWithUs = {
     },
     {
       title: "A small, senior team",
-      body: "25+ people, no layers of management between you and the decision. You'll work directly with the founders and the client.",
+      body: "23+ people, no layers of management between you and the decision. You'll work directly with the founders and the client.",
       icon: "team",
     },
   ] satisfies CareersReason[],
@@ -60,11 +60,6 @@ export const benefits = {
   eyebrow: "Benefits",
   heading: "What you get.",
   items: [
-    {
-      title: "Health coverage",
-      body: "Group health insurance for you and your family from day one.",
-      icon: "health",
-    },
     {
       title: "Flexible hours",
       body: "Remote-friendly roles and flexible schedules built around outcomes, not desk time.",
@@ -116,7 +111,7 @@ export const openings: Job[] = [
     id: "senior-fullstack-engineer",
     title: "Senior Full-Stack Engineer",
     department: "WnR Systems",
-    location: "Tamil Nadu / Remote",
+    location: "Remote / Hybrid",
     employmentType: "Full-time",
     experience: "4-7 years",
     description:
@@ -126,7 +121,7 @@ export const openings: Job[] = [
     id: "operations-consultant",
     title: "Operations Consultant",
     department: "WnR Consulting",
-    location: "Tamil Nadu",
+    location: "Remote / Hybrid",
     employmentType: "Full-time",
     experience: "3-5 years",
     description:
@@ -136,7 +131,7 @@ export const openings: Job[] = [
     id: "ai-ml-engineer",
     title: "AI/ML Engineer",
     department: "WnR AI Labs",
-    location: "Remote, India",
+    location: "Remote",
     employmentType: "Full-time",
     experience: "2-5 years",
     description:
@@ -146,7 +141,7 @@ export const openings: Job[] = [
     id: "product-designer",
     title: "Product Designer",
     department: "WnR Systems",
-    location: "Tamil Nadu / Remote",
+    location: "Remote / Hybrid",
     employmentType: "Full-time",
     experience: "3-6 years",
     description:
@@ -161,8 +156,8 @@ export const noOpeningsCopy = {
 };
 
 export const careersCta = {
-  heading: "We're building what's next. Want in?",
-  body: "Don't see your role? Tell us how you'd make WnR Group better.",
+  heading: "Build operational intelligence with us. Want in?",
+  body: "Don't see your role? Tell us how you'd make WnRTech better.",
   ctaLabel: "Get in Touch",
 };
 

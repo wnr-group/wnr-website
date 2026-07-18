@@ -1,114 +1,68 @@
 import type { Metadata } from "next";
-import { ArrowRight, Boxes, Compass, Cpu } from "lucide-react";
-import { PageHero } from "@/components/ui/PageHero";
-import { Section } from "@/components/ui/Section";
+import { CapabilitiesHero } from "@/components/capabilities/CapabilitiesHero";
+import { CapabilitiesArchitecture } from "@/components/capabilities/CapabilitiesArchitecture";
+import { CapabilitiesArmSection } from "@/components/capabilities/CapabilitiesArmSection";
+import { CapabilitiesWorkflow } from "@/components/capabilities/CapabilitiesWorkflow";
+import { Section, Container, Eyebrow } from "@/components/ui/Section";
 import { Cta } from "@/components/ui/Cta";
-import { Approach } from "@/components/sections/Approach";
-import { arms, divisions } from "@/content/arms";
+import { Reveal } from "@/components/ui/motion";
+import { capabilitiesCta } from "@/content/arms";
 
 export const metadata: Metadata = {
-  title: "Capabilities — Systems, Consulting & AI Labs",
+  title: "Capabilities — Consulting, Systems & AI Labs",
   description:
     "Three operating arms that take a business from operational strategy to live system to intelligent automation.",
-};
-
-const armMeta: Record<string, { icon: React.ElementType; points: string[] }> = {
-  systems: {
-    icon: Boxes,
-    points: [
-      "Custom ERP & operational platforms",
-      "Web & mobile applications",
-      "Multi-portal systems & dashboards",
-      "Integrations across your existing tools",
-    ],
-  },
-  consulting: {
-    icon: Compass,
-    points: [
-      "Operations mapping & workflow audits",
-      "Where-time-and-money-leaks analysis",
-      "Operational strategy before software",
-      "Implementation & team training",
-    ],
-  },
-  "ai-labs": {
-    icon: Cpu,
-    points: [
-      "AI-native automation & smart approvals",
-      "LLM pipelines & operational intelligence",
-      "Workflow optimisation from real data",
-      "The intelligence layer across the portfolio",
-    ],
-  },
 };
 
 export default function CapabilitiesPage() {
   return (
     <>
-      <PageHero
-        eyebrow={divisions.eyebrow}
-        title={
-          <>
-            One company. <span className="text-forest">Three operating arms.</span>
-          </>
-        }
-        lead={divisions.intro}
-      >
-        <Cta href="/contact" variant="primary">
-          Map your operations
-          <ArrowRight size={16} />
-        </Cta>
-      </PageHero>
+      {/* 1. Hero Section */}
+      <CapabilitiesHero />
 
-      {arms.map((arm, i) => {
-        const meta = armMeta[arm.slug];
-        const Icon = meta.icon;
-        return (
-          <Section
-            key={arm.slug}
-            id={arm.slug}
-            tone={i % 2 === 0 ? "canvas" : "mist"}
-          >
-            {/* oversized ghost number + name header */}
-            <div className="flex items-start gap-5 md:gap-8">
-              <span
-                className="font-display text-6xl font-bold leading-none tabular-nums text-forest/12 md:text-8xl"
-                aria-hidden="true"
-              >
-                0{i + 1}
-              </span>
-              <div className="pt-1 md:pt-3">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-forest-wash text-forest">
-                  <Icon size={22} strokeWidth={1.75} />
-                </span>
-                <h2 className="mt-4 font-display text-[length:var(--text-h2)] font-bold leading-[1.06] text-ink">
-                  {arm.name}
-                </h2>
-                <p className="mt-5 max-w-2xl text-[length:var(--text-lead)] leading-relaxed text-body">
-                  {arm.description}
-                </p>
+      {/* 2. Signature Architecture Visualization */}
+      <CapabilitiesArchitecture />
+
+      {/* 3–5. Three Operating Arms (Consulting -> Systems -> AI Labs) */}
+      <CapabilitiesArmSection />
+
+      {/* 6. How The Arms Work Together Workflow */}
+      <CapabilitiesWorkflow />
+
+      {/* 7. Executive CTA Envelope */}
+      <Section id="capabilities-cta" bleed tone="canvas" className="py-24 md:py-36 text-center border-t border-line overflow-hidden">
+        <Container>
+          <Reveal className="mx-auto max-w-4xl rounded-3xl border border-forest/25 bg-[linear-gradient(135deg,var(--color-paper)_0%,var(--color-forest-wash)_100%)] p-10 sm:p-14 md:p-20 shadow-card relative overflow-hidden">
+            <div
+              className="grid-blueprint pointer-events-none absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,white,transparent)]"
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-forest-bright/15 blur-3xl"
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-teal/10 blur-3xl"
+              aria-hidden="true"
+            />
+
+            <div className="relative z-10 flex flex-col items-center">
+              <Eyebrow>NEXT STEPS</Eyebrow>
+              <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.08] text-ink">
+                {capabilitiesCta.title}
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-body">
+                {capabilitiesCta.body}
+              </p>
+              <div className="mt-9">
+                <Cta href="/contact" variant="primary">
+                  {capabilitiesCta.button}
+                </Cta>
               </div>
             </div>
-
-            {/* capability points as a clean panel grid — no split, no divider */}
-            <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {meta.points.map((p) => (
-                <li
-                  key={p}
-                  className="flex flex-col gap-3 rounded-2xl border border-line bg-paper p-5"
-                >
-                  <ArrowRight size={16} className="shrink-0 text-forest" />
-                  <span className="text-[0.9rem] font-medium leading-snug text-ink">
-                    {p}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Section>
-        );
-      })}
-
-      <Approach tone="mist" />
+          </Reveal>
+        </Container>
+      </Section>
     </>
   );
 }

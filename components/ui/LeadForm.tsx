@@ -39,7 +39,7 @@ export function LeadForm() {
         setSent(true);
       }}
       className="flex flex-col gap-5"
-      aria-label="Contact WnR Group"
+      aria-label="Contact WnRTech"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">

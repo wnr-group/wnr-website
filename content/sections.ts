@@ -56,9 +56,9 @@ export interface ApproachStep {
 }
 
 export const approach = {
-  eyebrow: "Our Approach",
-  heading: "We don't start with code. We start with your operations.",
-  intro: "Consulting → Systems → SaaS. A four-step method that maps your business before a single line is written.",
+  eyebrow: "CONSULTING → SYSTEMS → SAAS",
+  heading: "One engine, not three silos.",
+  intro: "",
   image: "/brand/approach-workshop.webp",
   imageAlt: "Two WnR consultants in discussion during a client discovery session",
   steps: [
@@ -201,13 +201,13 @@ export const culture = {
   eyebrow: "Inside WnR",
   heading: "A team obsessed with how businesses actually work.",
   intro:
-    "We're 25+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
+    "We're 23+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
   pillars: [
     { title: "We map before we build", body: "Every engineer here learns the business first. We sit with operations, watch the workflow, and find the leak before we write a line of code." },
     { title: "We stay for the outcome", body: "We measure ourselves in time saved and money recovered — not features shipped. The work isn't done at deployment; it's done when it's adopted." },
-    { title: "We build what's next", body: "AI-native from the ground up, productising what we learn into vertical operating systems. Every client engagement makes the whole portfolio smarter." },
+    { title: "We build intelligent systems", body: "AI-native from the ground up, productising what we learn into vertical operating systems. Every client engagement makes the whole portfolio smarter." },
   ],
-  recruitCta: "We're building what's next. Want in?",
+  recruitCta: "Build operational intelligence with us. Want in?",
 };
 
 /* ── 15 · Final CTA ──────────────────────────────────────────────────── */

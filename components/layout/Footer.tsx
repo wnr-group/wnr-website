@@ -54,7 +54,7 @@ export function Footer() {
           <div className="col-span-2 flex flex-col gap-4 md:col-span-4">
             <Logo light />
             <p className="max-w-xs text-sm leading-relaxed text-white/55">
-              {company.subTagline} Built from {company.hq}, for the world.
+              {company.subTagline} Built for the world.
             </p>
             <ul className="mt-2 flex flex-col gap-1.5">
               {recognition.map((r) => (
@@ -99,12 +99,6 @@ export function Footer() {
                 className="transition-colors hover:text-white hover:underline underline-offset-2"
               >
                 {company.email}
-              </a>
-              <a
-                href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                className="transition-colors hover:text-white hover:underline underline-offset-2"
-              >
-                {company.phone}
               </a>
             </div>
             <Link
