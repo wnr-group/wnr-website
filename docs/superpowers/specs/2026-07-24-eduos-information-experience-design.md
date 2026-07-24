@@ -76,7 +76,7 @@ Existing patterns I'm reusing rather than reinventing:
 ## Modal mechanics
 
 - Trigger: locally-styled `<button>` (base-ui `DialogTrigger`) — gold/forest themed to match `AboutEduOsAnchor`'s existing dark cinematic section, since `Cta.tsx` is `href`-only (Link-based) and can't be reused for a modal trigger without changing its contract.
-- Shell: `DialogPrimitive.Root` (`modal` default `true` → focus trap + scroll lock free), `Backdrop` (blurred glassmorphism), `Popup` sized `90vw` / `90vh`, rounded corners, soft shadow.
+- Shell: `DialogPrimitive.Root` (`modal` default `true` → focus trap + scroll lock free), `Backdrop` (blurred glassmorphism that is fullscreen), `Popup` sized `90vw` / `90vh` (retains visible margins), rounded corners, soft shadow.
 - Open/close animation: CSS transitions keyed to Base UI's `data-starting-style` / `data-open` / `data-ending-style` attributes (opacity + scale), respecting `motion-reduce:`. No AnimatePresence needed — Base UI manages mount/unmount timing itself.
 - Internal scroll: the Popup is the scroll container; `Reveal`/`Stagger`/`whileInView` work correctly inside it (IntersectionObserver clips through nested scroll containers by default, confirmed against the existing `HiringProcess.tsx` sibling pattern).
 - Close: header close button + ESC + outside-click, all via Base UI defaults.
@@ -84,7 +84,7 @@ Existing patterns I'm reusing rather than reinventing:
 ## Verification plan
 
 - `npx tsc --noEmit` and `npm run lint` — no errors
-- New Vitest test (`EduOsModal.test.tsx`) — trigger opens modal, all major headings present (Hero, Why EduOS Exists, Our Mission, Our Vision, Our Core Values, Roadmap years, Closing tagline), ESC closes
+- New Vitest test (`EduOsModal.test.tsx`) — trigger opens modal, all major headings present (Hero, A Wing of WnR Advisory, Why EduOS Exists, Our Purpose, Our Mission, Our Vision, Our Core Values, Roadmap years, Looking Ahead, Closing tagline), ESC closes. This prevents any required mapped source section from being omitted.
 - Manual dev-server pass: desktop/tablet/mobile viewport check, keyboard-only navigation through the modal, `prefers-reduced-motion` toggle check
 - Confirm `git diff` touches only the files listed above — nothing else in the repo changes
 

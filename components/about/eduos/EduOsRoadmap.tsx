@@ -20,11 +20,12 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  *  reuse the same useScroll/useTransform choreography already proven in
  *  components/sections/careers/HiringProcess.tsx (pattern only — that file is
  *  untouched). Count-up numbers reuse hooks/useCountUp.ts unmodified. */
-export function EduOsRoadmap() {
+export function EduOsRoadmap({ scrollContainerRef }: { scrollContainerRef: React.RefObject<HTMLDivElement | null> }) {
   const { roadmap } = eduOsExperience;
   const trackRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
+    container: scrollContainerRef,
     target: trackRef,
     offset: ["start 0.85", "end 0.6"],
   });

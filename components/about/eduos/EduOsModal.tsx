@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { Sparkles, X } from "lucide-react";
@@ -30,6 +30,7 @@ const EduOsStory = dynamic(() => import("./EduOsStory").then((mod) => mod.EduOsS
 export function EduOsModal({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const [everOpened, setEverOpened] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
     <DialogPrimitive.Root
@@ -81,8 +82,8 @@ export function EduOsModal({ className }: { className?: string }) {
           </div>
 
           {/* Scrollable story — lazy-loaded, only mounted after first open */}
-          <div className="relative z-10 flex-1 overflow-y-auto overscroll-contain px-5 py-14 sm:px-10 sm:py-20 lg:px-16">
-            {everOpened && <EduOsStory onClose={() => setOpen(false)} />}
+          <div ref={scrollContainerRef} className="relative z-10 flex-1 overflow-y-auto overscroll-contain px-5 py-14 sm:px-10 sm:py-20 lg:px-16">
+            {everOpened && <EduOsStory onClose={() => setOpen(false)} scrollContainerRef={scrollContainerRef} />}
           </div>
         </DialogPrimitive.Popup>
       </DialogPrimitive.Portal>

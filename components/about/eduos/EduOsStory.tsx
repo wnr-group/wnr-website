@@ -12,7 +12,7 @@ import { EduOsClosing } from "./EduOsClosing";
    Popup scroll container; dynamically imported from there so none of this
    (or the roadmap's scroll-progress logic) enters the About page's initial
    bundle. */
-export function EduOsStory({ onClose }: { onClose: () => void }) {
+export function EduOsStory({ onClose, scrollContainerRef }: { onClose: () => void; scrollContainerRef: React.RefObject<HTMLDivElement | null> }) {
   const { hero, story, whyWeStarted } = eduOsExperience;
 
   return (
@@ -77,7 +77,7 @@ export function EduOsStory({ onClose }: { onClose: () => void }) {
 
       <EduOsMissionVision />
       <EduOsCoreValues />
-      <EduOsRoadmap />
+      <EduOsRoadmap scrollContainerRef={scrollContainerRef} />
       <EduOsClosing onClose={onClose} />
     </>
   );

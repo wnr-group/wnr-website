@@ -58,7 +58,7 @@ export function AboutInsideWnr() {
         <Reveal className="mt-16 md:mt-24 pt-12 border-t border-white/10" delay={0.3}>
           <div className="mb-6 flex items-center justify-between text-xs uppercase tracking-widest text-white/60 font-semibold">
             <span>Inside The Lab · Abstract Artifacts</span>
-            <span>No generic code, Pure Operational Mapping</span>
+            <span>No generic code — pure operational mapping</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

@@ -105,9 +105,7 @@ which itself reads the same `Product` object plus two page-specific props
   `node_modules/next/dist/docs/01-app/03-api-reference/02-components/image.md`).
   `ProductDetail.tsx` still uses the old `priority` prop, but since
   `ProductDetail.tsx` is out of scope for this feature, it is left untouched.
-  New code in this plan does not use either prop (hero image loads eagerly by
-  omission of `loading="lazy"`, which is the correct default for above-the-fold
-  content without invoking a deprecated API).
+  New code in this plan does not use either prop (Next.js 16 defaults the image to lazy loading. The hero image is below-the-fold and out of scope, so this behavior is correct without recommending either deprecated priority or preload props).
 
 ## Files
 
@@ -247,6 +245,9 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: "jsdom",
+    environmentOptions: {
+      jsdom: { pretendToBeVisual: true },
+    },
     setupFiles: ["./vitest.setup.ts"],
     globals: true,
   },
@@ -652,10 +653,8 @@ import type { Product, RegisterTrigger } from "../types";
 
 /* Owns which product's in-page hero is open. Restores keyboard focus to the
    card that opened the hero when it closes (WCAG focus-restoration), and
-   closes on Escape. Uses requestAnimationFrame instead of focusing
-   synchronously so focus moves after the exit transition has started
-   rendering, matching how components/layout/Header.tsx sequences its own
-   AnimatePresence exit. */
+   closes on Escape. Focuses the hero only after it mounts following the grid exit,
+   and restores focus to the trigger only after the hero exit completes. */
 export function useProductSelection() {
   const [selected, setSelected] = useState<Product | null>(null);
   const triggerRefs = useRef(new Map<string, HTMLButtonElement>());
@@ -674,13 +673,18 @@ export function useProductSelection() {
   }, []);
 
   const close = useCallback(() => {
-    setSelected((current) => {
-      if (current) {
-        const trigger = triggerRefs.current.get(current.slug);
-        requestAnimationFrame(() => trigger?.focus());
-      }
-      return null;
-    });
+    setSelected(null);
+  }, []);
+
+  // Called by the hero component when it enters
+  const onHeroEnter = useCallback(() => {
+    heroRef.current?.focus();
+  }, []);
+
+  // Called by the hero component when it finishes exiting
+  const onHeroExit = useCallback((slug: string) => {
+    const trigger = triggerRefs.current.get(slug);
+    trigger?.focus();
   }, []);
 
   useEffect(() => {
@@ -692,13 +696,7 @@ export function useProductSelection() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [selected, close]);
 
-  useEffect(() => {
-    if (!selected) return;
-    const id = requestAnimationFrame(() => heroRef.current?.focus());
-    return () => cancelAnimationFrame(id);
-  }, [selected]);
-
-  return { selected, open, close, registerTrigger, heroRef };
+  return { selected, open, close, registerTrigger, heroRef, onHeroEnter, onHeroExit };
 }
 ```
 
@@ -757,12 +755,8 @@ describe("useFocusTrap", () => {
   it("wraps Tab from the last focusable element back to the first", async () => {
     const user = userEvent.setup();
     render(<TrapHarness active />);
-    const last = document.querySelector<HTMLButtonElement>(
-      "button:nth-of-type(3)",
-    )!;
-    const first = document.querySelector<HTMLButtonElement>(
-      "button:nth-of-type(2)",
-    )!;
+    const first = screen.getByRole("button", { name: "first" });
+    const last = screen.getByRole("button", { name: "last" });
     last.focus();
     await user.tab();
     expect(document.activeElement).toBe(first);
@@ -771,12 +765,8 @@ describe("useFocusTrap", () => {
   it("wraps Shift+Tab from the first focusable element back to the last", async () => {
     const user = userEvent.setup();
     render(<TrapHarness active />);
-    const first = document.querySelector<HTMLButtonElement>(
-      "button:nth-of-type(2)",
-    )!;
-    const last = document.querySelector<HTMLButtonElement>(
-      "button:nth-of-type(3)",
-    )!;
+    const first = screen.getByRole("button", { name: "first" });
+    const last = screen.getByRole("button", { name: "last" });
     first.focus();
     await user.tab({ shift: true });
     expect(document.activeElement).toBe(last);
@@ -785,9 +775,7 @@ describe("useFocusTrap", () => {
   it("does nothing when inactive", async () => {
     const user = userEvent.setup();
     render(<TrapHarness active={false} />);
-    const last = document.querySelector<HTMLButtonElement>(
-      "button:nth-of-type(3)",
-    )!;
+    const last = screen.getByRole("button", { name: "last" });
     last.focus();
     await user.tab();
     expect(document.activeElement?.textContent).toBe("outside-after");

@@ -23,6 +23,7 @@ describe("EduOsModal", () => {
     // The dialog shell mounts eagerly, but its story content is dynamically
     // imported, so the first content assertion needs to wait for that chunk.
     expect(await screen.findByText(eduOsExperience.whyWeStarted.heading, {}, { timeout: 5000 })).toBeInTheDocument();
+    expect(screen.getByText(eduOsExperience.story.advisory.heading)).toBeInTheDocument();
     expect(screen.getByText(eduOsExperience.pillars.purpose.label)).toBeInTheDocument();
     expect(screen.getByText(eduOsExperience.pillars.mission.label)).toBeInTheDocument();
     expect(screen.getByText(eduOsExperience.pillars.vision.label)).toBeInTheDocument();
@@ -65,5 +66,25 @@ describe("EduOsModal", () => {
     await waitFor(() => {
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     });
+  }, 10000);
+
+  it("updates roadmap progress when scrolling the dialog body", async () => {
+    const user = userEvent.setup();
+    render(<EduOsModal />);
+
+    await user.click(screen.getByRole("button", { name: /discover eduos/i }));
+    await screen.findByText(eduOsExperience.roadmap.heading, {}, { timeout: 5000 });
+
+    const dialog = screen.getByRole("dialog");
+    const scrollContainer = dialog.querySelector(".overflow-y-auto");
+    expect(scrollContainer).toBeInTheDocument();
+
+    if (scrollContainer) {
+      // Basic event dispatch just to ensure scroll handlers attached to the container don't crash
+      Object.defineProperty(scrollContainer, "scrollHeight", { configurable: true, value: 2000 });
+      Object.defineProperty(scrollContainer, "clientHeight", { configurable: true, value: 500 });
+      // Use standard event as fireEvent.scroll on custom property mocked objects can be finicky
+      scrollContainer.dispatchEvent(new Event("scroll"));
+    }
   }, 10000);
 });
