@@ -30,6 +30,10 @@ interface SectionProps {
    * soon as any part enters view instead of a fixed fraction of the whole.
    */
   revealAmount?: number | "some" | "all";
+  /** Overrides the translateY (px) the section rises from on entry. Defaults to Reveal's own default (16). */
+  revealY?: number;
+  /** Overrides the reveal fade/rise duration in seconds. Defaults to Reveal's own default (0.55). */
+  revealDuration?: number;
   children: React.ReactNode;
 }
 
@@ -46,6 +50,8 @@ export function Section({
   bleed = false,
   reveal = true,
   revealAmount,
+  revealY,
+  revealDuration,
   children,
 }: SectionProps) {
   const inner = bleed ? (
@@ -66,7 +72,13 @@ export function Section({
         className,
       )}
     >
-      {reveal ? <Reveal amount={revealAmount}>{inner}</Reveal> : inner}
+      {reveal ? (
+        <Reveal amount={revealAmount} y={revealY} duration={revealDuration}>
+          {inner}
+        </Reveal>
+      ) : (
+        inner
+      )}
     </section>
   );
 }

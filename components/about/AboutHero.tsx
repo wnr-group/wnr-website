@@ -50,7 +50,7 @@ export function AboutHero() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Cta href="/contact" variant="primary">
                 Work With Us
-                <ArrowRight size={16} />
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Cta>
               <Cta href="/capabilities" variant="outline">
                 Explore Our Capabilities

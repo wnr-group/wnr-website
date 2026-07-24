@@ -5,6 +5,7 @@ import { Sparkles, ArrowRight } from "lucide-react";
 import { Section, Container } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/motion";
 import { aboutEduOsAnchor } from "@/content/about";
+import { EduOsModal } from "@/components/about/eduos/EduOsModal";
 import { cn } from "@/lib/utils";
 
 export function AboutEduOsAnchor() {
@@ -14,6 +15,8 @@ export function AboutEduOsAnchor() {
     <Section
       id="eduos-2040-anchor"
       bleed
+      revealY={40}
+      revealDuration={0.8}
       className="relative py-32 md:py-48 bg-[#0b2e20] text-white overflow-hidden border-b border-line/10 shadow-2xl"
     >
       {/* Cinematic dark/radial backgrounds & Blueprint pattern */}
@@ -119,6 +122,11 @@ export function AboutEduOsAnchor() {
                 })}
               </div>
             </div>
+          </Reveal>
+
+          {/* CTA into the full EduOS storytelling modal — isolated component, lazy-loaded on click */}
+          <Reveal y={20} delay={0.6} className="mt-14">
+            <EduOsModal />
           </Reveal>
         </div>
       </Container>

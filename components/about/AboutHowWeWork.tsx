@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function AboutHowWeWork() {
   return (
-    <Section id="how-we-work" tone="canvas" className="py-24 md:py-36 border-b border-line overflow-hidden">
+    <Section id="how-we-work" tone="canvas" revealY={40} revealDuration={0.8} className="py-24 md:py-36 border-b border-line overflow-hidden">
       <Container>
         <Reveal className="mb-16 md:mb-24 text-center max-w-2xl mx-auto">
           <div className="flex justify-center">
@@ -41,7 +41,7 @@ export function AboutHowWeWork() {
                   {principle.number}
                 </div>
 
-                <div className={cn("rounded-3xl border border-line bg-paper p-7 shadow-sm transition-all duration-300 hover:shadow-card-hover w-full flex-1 flex flex-col justify-start text-left")}>
+                <div className={cn("rounded-3xl border border-line bg-paper p-7 shadow-sm transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1.5 hover:border-forest/40 w-full flex-1 flex flex-col justify-start text-left")}>
                   <h3 className="font-display text-xl font-bold text-ink leading-snug">
                     {principle.title}
                   </h3>
@@ -74,7 +74,7 @@ export function AboutHowWeWork() {
                 {principle.number}
               </div>
 
-              <div className={cn("rounded-3xl border border-line bg-paper p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-card")}>
+              <div className={cn("rounded-3xl border border-line bg-paper p-6 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1.5 hover:border-forest/40")}>
                 <h3 className="font-display text-xl font-bold text-ink leading-snug">
                   {principle.title}
                 </h3>
