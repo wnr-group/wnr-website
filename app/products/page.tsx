@@ -20,7 +20,7 @@ export default function ProductsPage() {
             Industry operating systems, <span className="text-forest">productised.</span>
           </>
         }
-        lead="We turn real operational experience into vertical SaaS — software that runs an entire category of business, not just one department of it."
+        lead="We turn real operational experience into vertical SaaS: software that runs an entire category of business, not just one department of it."
       >
         <Cta href="/contact" variant="primary">
           Talk to us

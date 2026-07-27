@@ -34,7 +34,7 @@ export const eduOsExperience = {
     paragraphs: [
       "While schools have embraced technology to digitise administration, the true purpose of education extends far beyond attendance registers, examinations, and report cards. Every student carries a unique combination of abilities, aspirations, challenges, and talents that deserve to be recognised and nurtured.",
       "EduOS exists to bridge this gap.",
-      "We are building an ecosystem where technology serves education with purpose—helping schools understand learners better, enabling teachers with meaningful insights, strengthening collaboration with parents, and empowering students to discover their own strengths.",
+      "We are building an ecosystem where technology serves education with purpose: helping schools understand learners better, enabling teachers with meaningful insights, strengthening collaboration with parents, and empowering students to discover their own strengths.",
       "More than a platform, EduOS is designed to be a trusted companion throughout a student's educational journey.",
     ],
     advisory: {
@@ -43,7 +43,7 @@ export const eduOsExperience = {
         "EduOS is an education initiative developed by WnR Advisory, a consulting and technology firm focused on creating practical, human-centred digital solutions for organisations.",
         "At WnR Advisory, our philosophy is reflected in our name: Wisdom and Results.",
         "We believe that meaningful technology should simplify complexity, support better decisions, and create measurable impact.",
-        "Drawing on our experience in digital transformation, data strategy, and technology consulting, we established EduOS with a single purpose—to apply these capabilities where they can make one of the greatest long-term differences: education.",
+        "Drawing on our experience in digital transformation, data strategy, and technology consulting, we established EduOS with a single purpose: to apply these capabilities where they can make one of the greatest long-term differences in education.",
         "By combining educational understanding with thoughtful technology, we aim to help schools move beyond administration and towards truly student-centred learning.",
       ],
     },
@@ -55,7 +55,7 @@ export const eduOsExperience = {
       "Schools generate valuable information every day. Students create stories of perseverance, curiosity, improvement, leadership, creativity, and resilience.",
       "Yet much of this information remains scattered across registers, spreadsheets, examination records, and disconnected systems. As a result, opportunities to understand and support students can be missed.",
       "EduOS was created to change this.",
-      "Our goal is to transform educational information into meaningful understanding—helping educators recognise strengths earlier, identify learning needs sooner, and make informed decisions that support every learner's growth.",
+      "Our goal is to transform educational information into meaningful understanding, helping educators recognise strengths earlier, identify learning needs sooner, and make informed decisions that support every learner's growth.",
       "We believe that when schools understand students better, students gain a greater opportunity to realise their full potential.",
     ],
   },
@@ -95,7 +95,7 @@ export const eduOsExperience = {
         icon: "GraduationCap",
         title: "Empower Educators",
         body: [
-          "Technology should reduce administrative burden and allow teachers to focus on what matters most—inspiring and mentoring students.",
+          "Technology should reduce administrative burden and allow teachers to focus on what matters most: inspiring and mentoring students.",
         ],
       },
       {
@@ -182,7 +182,7 @@ export const eduOsExperience = {
         title: "A Lifelong Educational Companion",
         paragraphs: [
           "Our ambition extends beyond a number.",
-          "We envision EduOS becoming a lifelong educational companion—supporting learners through every stage of their academic journey while helping institutions make informed, compassionate, and impactful decisions.",
+          "We envision EduOS becoming a lifelong educational companion, supporting learners through every stage of their academic journey while helping institutions make informed, compassionate, and impactful decisions.",
           "As education evolves, so will EduOS.",
         ],
       },

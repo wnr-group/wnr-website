@@ -30,11 +30,11 @@ export const whyWorkWithUs = {
   eyebrow: "Why Work With WnR",
   heading: "Real ownership, from day one.",
   intro:
-    "You won't be a cog in a delivery machine. Every engineer, consultant, and designer here owns outcomes — not just tickets.",
+    "You won't be a cog in a delivery machine. Every engineer, consultant, and designer here owns outcomes, not just tickets.",
   reasons: [
     {
       title: "Ship what you build",
-      body: "No hand-off to a separate delivery team — you scope it, build it, implement it with the client, and see the outcome land.",
+      body: "No hand-off to a separate delivery team. You scope it, build it, implement it with the client, and see the outcome land.",
       icon: "growth",
     },
     {
@@ -67,7 +67,7 @@ export const benefits = {
     },
     {
       title: "Learning budget",
-      body: "An annual budget for courses, books, and conferences — your growth compounds ours.",
+      body: "An annual budget for courses, books, and conferences. Your growth compounds ours.",
       icon: "growth",
     },
     {
@@ -99,9 +99,9 @@ export const hiringProcess = {
   heading: "How we hire.",
   intro: "Four steps, no black box. We move fast and tell you where you stand at every stage.",
   steps: [
-    { num: "01", title: "Apply", body: "Send your resume against a role — or submit it speculatively if nothing's open yet." },
+    { num: "01", title: "Apply", body: "Send your resume for a role, or submit it speculatively if nothing's open yet." },
     { num: "02", title: "Screen", body: "A 30-minute call with our team to understand your background and what you're looking for." },
-    { num: "03", title: "Interview", body: "A working session on real problems from our client engagements — no whiteboard trivia." },
+    { num: "03", title: "Interview", body: "A working session on real problems from our client engagements. No whiteboard trivia." },
     { num: "04", title: "Offer", body: "We move fast on a decision and make an offer within days of your final interview." },
   ] satisfies HiringStep[],
 };
@@ -115,7 +115,7 @@ export const openings: Job[] = [
     employmentType: "Full-time",
     experience: "4-7 years",
     description:
-      "Own features end-to-end across our client platforms and vertical SaaS products — from data model to deployed UI.",
+      "Own features end-to-end across our client platforms and vertical SaaS products, from data model to deployed UI.",
   },
   {
     id: "operations-consultant",
@@ -135,7 +135,7 @@ export const openings: Job[] = [
     employmentType: "Full-time",
     experience: "2-5 years",
     description:
-      "Build the automation and intelligence layer that ships inside every WnR product — from workflow copilots to operational forecasting.",
+      "Build the automation and intelligence layer that ships inside every WnR product, from workflow copilots to operational forecasting.",
   },
   {
     id: "product-designer",
@@ -145,7 +145,7 @@ export const openings: Job[] = [
     employmentType: "Full-time",
     experience: "3-6 years",
     description:
-      "Design the interfaces real operators use every day — dense, fast, and built around how the workflow actually happens.",
+      "Design the interfaces real operators use every day: dense, fast, and built around how the workflow actually happens.",
   },
 ];
 

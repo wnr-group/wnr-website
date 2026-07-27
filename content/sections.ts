@@ -25,27 +25,27 @@ export const whatWeBuild = {
   pillars: [
     {
       title: "Custom Software & Systems",
-      body: "Bespoke operational platforms, ERP systems, web platforms, and mobile apps — built around your workflows, not off-the-shelf compromises. One system replacing scattered spreadsheets and WhatsApp groups.",
+      body: "Bespoke operational platforms, ERP systems, web platforms, and mobile apps built around your workflows, not off-the-shelf compromises. One system replacing scattered spreadsheets and WhatsApp groups.",
       icon: "system",
       image: "/brand/build-systems.webp",
       accent: "forest",
     },
     {
       title: "AI-Native Workflows",
-      body: "AI-enabled automation that removes manual effort and surfaces real operational intelligence — smart approvals, insights, and workflow optimisation built in from the ground up.",
+      body: "AI-enabled automation that removes manual effort and surfaces real operational intelligence: smart approvals, insights, and workflow optimisation built in from the ground up.",
       icon: "ai",
       image: "/brand/build-ai.webp",
       accent: "teal",
     },
     {
       title: "Vertical SaaS Products",
-      body: "Industry-specific operating systems — EduOS, ArenaOS, and more — productised from real operational experience and ready to scale.",
+      body: "Industry-specific operating systems (EduOS, ArenaOS, and more) productised from real operational experience and ready to scale.",
       icon: "saas",
       image: "/brand/build-saas.webp",
       accent: "amber",
     },
   ] satisfies Pillar[],
-  closer: "One partner — from strategy to system to support.",
+  closer: "One partner, from strategy to system to support.",
 };
 
 /* ── 5 · Our Approach ────────────────────────────────────────────────── */
@@ -63,9 +63,9 @@ export const approach = {
   imageAlt: "Two WnR consultants in discussion during a client discovery session",
   steps: [
     { num: "01", title: "Map", body: "We map your workflows and pinpoint exactly where time and money leak today." },
-    { num: "02", title: "Build", body: "We build the right system around your operations — purpose-built, never a generic tool." },
+    { num: "02", title: "Build", body: "We build the right system around your operations: purpose-built, never a generic tool." },
     { num: "03", title: "Implement & Train", body: "We deploy, configure to your real workflows, and train your team to full adoption." },
-    { num: "04", title: "Partner", body: "We stay on — monthly support, reviews, and improvements. We don't build and leave." },
+    { num: "04", title: "Partner", body: "We stay on for monthly support, reviews, and improvements. We don't build and leave." },
   ] satisfies ApproachStep[],
 };
 
@@ -105,7 +105,7 @@ export interface ValueCard {
 export const values: ValueCard[] = [
   {
     title: "Long-term Partnership",
-    body: "We don't just launch projects — we stay to optimize, scale, and grow with your business. Our relationship begins where most engagements end.",
+    body: "We don't just launch projects. We stay to optimize, scale, and grow with your business. Our relationship begins where most engagements end.",
     icon: "partnership",
   },
   {
@@ -120,7 +120,7 @@ export const values: ValueCard[] = [
   },
   {
     title: "AI-Native Innovation",
-    body: "AI isn't an add-on — it's how we build. We embed intelligent automation into everyday operations to improve efficiency, decision-making, and continuous growth.",
+    body: "AI isn't an add-on. It's how we build. We embed intelligent automation into everyday operations to improve efficiency, decision-making, and continuous growth.",
     icon: "ai",
   },
 ];
@@ -175,7 +175,7 @@ export const work = {
     {
       tag: "Logistics",
       title: "Freight & Customs Operations",
-      body: "Automated logistics pipeline — shipment booking, documentation, customs workflow, and live delivery monitoring.",
+      body: "Automated logistics pipeline covering shipment booking, documentation, customs workflow, and live delivery monitoring.",
       result: "Real-time shipment visibility, fewer delays, streamlined customs coordination.",
       image: "/brand/case-logistics.webp",
       accent: "teal",
@@ -187,7 +187,7 @@ export const work = {
 export const technology = {
   eyebrow: "Technology",
   heading: "Modern full-stack engineering.",
-  body: "Scalable, high-performance, SEO-ready platforms — web applications, multi-portal systems, talent marketplaces, e-commerce, and high-performance landing pages.",
+  body: "Scalable, high-performance, SEO-ready platforms: web applications, multi-portal systems, talent marketplaces, e-commerce, and high-performance landing pages.",
   layers: [
     { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
     { label: "Backend", items: ["Node.js", "Python", "PostgreSQL", "REST / GraphQL"] },
@@ -201,10 +201,10 @@ export const culture = {
   eyebrow: "Inside WnR",
   heading: "A team obsessed with how businesses actually work.",
   intro:
-    "We're 23+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
+    "We're 23+ engineers, strategists, and operators who believe the hard part was never the code. It's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
   pillars: [
     { title: "We map before we build", body: "Every engineer here learns the business first. We sit with operations, watch the workflow, and find the leak before we write a line of code." },
-    { title: "We stay for the outcome", body: "We measure ourselves in time saved and money recovered — not features shipped. The work isn't done at deployment; it's done when it's adopted." },
+    { title: "We stay for the outcome", body: "We measure ourselves in time saved and money recovered rather than features shipped. The work is only complete when fully adopted." },
     { title: "We build intelligent systems", body: "AI-native from the ground up, productising what we learn into vertical operating systems. Every client engagement makes the whole portfolio smarter." },
   ],
   recruitCta: "Build operational intelligence with us. Want in?",
@@ -213,6 +213,6 @@ export const culture = {
 /* ── 15 · Final CTA ──────────────────────────────────────────────────── */
 export const finalCta = {
   heading: "Let's talk about your operations.",
-  body: "Whether you're streamlining operations, building a custom platform, or adopting an industry operating system — WnR is ready. Together we build, together we grow.",
+  body: "Whether you're streamlining operations, building a custom platform, or adopting an industry operating system, WnR is ready. Together we build, together we grow.",
   ctaLabel: "Start Your Journey",
 };

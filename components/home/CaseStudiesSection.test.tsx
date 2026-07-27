@@ -36,8 +36,8 @@ describe("CaseStudiesSection", () => {
   it("renders the Result line only on the featured card", () => {
     render(<CaseStudiesSection />);
 
-    // Check that "Result —" appears once (for the featured large card)
-    const resultTags = screen.getAllByText(/Result —/i);
+    // Check that "Result:" appears once (for the featured large card)
+    const resultTags = screen.getAllByText(/Result:/i);
     expect(resultTags).toHaveLength(1);
     expect(
       screen.getByText(/~60% reduction in manual processes, faster recruiter coordination, data-driven placement insights\./i)

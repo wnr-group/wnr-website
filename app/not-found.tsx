@@ -14,7 +14,7 @@ export default function NotFound() {
           This page hasn&rsquo;t been built yet.
         </h1>
         <p className="text-body">
-          The page you&rsquo;re looking for doesn&rsquo;t exist — but the system
+          The page you&rsquo;re looking for doesn&rsquo;t exist, but the system
           that does is one click away.
         </p>
         <Cta href="/" variant="primary" className="mt-2">

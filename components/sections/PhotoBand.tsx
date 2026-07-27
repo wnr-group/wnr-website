@@ -32,12 +32,12 @@ export function PhotoBand() {
         <Reveal>
           <p className="eyebrow text-forest-bright">Built for the long term</p>
           <blockquote className="mt-6 max-w-2xl font-display text-3xl font-bold leading-[1.12] text-white md:text-[2.75rem]">
-            We don&rsquo;t build and leave. We build, implement, train your team —{" "}
+            We don&rsquo;t build and leave. We build, implement, train your team{" "}
             <span className="text-forest-bright">and stay.</span>
           </blockquote>
           <p className="mt-6 max-w-lg text-[length:var(--text-lead)] leading-relaxed text-white/75">
             The relationship begins where most engagements end. Monthly support,
-            reviews, and continuous improvement — a genuine operational partner.
+            reviews, and continuous improvement. A genuine operational partner.
           </p>
         </Reveal>
       </div>

@@ -12,7 +12,7 @@ export interface BrandImage {
 export const media: Record<string, BrandImage | null> = {
   office: {
     src: "/brand/photo-office.webp",
-    alt: "A calm, modern WnR workspace — glass meeting rooms, warm wood, forest-green furniture and daylight",
+    alt: "A calm, modern WnR workspace with glass meeting rooms, warm wood, forest-green furniture and daylight",
     width: 1920,
     height: 1086,
   },

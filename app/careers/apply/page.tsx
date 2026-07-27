@@ -114,7 +114,7 @@ export default async function CareersApplyPage({ searchParams }: ApplyPageProps)
 
             <dl className="flex flex-col gap-4 border-t border-line pt-8">
               <ProcessStep num="01" label="Apply" body="Complete the form and upload your resume." />
-              <ProcessStep num="02" label="Review" body="We review every submission — no automated filters." />
+              <ProcessStep num="02" label="Review" body="We review every submission. No automated filters." />
               <ProcessStep num="03" label="Screen" body="A 30-minute call with our team within 5 business days." />
               <ProcessStep num="04" label="Offer" body="Fast decisions, no whiteboard trivia." />
             </dl>

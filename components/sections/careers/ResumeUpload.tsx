@@ -125,7 +125,7 @@ export function ResumeUpload() {
             Drag and drop your resume, or{" "}
             <span className="text-forest underline underline-offset-2">browse</span>
           </p>
-          <p className="mt-1 text-xs text-muted">PDF, DOC, or DOCX — up to 4MB</p>
+          <p className="mt-1 text-xs text-muted">PDF, DOC, or DOCX, up to 4MB</p>
         </div>
         <input
           ref={inputRef}

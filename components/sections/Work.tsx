@@ -76,7 +76,7 @@ export function Work({ showLink = false }: { showLink?: boolean }) {
             </p>
             <p className="mt-5 border-t border-white/15 pt-4 text-[0.9rem] font-medium leading-relaxed text-white/90">
               <span className={cn("font-semibold", accentText[featured.accent])}>
-                Result —{" "}
+                Result:{" "}
               </span>
               {featured.result}
             </p>

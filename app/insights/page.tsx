@@ -14,7 +14,7 @@ const articles = [
   {
     tag: "Perspective",
     title: "Why implementation depth beats features",
-    body: "The moat was never the code. It's understanding the business well enough to build the system it truly needs — and staying to make it stick.",
+    body: "The moat was never the code. It's understanding the business well enough to build the system it truly needs, and staying to make it stick.",
   },
   {
     tag: "AI-Native",
@@ -24,7 +24,7 @@ const articles = [
   {
     tag: "Playbook",
     title: "Mapping a business before writing a line of code",
-    body: "Our four-step method — Map, Build, Implement & Train, Partner — and why it starts on the operations floor, not the codebase.",
+    body: "Our four-step method (Map, Build, Implement & Train, Partner) and why it starts on the operations floor, not the codebase.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function InsightsPage() {
             </h2>
             <p className="mt-6 text-[0.95rem] leading-relaxed text-body">
               A newsletter for operators and founders on turning complexity into
-              clarity. No fluff — just what we learn building systems that stick.
+              clarity. What we share is what we learn building systems that stick.
             </p>
             <form
               className="mt-7 flex flex-col gap-3 sm:flex-row"

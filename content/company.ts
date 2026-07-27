@@ -15,11 +15,11 @@ export const company = {
   address: "115 D, First Floor, TIDEL Park, No.4, Rajiv Gandhi Salai, Taramani, Chennai - 600113",
 
   heroBody:
-    "We build the operational brain of your business — custom platforms, AI-native workflows, and vertical SaaS products that replace scattered tools with one intelligent system. We don't just build it. We implement it, train your team, and stay.",
+    "We build the operational brain of your business: custom platforms, AI-native workflows, and vertical SaaS products that replace scattered tools with one intelligent system. We build it, implement it, train your team, and stay.",
 
   // Section 14 — Vision
   mission:
-    "To become the most trusted AI-native operational intelligence company — helping businesses transform complexity into clarity.",
+    "To become the most trusted AI-native operational intelligence company, helping businesses transform complexity into clarity.",
   vision:
     "A portfolio of industry operating systems that replace chaos with clarity, across every sector where businesses operate.",
   coreBelief:
@@ -41,5 +41,5 @@ export const proofStats: ProofStat[] = [
 
 export const recognition = [
   "Redex People Power Award",
-  "Official Technology Partner — Testio",
+  "Official Technology Partner: Testio",
 ];
