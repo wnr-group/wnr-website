@@ -9,12 +9,12 @@ import { cn } from "@/lib/utils";
 
 export function AboutMissionVision() {
   return (
-    <Section id="mission-vision" tone="mist" className="py-24 md:py-36 border-b border-line overflow-hidden">
+    <Section id="mission-vision" tone="mist" revealY={40} revealDuration={0.8} className="py-24 md:py-36 border-b border-line overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           {/* Mission Block */}
           <Reveal className="h-full" delay={0.1}>
-            <div className={cn("group relative h-full flex flex-col justify-between rounded-3xl border border-line bg-paper p-8 sm:p-12 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1")}>
+            <div className={cn("group relative h-full flex flex-col justify-between rounded-3xl border border-line bg-paper p-8 sm:p-12 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1.5 hover:border-forest/40")}>
               <div
                 className="grid-blueprint pointer-events-none absolute inset-0 opacity-20"
                 aria-hidden="true"
@@ -22,7 +22,7 @@ export function AboutMissionVision() {
               <div>
                 <div className="flex items-center justify-between gap-4 pb-8 border-b border-line">
                   <Eyebrow>{aboutMission.eyebrow}</Eyebrow>
-                  <div className="rounded-xl bg-forest-wash p-3 text-forest group-hover:bg-forest group-hover:text-white transition-colors duration-300">
+                  <div className="rounded-xl bg-forest-wash p-3 text-forest group-hover:bg-forest group-hover:text-white transition-all duration-300 group-hover:scale-[1.08]">
                     <Compass size={22} />
                   </div>
                 </div>
@@ -41,7 +41,7 @@ export function AboutMissionVision() {
 
           {/* Vision Block */}
           <Reveal className="h-full" delay={0.2}>
-            <div className={cn("group relative h-full flex flex-col justify-between rounded-3xl border border-forest/30 bg-[linear-gradient(135deg,var(--color-forest)_0%,var(--color-forest-deep)_100%)] p-8 sm:p-12 text-white shadow-card transition-all duration-300 overflow-hidden hover:shadow-card-hover hover:-translate-y-1")}>
+            <div className={cn("group relative h-full flex flex-col justify-between rounded-3xl border border-forest/30 bg-[linear-gradient(135deg,var(--color-forest)_0%,var(--color-forest-deep)_100%)] p-8 sm:p-12 text-white shadow-card transition-all duration-300 overflow-hidden hover:shadow-card-hover hover:-translate-y-1.5 hover:border-forest-bright/50")}>
               <div
                 className="grid-blueprint pointer-events-none absolute inset-0 opacity-30 [mask-image:linear-gradient(to_bottom,white,transparent)]"
                 aria-hidden="true"
@@ -54,7 +54,7 @@ export function AboutMissionVision() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-4 pb-8 border-b border-white/15">
                   <Eyebrow onDark>{aboutVision.eyebrow}</Eyebrow>
-                  <div className="rounded-xl bg-white/10 p-3 text-white backdrop-blur-sm group-hover:bg-white group-hover:text-forest transition-colors duration-300">
+                  <div className="rounded-xl bg-white/10 p-3 text-white backdrop-blur-sm group-hover:bg-white group-hover:text-forest transition-all duration-300 group-hover:scale-[1.08]">
                     <Eye size={22} />
                   </div>
                 </div>

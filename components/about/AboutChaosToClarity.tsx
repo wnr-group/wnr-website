@@ -24,18 +24,18 @@ export function AboutChaosToClarity() {
   const [isClarity, setIsClarity] = useState(true);
 
   return (
-    <Section id="why-we-exist" tone="canvas" className="py-24 md:py-36 border-b border-line overflow-hidden">
+    <Section id="why-we-exist" tone="canvas" revealY={40} revealDuration={0.8} className="py-24 md:py-36 border-b border-line overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Exact Story Copy */}
           <Reveal className="lg:col-span-5 flex flex-col items-start" delay={0.1}>
             <Eyebrow>{aboutWhyWeExist.eyebrow}</Eyebrow>
             <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.05] text-ink">
-              Businesses don&apos;t fail from lack of effort.{" "}
-              <span className="text-forest">They drown in complexity.</span>
+              Businesses don&apos;t fail from lack of effort,{" "}
+              <span className="text-forest">they fail from disconnected systems.</span>
             </h2>
             {aboutWhyWeExist.paragraphs.map((p, i) => (
-              <p key={i} className="mt-6 text-[length:var(--text-lead)] leading-relaxed text-body">
+              <p key={i} className="mt-6 text-[length:var(--text-lead)] leading-relaxed text-body text-justify">
                 {p}
               </p>
             ))}
@@ -461,7 +461,7 @@ export function AboutChaosToClarity() {
               {/* Bottom caption */}
               <div className="text-center text-xs text-muted max-w-md">
                 {isClarity
-                  ? "Every tool synchronized into one intelligent operating system — removing silos and accelerating decisions."
+                  ? "Every tool synchronized into one intelligent operating system, removing silos and accelerating decisions."
                   : "Disconnected software forces manual coordination, scattering critical business intelligence across six isolated channels."}
               </div>
             </div>

@@ -12,7 +12,7 @@ export function AboutRoadmap() {
   const { intro, horizons } = aboutWhereWeAreGoing;
 
   return (
-    <Section id="roadmap" tone="canvas" className="py-24 md:py-36 border-b border-line overflow-hidden">
+    <Section id="roadmap" tone="canvas" revealY={40} revealDuration={0.8} className="py-24 md:py-36 border-b border-line overflow-hidden">
       <Container>
         <Reveal className="max-w-3xl mb-16 md:mb-24">
           <Eyebrow>{aboutWhereWeAreGoing.eyebrow}</Eyebrow>
@@ -54,10 +54,10 @@ export function AboutRoadmap() {
 
                   <div
                     className={cn(
-                      "rounded-3xl border p-8 sm:p-12 shadow-card transition-all duration-300 hover:shadow-xl relative overflow-hidden",
-                      isFirst && "border-forest/30 bg-[linear-gradient(135deg,var(--color-paper)_0%,var(--color-forest-wash)_100%)]",
-                      isSecond && "border-teal/30 bg-[linear-gradient(135deg,var(--color-paper)_0%,var(--color-teal-wash)_100%)]",
-                      isThird && "border-[#c9a24b]/40 bg-[linear-gradient(135deg,#124734_0%,#0e1a13_100%)] text-white"
+                      "rounded-3xl border p-8 sm:p-12 shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1.5 relative overflow-hidden",
+                      isFirst && "border-forest/30 bg-[linear-gradient(135deg,var(--color-paper)_0%,var(--color-forest-wash)_100%)] hover:border-forest/50",
+                      isSecond && "border-teal/30 bg-[linear-gradient(135deg,var(--color-paper)_0%,var(--color-teal-wash)_100%)] hover:border-teal/50",
+                      isThird && "border-[#c9a24b]/40 bg-[linear-gradient(135deg,#124734_0%,#0e1a13_100%)] text-white hover:border-[#c9a24b]/60"
                     )}
                   >
                     {/* Background decoration */}
@@ -116,7 +116,7 @@ export function AboutRoadmap() {
                       <div className="relative z-10 mt-8 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#c9a24b]">
                         <span>Compounding Geographic Scale</span>
                         <span className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                          Tamil Nadu <ArrowRight size={14} /> India <ArrowRight size={14} /> Europe
+                          Neighbourhoods <ArrowRight size={14} /> Nations
                         </span>
                       </div>
                     )}

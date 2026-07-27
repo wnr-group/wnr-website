@@ -11,6 +11,8 @@ export function AboutWhatWeBelieve() {
     <Section
       id="what-we-believe"
       bleed
+      revealY={40}
+      revealDuration={0.8}
       className="relative py-32 md:py-48 bg-[#0e1a13] text-white overflow-hidden border-b border-line/10"
     >
       {/* Cinematic dark gradients & Blueprint motif */}

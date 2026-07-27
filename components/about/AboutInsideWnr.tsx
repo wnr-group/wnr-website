@@ -9,7 +9,7 @@ import { aboutInsideWnr } from "@/content/about";
 
 export function AboutInsideWnr() {
   return (
-    <Section id="inside-wnr" bleed className="py-24 md:py-36 bg-[#0e1a13] text-white overflow-hidden border-b border-line/10">
+    <Section id="inside-wnr" bleed revealY={40} revealDuration={0.8} className="py-24 md:py-36 bg-[#0e1a13] text-white overflow-hidden border-b border-line/10">
       <Container>
         <div className="max-w-3xl">
           <Reveal delay={0.1}>
@@ -29,7 +29,7 @@ export function AboutInsideWnr() {
         <Stagger className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" stagger={0.15}>
           {aboutInsideWnr.culturePillars.map((pillar, index) => (
             <StaggerItem key={pillar.title}>
-              <div className="h-full rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm relative overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07]">
+              <div className="h-full rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm relative overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover hover:border-white/20 hover:bg-white/[0.07]">
                 {/* Subtle gold rule at top */}
                 <div className="absolute top-0 left-8 right-8 h-0.5 bg-[#c9a24b] opacity-80" aria-hidden="true" />
 
@@ -54,11 +54,11 @@ export function AboutInsideWnr() {
           ))}
         </Stagger>
 
-        {/* Visual Strip: Abstract on-brand imagery — desk details, architecture sketches, no identifiable faces */}
+        {/* Visual Strip: Abstract on-brand imagery, desk details, architecture sketches, no identifiable faces */}
         <Reveal className="mt-16 md:mt-24 pt-12 border-t border-white/10" delay={0.3}>
           <div className="mb-6 flex items-center justify-between text-xs uppercase tracking-widest text-white/60 font-semibold">
             <span>Inside The Lab · Abstract Artifacts</span>
-            <span>No generic code — Pure Operational Mapping</span>
+            <span>No generic code — pure operational mapping</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

@@ -12,7 +12,7 @@ export interface AboutSectionCopy {
 export const aboutHero = {
   eyebrow: "ABOUT WNR",
   heading: "We build the operational brain of your business.",
-  lead: "WnR Group is an information technology and services company. We build intelligent operational systems — custom platforms, AI-enabled workflows, and vertical SaaS products — for schools, gaming businesses, and modern enterprises.",
+  lead: "WnR Group is an information technology and services company. We build intelligent operational systems, custom platforms, AI-enabled workflows, and vertical SaaS products, for schools, gaming businesses, and modern enterprises.",
 };
 
 // 2. Awards & Recognition
@@ -26,26 +26,36 @@ export const aboutAwards = {
   },
   recognitions: [
     {
+      icon: "Users" as const,
+      theme: "green" as const,
       badge: "People & Culture",
       title: "Redex People Power Award",
-      description: "Recognized for building an engineering culture obsessed with business workflows and long-term client outcomes.",
+      description: "Recognized for building an engineering culture focused on business outcomes and long-term relationship.",
       year: "2025–2026",
     },
     {
+      icon: "Gem" as const,
+      theme: "blue" as const,
       badge: "Partnership Excellence",
-      title: "Official Technology Partner — Testio",
-      description: "Trusted enterprise integration and quality assurance partnership across high-performance software systems.",
+      title: "Official Technology Partner, Testio",
+      description: "Trusted technology partner for enterprise software systems.",
       year: "Certified Partner",
     },
+  ],
+  trustPoints: [
+    { icon: "Crown" as const, tone: "forestDeep" as const, title: "People First", description: "Culture built on trust, growth, and ownership." },
+    { icon: "Target" as const, tone: "gold" as const, title: "Outcome Driven", description: "We focus on real business outcomes that matter." },
+    { icon: "ShieldCheck" as const, tone: "forestBright" as const, title: "Trusted by Clients", description: "Long-term partnerships built on results." },
+    { icon: "Globe" as const, tone: "navy" as const, title: "Excellence Certified", description: "Recognitions that reflect our commitment to quality." },
   ],
 };
 
 // 3. Why WNR Exists
 export const aboutWhyWeExist = {
   eyebrow: "WHY WE EXIST",
-  heading: "Businesses don't fail from lack of effort. They drown in complexity.",
+  heading: "Businesses don't fail from lack of effort, they fail from disconnected systems.",
   paragraphs: [
-    "Growing businesses run on WhatsApp threads, Excel sheets, emails, and disconnected software. As teams grow, information scatters, decisions slow down, and no one has a single source of truth. The effort is there. The system isn't. We started WnR to build the system.",
+    "When WhatsApp, Excel, emails, and scattered software become the operating model, growth slows. WnR was built to bring everything together into one intelligent system.",
   ],
   chaosTools: [
     "WhatsApp threads",
@@ -61,20 +71,20 @@ export const aboutWhyWeExist = {
 // 4. Mission
 export const aboutMission = {
   eyebrow: "OUR MISSION",
-  heading: "To become the most trusted AI-native operational intelligence company — helping businesses transform complexity into clarity.",
+  heading: "To become the most trusted AI-native operational intelligence company, helping businesses transform complexity into clarity.",
 };
 
 // 5. Vision
 export const aboutVision = {
   eyebrow: "OUR VISION",
-  heading: "To build a vertical SaaS holding company — a portfolio of industry operating systems that replace chaos with clarity, across every sector where businesses operate.",
+  heading: "To build a vertical SaaS holding company, a portfolio of industry operating systems that replace chaos with clarity, across every sector where businesses operate.",
 };
 
 // 6. What We Believe
 export const aboutWhatWeBelieve = {
   eyebrow: "WHAT WE BELIEVE",
-  heading: "The long-term moat is not coding.",
-  body: "It's workflow understanding, implementation depth, and the depth of customer relationships. Anyone can write software. Almost nobody takes the time to understand how a business actually runs — and then stays to make sure the system works.",
+  heading: "The moat AI can't automate.",
+  body: "The future doesn't belong to those who write the best code alone. Our advantage isn't writing code, it's understanding workflows, solving real operational problems, and staying until the solution delivers results.",
 };
 
 // 7. How We Work
@@ -90,7 +100,7 @@ export const aboutHowWeWork = {
     {
       number: "02",
       title: "We stay for the outcome",
-      body: "We measure ourselves in time saved and money recovered — not features shipped. The work isn't done at deployment; it's done when it's adopted.",
+      body: "We measure ourselves in time saved and money recovered, not features shipped. The work isn't done at deployment; it's done when it's adopted.",
     },
     {
       number: "03",
@@ -109,7 +119,7 @@ export const aboutHowWeWork = {
 export const aboutInsideWnr = {
   eyebrow: "INSIDE WNR",
   heading: "A team obsessed with how businesses actually work.",
-  body: "We're 23+ engineers, strategists, and operators who believe the hard part was never the code — it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
+  body: "We're 23+ engineers, strategists, and operators who believe the hard part was never the code, it's understanding the business well enough to build the system it truly needs. That belief shapes how we hire, how we build, and how we stay.",
   culturePillars: [
     {
       title: "We map before we build",
@@ -117,7 +127,7 @@ export const aboutInsideWnr = {
     },
     {
       title: "We stay for the outcome",
-      body: "We measure ourselves in time saved and money recovered — not features shipped. The work isn't done at deployment; it's done when it's adopted.",
+      body: "We measure ourselves in time saved and money recovered, not features shipped. The work isn't done at deployment; it's done when it's adopted.",
     },
     {
       title: "We build intelligent systems",
@@ -131,7 +141,7 @@ export const aboutWhereWeAreGoing = {
   eyebrow: "WHERE WE'RE GOING",
   heading: "We're not building software. We're building the intelligence layer for how businesses run.",
   intro: [
-    "Every system we build teaches us something about how an industry actually works. We productise that understanding. Then we do it again, in a new industry — and the whole portfolio gets smarter.",
+    "Every system we build teaches us something about how an industry actually works. We productise that understanding. Then we do it again, in a new industry, and the whole portfolio gets smarter.",
     "That's the compounding engine behind everything below.",
   ],
   horizons: [
@@ -139,7 +149,7 @@ export const aboutWhereWeAreGoing = {
       horizon: "HORIZON ONE · NOW",
       title: "Two industries, running live.",
       paragraphs: [
-        "EduOS is the operating brain for schools — fees, attendance, academics, staff, and parents in one system. ArenaOS runs booking-led venues, from gaming cafes to courts and studios, turning billing into real operational intelligence.",
+        "EduOS is the operating brain for schools, fees, attendance, academics, staff, and parents in one system. ArenaOS runs booking-led venues, from gaming cafes to courts and studios, turning billing into real operational intelligence.",
         "Both are live, both are learning, and both are getting sharper every term they run.",
       ],
       badge: "Active & Learning",
@@ -149,7 +159,7 @@ export const aboutWhereWeAreGoing = {
       horizon: "HORIZON TWO · NEXT",
       title: "A third vertical. A new shape of problem.",
       paragraphs: [
-        "This year we launch our third product — our most ambitious yet, and the first time we take our operating-system thinking beyond the businesses we serve, and into the way people move things across a city.",
+        "This year we launch our third product, our most ambitious yet, and the first time we take our operating-system thinking beyond the businesses we serve, and into the way people move things across a city.",
         "Same philosophy: understand the operation deeply, build the system it truly needs, then stay. Different scale entirely.",
         "More soon.",
       ],
@@ -160,9 +170,9 @@ export const aboutWhereWeAreGoing = {
       horizon: "HORIZON THREE · BEYOND",
       title: "A portfolio of industry operating systems.",
       paragraphs: [
-        "Healthcare. Retail. Manufacturing. Hospitality. Construction. Every sector where businesses still run on spreadsheets, WhatsApp groups, and instinct — and deserve better.",
-        "We enter an industry only when we understand it deeply enough to productise it. That's slower than raising and spraying. It's also why our products work.",
-        "Tamil Nadu → India → Europe.",
+        "From healthcare and retail to manufacturing, hospitality, education, logistics, and financial services, every industry deserves systems built for the way it actually operates.",
+        "We don't expand into sectors, we earn the right to serve them. By deeply understanding business workflows, we create industry-specific platforms that scale across organizations, regions, and global markets.",
+        "From Neighbourhoods to Nations.",
       ],
       badge: "Long-Term Vision",
       accent: "amber",
@@ -172,17 +182,17 @@ export const aboutWhereWeAreGoing = {
 
 // 10. The 2040 Anchor (EduOS)
 export const aboutEduOsAnchor = {
-  eyebrow: "THE 2040 ANCHOR — EduOS",
+  eyebrow: "A WNR ADVISORY INITIATIVE, EduOS",
   title: "THE LONG VIEW",
-  heading: "By 2040, no student's future will be decided by incomplete information.",
+  heading: "Education is not about managing schools. It is about empowering students.",
   paragraphs: [
-    "Today, EduOS runs a school's operations. That's the beginning, not the ambition.",
-    "Every year EduOS runs, it builds a deeper understanding of how each student actually learns — not just marks, but patterns, strengths, participation, and growth over time. Multiply that across thousands of students and a decade of real outcomes, and something becomes possible that has never existed in Indian education: evidence where there was only instinct.",
-    "A teacher who sees a student struggling in week three, not month three. A parent who understands their child beyond a report card. A 13-year-old who discovers a strength nobody noticed — and a path nobody thought to suggest.",
-    "Not an algorithm that decides a child's future. An intelligence that makes sure nobody's future is decided by what the system failed to see.",
-    "That's what we mean by a lifetime companion. And it's why we're building EduOS now, patiently, one school at a time — because the intelligence of 2040 is made of the data, trust, and understanding we earn today.",
+    "EduOS was founded on a simple yet powerful belief: every student has the potential to succeed when they are understood, encouraged, and guided in the right direction.",
+    "Our mission is to empower 1 Million students by 2030 by helping schools, teachers, and parents understand every learner beyond marks, enabling each student to discover their strengths and reach their fullest potential.",
+    "Our vision is to create the world's most trusted student intelligence ecosystem, where every learner's educational journey is understood, supported, and celebrated from the first day of school through graduation.",
+    "Every decision begins with one question: will this improve the educational experience of students?",
+    "EduOS exists to bridge this gap. More than a platform, EduOS is designed to be a trusted companion throughout a student's educational journey.",
   ],
-  closingBold: "Beyond School. Beyond Marks. Beyond Tomorrow.",
+  closingBold: "Empowering Every Student. Enabling Every School. Inspiring Every Future.",
   progression: ["Data", "Intelligence", "Action", "Success"],
 };
 
@@ -190,7 +200,7 @@ export const aboutEduOsAnchor = {
 export const aboutCta = {
   eyebrow: "CTA",
   heading: "Build what's next with us.",
-  body: "Whether you want a system built or a career made — let's talk.",
+  body: "Whether you want a system built or a career made, let's talk.",
   primaryButton: "Work With Us",
   primaryHref: "/contact",
   secondaryButton: "See Open Roles",

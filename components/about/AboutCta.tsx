@@ -9,7 +9,7 @@ import { aboutCta } from "@/content/about";
 
 export function AboutCta() {
   return (
-    <Section id="about-cta" tone="canvas" className="py-24 md:py-36 text-center overflow-hidden">
+    <Section id="about-cta" tone="canvas" revealY={40} revealDuration={0.8} className="py-24 md:py-36 text-center overflow-hidden">
       <Container>
         <Reveal className="mx-auto max-w-4xl rounded-3xl border border-forest/25 bg-[linear-gradient(135deg,var(--color-paper)_0%,var(--color-forest-wash)_100%)] p-10 sm:p-14 md:p-20 shadow-card relative overflow-hidden">
           {/* Blueprint motif & ambient lighting */}
