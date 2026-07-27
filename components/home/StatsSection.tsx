@@ -28,12 +28,12 @@ function StatItem({ value, label, index }: StatItemProps) {
     >
       <span
         ref={ref}
-        className="font-display text-[clamp(3.25rem,5.5vw,5rem)] font-extrabold tracking-tight leading-none text-ink tabular-nums"
+        className="font-display text-[clamp(2.75rem,6vw,5rem)] font-extrabold tracking-tight leading-none text-ink tabular-nums"
         aria-hidden="true"
       >
         {value}
       </span>
-      <p className="mt-4 text-[0.95rem] sm:text-base font-normal leading-relaxed text-muted max-w-[260px] sm:max-w-[300px] text-pretty">
+      <p className="mt-3.5 text-[0.95rem] sm:text-base font-normal leading-relaxed text-muted max-w-[260px] sm:max-w-[300px] text-pretty">
         {label}
       </p>
     </div>
@@ -49,7 +49,7 @@ export function StatsSection() {
       aria-label="Company impact metrics"
       className="gradient-stat-wash relative overflow-hidden border-y border-line"
     >
-      <div className="mx-auto w-full max-w-[1200px] px-6 sm:px-8 py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto w-full max-w-[1200px] px-6 sm:px-8 py-16 sm:py-24 lg:py-28">
         <Reveal y={12} delay={0}>
           <div
             className="grid grid-cols-1 gap-14 sm:gap-10 md:grid-cols-3 md:gap-8 lg:gap-16 items-center justify-items-center"

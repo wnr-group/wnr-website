@@ -77,7 +77,7 @@ export function ThreeArmSection() {
         </Reveal>
 
         {/* Right column: 3 stacked cards (~58% desktop) */}
-        <Stagger className="lg:col-span-7 flex flex-col gap-4 sm:gap-5" stagger={0.12}>
+        <Stagger className="lg:col-span-7 flex flex-col gap-5 sm:gap-6" stagger={0.12}>
           {arms.map((arm) => {
             const config = armConfigMap[arm.slug] ?? armConfigMap.systems;
             const Icon = config.icon;
@@ -89,7 +89,7 @@ export function ThreeArmSection() {
                     "group relative flex flex-col justify-between gap-4 rounded-3xl border border-line",
                     "p-6 sm:p-7 md:p-8",
                     "transition-all duration-300 ease-out",
-                    "hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.12)]",
+                    "hover:-translate-y-1.5 hover:border-line-strong hover:shadow-[0_16px_48px_-16px_rgba(0,0,0,0.14)]",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
                     config.cardBg,
                     config.focusRing,
@@ -103,7 +103,7 @@ export function ThreeArmSection() {
                       <div
                         className={[
                           "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl",
-                          "transition-all duration-300 ease-out",
+                          "transition-all duration-300 ease-out group-hover:scale-105",
                           config.iconTileBg,
                           config.iconTileHoverBg,
                         ].join(" ")}
@@ -112,7 +112,7 @@ export function ThreeArmSection() {
                         <Icon className="h-5 w-5 stroke-[1.75]" />
                       </div>
                       {/* Arm name */}
-                      <h3 className="font-display text-lg sm:text-xl font-bold leading-tight text-ink">
+                      <h3 className="font-display text-lg sm:text-xl font-extrabold leading-tight text-ink tracking-tight">
                         {arm.name}
                       </h3>
                     </div>
@@ -136,7 +136,7 @@ export function ThreeArmSection() {
                   <p className="text-sm sm:text-[0.95rem] leading-relaxed text-body sm:pl-16">
                     {arm.summary}
                     {arm.flow && (
-                      <span className="mt-1 block font-medium text-ink">
+                      <span className="mt-1.5 block font-semibold text-ink">
                         {arm.flow}
                       </span>
                     )}

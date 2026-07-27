@@ -5,7 +5,6 @@ import { m } from "motion/react";
 import { Section, Container, Eyebrow } from "@/components/ui/Section";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/motion";
 import { approach } from "@/content/sections";
-import { cn } from "@/lib/utils";
 
 export function CapabilitiesWorkflow() {
   return (

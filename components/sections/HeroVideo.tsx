@@ -63,7 +63,7 @@ export function HeroVideo() {
 
   return (
     <section
-      className="relative flex min-h-[88vh] items-center overflow-hidden bg-canvas pt-24"
+      className="relative flex min-h-[52vh] min-h-[52dvh] items-center overflow-hidden bg-canvas pt-20 sm:min-h-[88vh] sm:pt-24"
       aria-label="Hero video banner"
     >
       <h1 className="sr-only">WnRTech: Operational intelligence for modern business.</h1>
@@ -72,8 +72,9 @@ export function HeroVideo() {
           fetchpriority=high ensures this LCP asset loads before below-fold resources */}
       <video
         ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover will-change-transform"
+        className="absolute inset-0 h-full w-full object-cover transform-gpu will-change-transform"
         poster="/brand/hero-loop-poster.webp"
+        autoPlay
         muted
         loop
         playsInline
@@ -92,12 +93,12 @@ export function HeroVideo() {
 
       {/* Gradient fade into the next section */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-canvas to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-canvas to-transparent"
         aria-hidden="true"
       />
 
       {/* Floating CTA */}
-      <div className="absolute bottom-12 left-1/2 z-10 -translate-x-1/2 sm:bottom-16">
+      <div className="absolute bottom-[calc(2rem+env(safe-area-inset-bottom,0px))] left-1/2 z-10 -translate-x-1/2 sm:bottom-16">
         <a
           href="#contact"
           onClick={(e) => {
