@@ -2,8 +2,17 @@
 
 import { useEffect, useRef } from "react";
 
-/* Full-bleed video banner hero with production-grade autoplay resiliency,
-   visibility state management, and dynamic prefers-reduced-motion compliance. */
+/*
+ * VIDEO QUALITY NOTE (AC3):
+ * The source file /public/brand/wnr-video.mp4 is 1.9 MB.
+ * This is the supplied source footage — visual fidelity cannot exceed the
+ * original encoding. Browser-side optimisations applied below:
+ *   - Removed redundant `src` attribute (use <source> only for correct MIME hint)
+ *   - `preload="auto"` retained to fill buffer before user scrolls down
+ *   - `fetchpriority="high"` hints the browser to load this asset above-fold first
+ *   - `object-cover` + `will-change-transform` avoids subpixel blur on GPU compositing
+ *   - Poster prevents blank frame flash on slow connections
+ */
 export function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -11,16 +20,13 @@ export function HeroVideo() {
     const v = videoRef.current;
     if (!v) return;
 
-    // Explicitly enforce DOM muted and playsInline properties for iOS/Safari strict policies
+    // Enforce muted + playsInline for iOS/Safari autoplay policy
     v.muted = true;
     v.defaultMuted = true;
     v.playsInline = true;
 
-    // Ensure the browser media pipeline loads the mapped video source immediately
-    if (
-      v.readyState === 0 ||
-      v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE
-    ) {
+    // Only call load() when the browser has not yet begun network fetching
+    if (v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE || v.readyState === 0) {
       v.load();
     }
 
@@ -32,18 +38,14 @@ export function HeroVideo() {
         videoRef.current.pause();
       } else {
         videoRef.current.play().catch(() => {
-          /* Autoplay blocked or low-power mode active — poster frame acts as fallback */
+          // Autoplay blocked or low-power mode — poster frame is the fallback
         });
       }
     };
 
-    // Initial check on mount
     handlePlayback();
-
-    // Listen for OS reduced-motion toggles while on page
     mediaQuery.addEventListener("change", handlePlayback);
 
-    // Resume playback smoothly when tab regains focus (e.g. returning from background/sleep)
     const handleVisibilityChange = () => {
       if (document.hidden || mediaQuery.matches) {
         videoRef.current?.pause();
@@ -60,12 +62,17 @@ export function HeroVideo() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-canvas pt-24">
-      <h1 className="sr-only">WnRTech — Operational intelligence for modern business.</h1>
+    <section
+      className="relative flex min-h-[88vh] items-center overflow-hidden bg-canvas pt-24"
+      aria-label="Hero video banner"
+    >
+      <h1 className="sr-only">WnRTech: Operational intelligence for modern business.</h1>
+
+      {/* Video element — single <source> provides correct MIME type to the browser;
+          fetchpriority=high ensures this LCP asset loads before below-fold resources */}
       <video
         ref={videoRef}
-        src="/brand/wnr-video.mp4"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover will-change-transform"
         poster="/brand/hero-loop-poster.webp"
         muted
         loop
@@ -77,19 +84,19 @@ export function HeroVideo() {
         <source src="/brand/wnr-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Subtle dark wash overlay for visual depth and top navigation contrast */}
+      {/* Subtle dark overlay for contrast and readability */}
       <div
         className="pointer-events-none absolute inset-0 bg-black/15"
         aria-hidden="true"
       />
 
-      {/* Smooth transition into the next section */}
+      {/* Gradient fade into the next section */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-canvas to-transparent"
         aria-hidden="true"
       />
 
-      {/* Floating CTA pill button centered near the bottom of the hero video */}
+      {/* Floating CTA */}
       <div className="absolute bottom-12 left-1/2 z-10 -translate-x-1/2 sm:bottom-16">
         <a
           href="#contact"
@@ -117,4 +124,3 @@ export function HeroVideo() {
     </section>
   );
 }
-

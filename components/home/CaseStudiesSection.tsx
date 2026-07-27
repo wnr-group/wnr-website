@@ -175,7 +175,7 @@ export function CaseStudiesSection({
                 <div className="mt-5 border-t border-white/15 pt-5">
                   <p className="text-sm leading-relaxed text-white/90 sm:text-[0.95rem]">
                     <span className="font-semibold text-teal-bright">
-                      Result —{" "}
+                      Result:{" "}
                     </span>
                     <span>{featuredCaseStudy.result}</span>
                   </p>

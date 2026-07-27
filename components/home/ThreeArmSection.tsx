@@ -57,56 +57,96 @@ export function ThreeArmSection() {
     <Section
       id="three-arms"
       tone="canvas"
-      className="py-16 md:py-24 lg:py-28 overflow-hidden"
+      aria-label="Our operational arms"
+      className="py-20 md:py-28 lg:py-32 overflow-hidden"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        {/* Left Column: Headline & Paragraph (~42% desktop width) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        {/* Left column: headline + intro (~42% desktop) */}
         <Reveal className="lg:col-span-5 flex flex-col justify-center" y={18} delay={0}>
           <Eyebrow>OUR OPERATIONAL ARMS</Eyebrow>
-          <h2 className="mt-4 font-display text-[length:var(--text-h2)] font-bold leading-[1.06] text-ink">
-            The operational brain of your <span className="text-forest">business.</span>
+          <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.06] text-ink">
+            The operational brain of your{" "}
+            <span className="text-forest">business.</span>
           </h2>
-          <p className="mt-5 sm:mt-6 text-[length:var(--text-lead)] leading-relaxed text-body">
-            We build the operational brain of your business — custom platforms, AI-native workflows, and vertical SaaS products that replace scattered tools with one intelligent system. We don&apos;t just build it. We implement it, train your team, and stay.
+          <p className="mt-6 text-[length:var(--text-lead)] leading-relaxed text-body">
+            We build the operational brain of your business: custom platforms,
+            AI-native workflows, and vertical SaaS products that replace
+            scattered tools with one intelligent system. We build it, implement
+            it, train your team, and stay.
           </p>
         </Reveal>
 
-        {/* Right Column: 3 Stacked Cards vertically (~58% desktop width) */}
+        {/* Right column: 3 stacked cards (~58% desktop) */}
         <Stagger className="lg:col-span-7 flex flex-col gap-4 sm:gap-5" stagger={0.12}>
           {arms.map((arm) => {
-            const config = armConfigMap[arm.slug] || armConfigMap.systems;
+            const config = armConfigMap[arm.slug] ?? armConfigMap.systems;
             const Icon = config.icon;
             return (
               <StaggerItem key={arm.slug}>
                 <Link
                   href={`/capabilities#${arm.slug}`}
-                  className={`group relative flex flex-col justify-between gap-3 sm:gap-4 rounded-3xl border border-line p-6 sm:p-7 md:p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas ${config.cardBg} ${config.focusRing}`}
+                  className={[
+                    "group relative flex flex-col justify-between gap-4 rounded-3xl border border-line",
+                    "p-6 sm:p-7 md:p-8",
+                    "transition-all duration-300 ease-out",
+                    "hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.12)]",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
+                    config.cardBg,
+                    config.focusRing,
+                  ].join(" ")}
+                  aria-label={`Learn about ${arm.name}`}
                 >
+                  {/* Card header row */}
                   <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-3.5 sm:gap-4">
-                      <div className={`flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl transition-all duration-300 ${config.iconTileBg} ${config.iconTileHoverBg}`}>
-                        <Icon className="h-5 w-5 sm:h-5.5 sm:w-5.5 stroke-[1.75]" aria-hidden="true" />
+                    <div className="flex items-center gap-4">
+                      {/* Icon tile */}
+                      <div
+                        className={[
+                          "flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl",
+                          "transition-all duration-300 ease-out",
+                          config.iconTileBg,
+                          config.iconTileHoverBg,
+                        ].join(" ")}
+                        aria-hidden="true"
+                      >
+                        <Icon className="h-5 w-5 stroke-[1.75]" />
                       </div>
-                      <h3 className="font-display text-lg sm:text-xl font-bold text-ink">
+                      {/* Arm name */}
+                      <h3 className="font-display text-lg sm:text-xl font-bold leading-tight text-ink">
                         {arm.name}
                       </h3>
                     </div>
 
-                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-canvas transition-all duration-300 ${config.arrowText} ${config.arrowHoverBg}`}>
-                      <ArrowRight className="h-4 w-4 stroke-[2]" aria-hidden="true" />
+                    {/* Arrow button */}
+                    <div
+                      className={[
+                        "flex h-9 w-9 shrink-0 items-center justify-center rounded-full",
+                        "border border-line bg-canvas",
+                        "transition-all duration-300 ease-out",
+                        config.arrowText,
+                        config.arrowHoverBg,
+                      ].join(" ")}
+                      aria-hidden="true"
+                    >
+                      <ArrowRight className="h-4 w-4 stroke-[2]" />
                     </div>
                   </div>
 
-                  <p className="text-sm sm:text-[0.95rem] leading-relaxed text-body pl-0 sm:pl-16">
+                  {/* Summary */}
+                  <p className="text-sm sm:text-[0.95rem] leading-relaxed text-body sm:pl-16">
                     {arm.summary}
                     {arm.flow && (
-                      <span className="block mt-1 font-medium text-ink">
+                      <span className="mt-1 block font-medium text-ink">
                         {arm.flow}
                       </span>
                     )}
                   </p>
+
+                  {/* Product chips */}
                   {arm.products && arm.products.length > 0 && (
-                    <div className={`mt-2 text-sm sm:text-[0.95rem] font-medium leading-relaxed pl-0 sm:pl-16 ${config.productText}`}>
+                    <div
+                      className={`text-sm sm:text-[0.95rem] font-medium leading-relaxed sm:pl-16 ${config.productText}`}
+                    >
                       <span>Products: </span>
                       {arm.products.map((prod, idx) => (
                         <React.Fragment key={prod.name}>

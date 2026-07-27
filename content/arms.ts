@@ -32,9 +32,9 @@ const armData: Omit<Arm, "description">[] = [
     capabilitiesLabel: "ARM 02",
     capabilitiesTitle: "The platform your business actually runs on.",
     capabilitiesBody:
-      "WnR Systems builds the custom ERP platforms, business software, web applications, and mobile solutions our clients operate on every day — purpose-built around real workflows, never off-the-shelf compromises.",
+      "WnR Systems builds the custom ERP platforms, business software, web applications, and mobile solutions our clients operate on every day. Purpose-built around real workflows, never off-the-shelf compromises.",
     whatYouGet:
-      "a live, working system configured to how your business runs — deployed, integrated, and adopted by your team.",
+      "a live, working system configured to how your business runs: deployed, integrated, and adopted by your team.",
     deliverables: [
       "Custom operational platforms and ERP systems",
       "Web applications and multi-portal systems",
@@ -52,12 +52,12 @@ const armData: Omit<Arm, "description">[] = [
     capabilitiesLabel: "ARM 01",
     capabilitiesTitle: "We don't start with code. We start with your operations.",
     capabilitiesBody:
-      "WnR Consulting studies how your business actually runs — mapping workflows, finding where time and money leak, and designing the right operational strategy before a single line of software is written.",
+      "WnR Consulting studies how your business actually runs by mapping workflows, finding where time and money leak, and designing the right operational strategy before a single line of software is written.",
     whatYouGet:
-      "a clear diagnosis of your operations, a prioritised map of what to fix, and the right system prescribed — whether we build it or not.",
+      "a clear diagnosis of your operations, a prioritised map of what to fix, and the right system prescribed, whether we build it or not.",
     deliverables: [
       "Workflow mapping and process audit",
-      "Operational gap analysis — where time and money leak",
+      "Operational gap analysis: where time and money leak",
       "System prescription and roadmap",
       "Digital transformation strategy",
     ],
@@ -70,7 +70,7 @@ const armData: Omit<Arm, "description">[] = [
     capabilitiesLabel: "ARM 03",
     capabilitiesTitle: "The intelligence layer across everything we build.",
     capabilitiesBody:
-      "WnR AI Labs develops the AI-native technologies and automation that power every WnR product and solution — removing manual effort and surfacing the operational intelligence hiding in your data.",
+      "WnR AI Labs develops the AI-native technologies and automation that power every WnR product and solution, removing manual effort and surfacing the operational intelligence hiding in your data.",
     whatYouGet:
       "workflows that run themselves, insights you didn't have to ask for, and systems that get smarter the longer they run.",
     deliverables: [
@@ -91,7 +91,7 @@ export const divisions = {
   eyebrow: "How We're Built",
   heading: "One company. Three operating arms.",
   intro:
-    "Each arm specialises — together they take a business from operational strategy to live system to intelligent automation.",
+    "Each arm specialises. Together they take a business from operational strategy to live system to intelligent automation.",
 };
 
 export const capabilitiesHero = {
@@ -104,7 +104,7 @@ export const capabilitiesHero = {
 export const capabilitiesCta = {
   title: "Not sure which arm you need?",
   body:
-    "Most clients don't — that's what the first conversation is for. Tell us what's not working, and we'll tell you what would fix it.",
+    "Most clients don't. That's what the first conversation is for. Tell us what's not working, and we'll tell you what would fix it.",
   button: "Let's Talk",
 };
 

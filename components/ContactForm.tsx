@@ -50,7 +50,7 @@ function SuccessPanel({
       </span>
       <div>
         <h3 className="font-display text-xl font-semibold text-ink">
-          Message received — thank you.
+          Message received. Thank you.
         </h3>
         <p className="mt-2 text-[0.95rem] text-body">
           A member of our team will be in touch within one business day.
@@ -103,7 +103,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-5"
-      aria-label="Contact WnRTech — Let's Talk"
+      aria-label="Contact WnRTech: Let's Talk"
       noValidate
     >
       {/* Error summary */}

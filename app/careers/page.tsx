@@ -71,7 +71,7 @@ export default function CareersPage() {
           <h2 className="mt-5 font-display text-[length:var(--text-h2)] font-bold leading-[1.08] text-ink">
             {openings.length > 0
               ? "Open roles at WnRTech."
-              : "No openings right now — but talent always has a seat."}
+              : "No openings right now, but talent always has a seat."}
           </h2>
         </div>
         <div className="mt-10">

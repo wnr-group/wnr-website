@@ -170,7 +170,7 @@ function ResumeField({ onSuccess, errorMessage, errorId }: ResumeFieldProps) {
         }}
         onDragLeave={() => setDragActive(false)}
         onDrop={onDrop}
-        aria-label="Upload resume — drag and drop or click to browse"
+        aria-label="Upload resume: drag and drop or click to browse"
         aria-describedby={
           (state.status === "error" || errorMessage) ? errorId : undefined
         }
@@ -185,7 +185,7 @@ function ResumeField({ onSuccess, errorMessage, errorId }: ResumeFieldProps) {
             Drag and drop your resume, or{" "}
             <span className="text-forest underline underline-offset-2">browse</span>
           </p>
-          <p className="mt-1 text-xs text-muted">PDF, DOC, or DOCX — up to 4 MB</p>
+          <p className="mt-1 text-xs text-muted">PDF, DOC, or DOCX, up to 4 MB</p>
         </div>
         <input
           ref={inputRef}
@@ -279,7 +279,7 @@ function SuccessPanel({
         </span>
         <div>
           <h3 className="font-display text-xl font-semibold text-ink">
-            Application submitted — thank you.
+            Application submitted. Thank you.
           </h3>
           <p className="mt-2 text-[0.95rem] text-body">
             We review every application. If there&rsquo;s a fit, we&rsquo;ll be in touch
@@ -442,7 +442,7 @@ export function CareerApplicationForm({ initialRole = "" }: CareerApplicationFor
     <form
       onSubmit={handleSubmit}
       className="flex flex-col gap-6"
-      aria-label="Career Application — WnRTech"
+      aria-label="Career Application at WnRTech"
       noValidate
     >
       {/* Draft restore banner */}
