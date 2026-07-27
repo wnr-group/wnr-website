@@ -99,7 +99,7 @@ export const hiringProcess = {
   heading: "How we hire.",
   intro: "Four steps, no black box. We move fast and tell you where you stand at every stage.",
   steps: [
-    { num: "01", title: "Apply", body: "Send your resume against a role, or submit it speculatively if nothing's open yet." },
+    { num: "01", title: "Apply", body: "Send your resume for a role, or submit it speculatively if nothing's open yet." },
     { num: "02", title: "Screen", body: "A 30-minute call with our team to understand your background and what you're looking for." },
     { num: "03", title: "Interview", body: "A working session on real problems from our client engagements. No whiteboard trivia." },
     { num: "04", title: "Offer", body: "We move fast on a decision and make an offer within days of your final interview." },

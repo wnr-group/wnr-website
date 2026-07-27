@@ -213,6 +213,6 @@ export const culture = {
 /* ── 15 · Final CTA ──────────────────────────────────────────────────── */
 export const finalCta = {
   heading: "Let's talk about your operations.",
-  body: "Whether you're streamlining operations, building a custom platform, or adopting an industry operating system. WnR is ready. Together we build, together we grow.",
+  body: "Whether you're streamlining operations, building a custom platform, or adopting an industry operating system, WnR is ready. Together we build, together we grow.",
   ctaLabel: "Start Your Journey",
 };

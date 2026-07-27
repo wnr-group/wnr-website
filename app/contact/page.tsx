@@ -41,7 +41,7 @@ export default function ContactPage() {
               </h1>
               <p className="mt-6 max-w-md text-[length:var(--text-lead)] leading-relaxed text-body">
                 Whether you&rsquo;re streamlining operations, building a custom
-                platform, or adopting an industry operating system. WnR is ready.
+                platform, or adopting an industry operating system, WnR is ready.
               </p>
             </div>
 

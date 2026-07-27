@@ -26,7 +26,7 @@ export function HeroVideo() {
     v.playsInline = true;
 
     // Only call load() when the browser has not yet begun network fetching
-    if (v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE || v.readyState === 0) {
+    if (v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
       v.load();
     }
 
