@@ -172,7 +172,7 @@ export function ResumeUpload() {
         disabled={state.status !== "selected"}
         className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-forest px-7 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_-14px_rgba(18,71,52,0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-forest-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
       >
-        {state.status === "uploading" ? "Uploading..." : "Upload Resume"}
+        {state.status === "uploading" ? "Uploading…" : "Upload Resume"}
       </button>
     </div>
   );

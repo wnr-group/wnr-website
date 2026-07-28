@@ -38,7 +38,7 @@ export const products: Product[] = [
     strapline: "Beyond School. Beyond Marks. Beyond Tomorrow.",
     oneLiner:
       "Fees, attendance, academics, staff operations, and parent communication. One platform replacing spreadsheets, registers, and four WhatsApp groups. Configured to each school's real workflows.",
-    roi: "The ROI is concrete: an 800-student school loses around ₹9.6L a year in leaky systems. EduOS recovers it.",
+    roi: "The ROI is concrete: an 800-student school loses around $10,000 a year in leaky systems. EduOS recovers it.",
     features: [
       "Fee management & collections",
       "Attendance tracking",
@@ -51,10 +51,10 @@ export const products: Product[] = [
     ctaLabel: "Explore EduOS",
     art: "/brand/product-eduos.webp",
     accent: "teal",
-    target: "Schools with 300–2,000 students. South India + UAE.",
+    target: "Schools with 300–2,000 students.",
     moat: "Implementation depth + staff training + ongoing operational partnership.",
     revenueLabel: "SaaS Revenue",
-    revenueValue: "₹1,000/month per school post-implementation",
+    revenueValue: "$14.99 per school post-implementation",
     overview:
       "EduOS is the single operating system a school runs on: fees, attendance, academics, staff operations, and parent communication in one connected platform, configured to how the school actually works rather than forcing a generic template.",
     businessProblem:
