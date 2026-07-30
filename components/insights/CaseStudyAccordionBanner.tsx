@@ -223,9 +223,9 @@ export function CaseStudyAccordionBanner({
               <div
                 style={contentTransitionStyle}
                 className={cn(
-                  "absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-8 lg:p-10 transition-opacity duration-500",
+                  "absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-8 lg:p-10 transition-opacity",
                   isActive
-                    ? "opacity-100 delay-0"
+                    ? "opacity-100 delay-0 duration-500"
                     : "pointer-events-none opacity-0 duration-200 delay-0"
                 )}
               >
