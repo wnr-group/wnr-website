@@ -95,8 +95,8 @@ This section documents the exact discovery process already carried out, so a fut
 | `data/caseStudies.ts` | Issue 4: change `image` path for `student-career-guidance-platform` entry (1 line) | Low | Low — single string field, same shape as 8 sibling entries | 3 render sites (`CaseStudyAccordionBanner`, `CaseStudyHorizontalCarousel`, indirectly `CaseStudyCard`) all read `study.image` generically | Single-line string change; no schema change |
 | `public/case-studies/student-career-guidance-platform.png` | Issue 4: replaced with the new unique asset (optimized copy of `assets/Student Career Guidance Platform.png`) | Low | Low — binary asset swap, same filename preserves all existing references, avoids touching `data/caseStudies.ts` path string at all (simpler, safer alternative to renaming) | `next/image` will re-hash/re-optimize automatically on next build; no manual cache-bust needed in dev (`next dev` file-watches `public/`) | Overwrite in place; original `assets/Student Career Guidance Platform.png` stays untouched as the source-of-truth original |
 | Various `app/**/page.tsx` (`metadata.title`, `metadata.description`) | Issue 6: em dash in SEO-visible strings | Low | Low–Medium — `metadata.title`/`description` are crawled by search engines and shown in browser tabs/share cards; must preserve exact meaning | None — each page's metadata is self-contained | Edit only the literal string, preserve `%s | WnRTech` template mechanics in `app/layout.tsx` |
-| `app/layout.tsx` | Issue 6: em dash in site-wide default title/description (appears in `<title>`, OpenGraph, and every page missing its own title) | Medium | Medium — this string is the **default site title**, shown when no page-specific title exists, and is duplicated 4× in the same file (`default`, `description`, `openGraph.title`, `openGraph.description`) | Every route that doesn't set its own `metadata.title` inherits this | Edit all 4 occurrences identically for consistency; do not touch the `template: "%s | WnRTech"` mechanic |
-| `data/caseStudies.ts` (em dash in `summary` strings) | Issue 6: 3 case-study `summary` fields use em dash mid-sentence | Low | Low–Medium — these strings render as visible body copy on 3 separate components (`CaseStudyCard`, `CaseStudyAccordionBanner`, `home/CaseStudiesSection`) and are also asserted against in `CaseStudiesSection.test.tsx` (exact-text assertions) | `CaseStudiesSection.test.tsx` line 43 does a substring match against the recruitment summary text — **not** affected since that summary has no em dash, but the file's other exact-text assertions must be re-run after any summary edit to confirm no accidental truncation | Edit only the exact substring at the em dash; do not touch surrounding text |
+| `app/layout.tsx` | Issue 6: em dash in site-wide default title/description (appears in `<title>`, OpenGraph, and every page missing its own title) | Medium | Medium — this string is the **default site title**, shown when no page-specific title exists, and is duplicated 4× in the same file (`default`, `description`, `openGraph.title`, `openGraph.description`) | Every route that doesn't set its own `metadata.title` inherits this | Edit all 4 occurrences identically for consistency; do not touch the `template: "%s \| WnRTech"` mechanic |
+| `data/caseStudies.ts` (em dash in `summary` strings) | Issue 6: 4 case-study `summary` fields use em dash mid-sentence | Low | Low–Medium — these strings render as visible body copy on 3 separate components (`CaseStudyCard`, `CaseStudyAccordionBanner`, `home/CaseStudiesSection`) and are also asserted against in `CaseStudiesSection.test.tsx` (exact-text assertions) | `CaseStudiesSection.test.tsx` line 43 does a substring match against the recruitment summary text — **not** affected since that summary has no em dash, but the file's other exact-text assertions must be re-run after any summary edit to confirm no accidental truncation | Edit only the exact substring at the em dash; do not touch surrounding text |
 | `data/why-us.ts` (2 unspaced em dashes) | Issue 6: visible card descriptions on the homepage `WhyUsSection` | Low | Low | Rendered by `components/home/WhyUsSection.tsx` (not yet read — will be read in Task 6 before editing) | Edit only the 2 flagged substrings |
 | `app/contact/page.tsx` line 18 | Issue 6: `metadata.description` em dash | Low | Low | SEO only | Single string edit |
 | `content/sections.ts` (comment-only, line 199) | Excluded — comment, not rendered | N/A | N/A | N/A | No change |
@@ -106,7 +106,7 @@ This section documents the exact discovery process already carried out, so a fut
 1. `content/products.ts` — Issue 1 (copy) + Issue 2 (remove `futureProducts` export)
 2. `components/sections/Products.tsx` — Issue 2 (remove JSX block + import)
 3. `components/insights/CaseStudyAccordionBanner.tsx` — Issue 3 (flicker fix)
-4. `data/caseStudies.ts` — Issue 4 (image path) + Issue 6 (3 summary strings)
+4. `data/caseStudies.ts` — Issue 4 (image path) + Issue 6 (4 summary strings)
 5. `public/case-studies/student-career-guidance-platform.png` — Issue 4 (binary replace)
 6. `app/layout.tsx` — Issue 6 (4 occurrences, 1 unique string pair)
 7. `app/about/page.tsx` — Issue 6 (1 title)
@@ -178,20 +178,12 @@ Reading `CaseStudyAccordionBanner.tsx` in full, three concrete mechanisms combin
 
 1. **Unsynchronized crossfade timing vs. width transition.** The panel's `flexGrow` animates over `ACCORDION_CONFIG.transitionDuration = 0.55s` via Motion's `animate={{ flexGrow }}`. But the *content* crossfade (collapsed content `opacity-100 → opacity-0` and expanded content `opacity-0 → opacity-100`) is done with plain Tailwind transition classes (`duration-200 delay-0` for collapse-out, `duration-300 delay-300` for expand-in — see lines 182-183 and 213-214). This means: for the first 300ms of the 550ms width-grow animation, **neither** the collapsed content (already faded out at 200ms) **nor** the expanded content (not starting until 300ms) is visible — the panel shows only its raw background image with no text overlay for a ~100ms window while it's already partway through growing. This reads as a "flicker" because content pops in abruptly mid-motion rather than growing in sync with the panel.
 2. **Un-prioritized image loading for the *about-to-become-active* panel.** Every panel's `<Image>` (both active and collapsed) has no `priority` prop and no `loading="eager"` — all are subject to default Next.js lazy/on-demand behavior. Since autoplay is driven by `setInterval` (not user interaction), the *next* panel's image may not have started decoding until the exact frame the transition begins, so the image can pop in (native "image blink") independently of the flexGrow/opacity choreography, compounding the perceived flicker.
-3. **No explicit composite-layer promotion on the animating element.** The `m.div` animates `flexGrow`, a layout-triggering property (not a compositor-only property like `transform`/`opacity`). Animating `flex-grow` forces the browser to recompute layout for the *entire flex row* every frame (all 5 panels reflow, not just the animating one), which under load can cause the browser to skip/coalesce paint frames — visible as a stutter or brief flash, especially on the two content-overlay layers (`absolute inset-0 z-10` and `absolute inset-0 z-20`) that are cross-fading at the same time as the reflow. `will-change: flex-grow` is not applied anywhere.
+3. **`will-change` as a profile-driven fallback optimization.** The `m.div` animates `flexGrow`, a layout-triggering property (not a compositor-only property like `transform`/`opacity`). Animating `flex-grow` forces the browser to recompute layout for the *entire flex row* every frame — `will-change: flex-grow` cannot compositor-promote a layout property, but it signals layout intent to the browser, which may reduce reflow cost on constrained hardware (lower-end Android, throttled CPUs). Apply to the animating `m.div` only; no other component requires changes.
 
-None of React's rendering (no remounts — `key={study.id}` is stable per panel across renders, confirmed no conditional unmount/remount, no `AnimatePresence` is used or needed since panels never leave the DOM), state updates (single `activeIndex` state, no redundant re-renders detected), or the `useEffect` autoplay/`setInterval` loop are the root cause — those are all clean. The flicker is a **timing-and-paint** issue, confirmed as a CSS/Motion choreography defect, not a React logic defect.
-
-**Files to update:** `components/insights/CaseStudyAccordionBanner.tsx` only.
-
-**Components involved:** No changes needed in `CaseStudyVisual.tsx` (SVG fallback, unaffected), `CaseStudiesInteractiveShowcase.tsx` (parent, only passes props through), or `CaseStudyHorizontalCarousel.tsx` (separate component, not in scope — the stakeholder's video is specifically about "the vertical panels," i.e., the accordion banner, and Issue 3 does not mention the horizontal carousel).
-
-**Implementation approach (exact changes):**
-
-1. **Synchronize content crossfade to the width transition.** Replace the two independent Tailwind `duration-200 delay-0` / `duration-300 delay-300` timings with values that align to the `0.55s` (550ms) `ACCORDION_CONFIG.transitionDuration`: collapsed content fades out over the *first* 200ms with no delay (content should disappear quickly as the panel starts shrinking — unchanged, this part was already correct), but expanded content should begin fading in at the *same time the width transition starts* (`delay-0`) with a duration that finishes roughly when the width transition finishes (`duration-500`, i.e. matching `ACCORDION_CONFIG.transitionDuration` in ms), not starting 300ms late. This removes the ~100–300ms "dead window" where nothing is visible.
-2. **Preload the two images adjacent to the active index** (previous and next in the loop) using Next.js `priority` on the `<Image>` for `index === activeIndex`, and add `loading="eager"` (not `"lazy"`) for the panels at `(activeIndex + 1) % total` and `(activeIndex - 1 + total) % total`, since those are the only two panels autoplay or manual navigation can transition to next. All other panels keep `loading="lazy"` (unchanged) since they're never one step away.
-3. **Add `will-change: flex-grow` via inline style** (not a Tailwind arbitrary class, since `will-change` needs to be applied/removed carefully to avoid memory overhead — apply only while `isActive || isPaused` is relevant, but simplest correct fix per the stakeholder's "premium, zero-flicker" bar is to keep `will-change: "flex-grow, opacity"` on every panel permanently, since there are only 5 panels — negligible GPU memory cost) on the animating `m.div` to hint the browser to promote it to its own compositing layer before the animation starts, reducing full-row reflow jank.
-4. Keep `transitionEase` and `transitionDuration` config values themselves unchanged (0.55s duration, matching stakeholder's implicit "premium" pacing already validated by design) — only the *content* timing is retuned to match, not the panel width timing.
+1. **Synchronize content crossfade to the width transition.** Use `ACCORDION_CONFIG.contentTransitionMs` (500ms) via inline `style` on the expanded-content div for the active panel (sourced from the same config object that defines the width transition duration), eliminating the hard-coded `duration-500` Tailwind class and keeping content and width timing in one configuration object. The collapse direction already uses `duration-200 delay-0` and is correct — unchanged.
+2. **Preload the active panel image; eager-load its two neighbors.** Use `preload={isActive}` (the Next.js 16 replacement for the deprecated `priority` prop — see [Next.js Image docs](node_modules/next/dist/docs/01-app/03-api-reference/02-components/image.md#preload)) to insert a `<link rel="preload">` in `<head>` for the LCP image. For adjacent panels use `loading="eager"` without `preload`, since they are one-step-away candidates. All other panels keep `loading="lazy"` (unchanged). Do NOT set both `preload={true}` and `loading="eager"` simultaneously on the same image — redundant.
+3. **Add `will-change: flex-grow` as a profile-driven fallback** on the animating `m.div` via inline `style` prop. This is an optional optimization hint for constrained hardware — it does not compositor-promote `flex-grow`. Apply permanently across all 5 panels (negligible GPU memory cost for 5 elements).
+4. Keep `transitionEase` and `transitionDuration` config values themselves unchanged (0.55s duration) — only the *content* timing is retuned, not the panel width timing.
 
 **Edge cases:**
 - `prefers-reduced-motion`: the existing `contentTransitionStyle` override (`transitionDuration: "0ms", transitionDelay: "0ms"` when `shouldReduceMotion` is true) already handles instant-switch correctly — this logic is untouched, and the new synchronized durations only apply when motion is NOT reduced.
@@ -239,7 +231,7 @@ None of React's rendering (no remounts — `key={study.id}` is stable per panel 
 
 **Verification performed:** MD5 hash of all 9 files in `public/case-studies/`:
 
-```
+```text
 39cd03da0ff9c5e2cc7df0875ed56dd4  ai-powered-student-platform.png
 31f7760eff51abd4ee74eb2c2b191a2b  digital-photo-studio.png
 a3939ac7085666fb752ebb4f474ca41c  e-commerce-platform.png
@@ -298,9 +290,9 @@ All 9 hashes are unique. Additionally, `university-platform.png` was visually in
 
 8. **`app/capabilities/page.tsx`**: re-verify with a targeted grep in Task 7 before editing — the earlier full-repo grep showed no em dash in this file's `title`/`description` values (only found in files not matching this path), so this file may require **no change**; Task 7 must confirm via a fresh `Grep -n "—" app/capabilities/page.tsx` immediately before editing and skip if zero matches.
 
-9. **`data/caseStudies.ts`** (3 `summary` field occurrences):
+9. **`data/caseStudies.ts`** (4 `summary` field occurrences):
    - Line 17 (`student-success-platform`): `"...spanning the full student journey — from understanding learning patterns to predicting academic performance and guiding career decisions."` → `"...spanning the full student journey, from understanding learning patterns to predicting academic performance and guiding career decisions."` (comma — the em dash here introduces an explanatory continuation, comma is grammatically correct and natural).
-   - Line 39 (`university-management-system`): `"...modernizing university administration — admissions, academics, finance, examinations, HR, and campus operations — in one unified ecosystem."` → `"...modernizing university administration: admissions, academics, finance, examinations, HR, and campus operations, in one unified ecosystem."` (first em dash introduces a list → colon; second em dash closes the aside before "in one unified ecosystem" → comma, since colon-list-colon would be ungrammatical; comma correctly closes the appositive list).
+   - Line 39 (`university-management-system`): `"...modernizing university administration — admissions, academics, finance, examinations, HR, and campus operations — in one unified ecosystem."` → `"...modernizing university administration across admissions, academics, finance, examinations, HR, and campus operations in one unified ecosystem."` (both em dashes and the surrounding comma eliminated by restructuring as a prepositional phrase with "across", producing clean grammatical prose that matches `data/caseStudies.test.ts`'s passing assertion).
    - Line 121 (`hyperlocal-food-marketplace`): `"...seeking healthy, affordable home-cooked meals — built on a trusted local marketplace."` → `"...seeking healthy, affordable home-cooked meals, built on a trusted local marketplace."` (comma — explanatory trailing clause).
    - Line 167 (`digital-production-studio`): `"...built around storytelling and visual excellence — doubling as a portfolio and lead-generation platform."` → `"...built around storytelling and visual excellence, doubling as a portfolio and lead-generation platform."` (comma — same pattern, trailing participial clause).
 
@@ -1231,31 +1223,35 @@ Expected: 100% pass, including every pre-existing test file (`components/home/Ca
 Run: `npm run build`
 Expected: build completes with exit code 0, zero TypeScript errors, zero build-time warnings about missing images, unused exports, or invalid metadata.
 
-- [ ] **Step 5: Start the production server and smoke-test all 4 changed routes**
+- [ ] **Step 5: Start the production server and smoke-test all changed routes**
 
 Run: `npm run start` (background).
 
-Using a browser or `curl`, verify HTTP 200 on:
-- `http://localhost:3000/` (homepage — Issue 2's Products section, Issue 6's default metadata)
-- `http://localhost:3000/products` (Issue 2's coming-soon removal)
-- `http://localhost:3000/products/arenaos` (Issue 1's copy update, Issue 6's title)
-- `http://localhost:3000/insights` (Issue 3's flicker fix, Issue 4's replaced image, Issue 6's summaries)
-- `http://localhost:3000/about`, `/contact`, `/careers/apply` (Issue 6's remaining metadata titles)
+ | Route | Expected status |
+ |---|---|
+ | `http://localhost:3000/` | 200 — homepage (Issue 2 Products section, Issue 6 default metadata) |
+ | `http://localhost:3000/products` | 200 — Issue 2 coming-soon removal |
+ | `http://localhost:3000/products/arenaos` | 200 — Issue 1 copy update, Issue 6 title |
+ | `http://localhost:3000/insights` | 200 — Issue 3 flicker fix, Issue 4 replaced image, Issue 6 summaries |
+ | `http://localhost:3000/about` | 200 — Issue 6 metadata title |
+ | `http://localhost:3000/contact` | 200 — Issue 6 metadata title and description |
+ | `http://localhost:3000/careers/apply` | 200 — Issue 6 metadata title |
+ | `http://localhost:3000/404` | 404 — not-found route must return 404, not 200 |
 
 - [ ] **Step 6: Final repo-wide em-dash re-sweep (defense in depth)**
 
 Run:
 ```bash
-grep -rn "—" app/ content/ data/ components/ --include="*.ts" --include="*.tsx" | grep -v "^\S*:\s*[0-9]*:\s*\(//\|\s*\*\|\s*/\*\)" 
+grep -rn "—" app/ content/ data/ components/ --include="*.ts" --include="*.tsx" | grep -Ev "^[^:]+:[0-9]+:[[:space:]]*(//|[[:space:]]*\*|[[:space:]]*/\*)"
 ```
 
-This command attempts to filter out comment-prefixed lines heuristically; **manually review every remaining line in the output** and confirm each is either (a) a comment (acceptable, out of scope) or (b) already addressed by Task 6. Any unaddressed user-visible occurrence found here must be fixed before sign-off, following the same contextual-replacement methodology as Task 6.
+This command uses `-E` (extended regex) for portable, POSIX-compliant filtering; the pattern excludes lines whose code content (after the `file:line:` prefix) starts with `//`, ` *`, or ` /*` comment prefixes. **Manually review every remaining line in the output** and confirm each is either (a) a comment (acceptable, out of scope) or (b) already addressed by Task 6. Any unaddressed user-visible occurrence found here must be fixed before sign-off, following the same contextual-replacement methodology as Task 6.
 
 - [ ] **Step 7: No commit** — this is a verification-only task. If Step 6 finds an unaddressed occurrence, fix it, add it to Task 6's commit scope retroactively via a new small commit, and re-run Steps 1-6.
 
 ---
 
-## Step 6 — Testing Strategy (Senior QA Verification Plan)
+## Testing Strategy (Senior QA Verification Plan)
 
 ### TC-01: ArenaOS content update
 
@@ -1269,7 +1265,7 @@ This command attempts to filter out comment-prefixed lines heuristically; **manu
 5. Repeat on Edge, Safari, Firefox.
 6. Repeat on mobile viewport (375×812) and tablet viewport (768×1024).
 
-**Expected Result:** TARGET reads exactly "Gaming cafes with 10+ stations" (no trailing period, no ". India."). MOAT reads exactly "India's first and only full gaming cafe OS." PIPELINE reads exactly "Productised SaaS for chains across the globe."
+**Expected Result:** TARGET reads exactly "Gaming cafes with 10+ stations" (no trailing period, no ". India."). MOAT reads exactly "India's first and only full gaming cafe OS" (no trailing period). PIPELINE reads exactly "Productised SaaS for chains across the globe" (no trailing period).
 
 **Evidence Required:** Screenshot of the stats section on desktop, mobile, and tablet; browser DevTools "Copy element" text extraction of all 3 values.
 

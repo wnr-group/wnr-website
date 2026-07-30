@@ -172,7 +172,7 @@ export function CaseStudyAccordionBanner({
                     fill
                     sizes="(min-width: 1024px) 75vw, 100vw"
                     className="object-cover"
-                    priority={isActive}
+                    preload={isActive}
                     loading={isActive || isAdjacent ? "eager" : "lazy"}
                   />
                 ) : (
@@ -221,12 +221,20 @@ export function CaseStudyAccordionBanner({
                   eliminating the dead window where neither collapsed nor
                   expanded content was visible mid-transition. */}
               <div
-                style={contentTransitionStyle}
+                style={{
+                  ...contentTransitionStyle,
+                  transitionDuration: contentTransitionStyle
+                    ? undefined
+                    : isActive
+                    ? `${ACCORDION_CONFIG.contentTransitionMs}ms`
+                    : "200ms",
+                  transitionDelay: contentTransitionStyle ? undefined : "0ms",
+                }}
                 className={cn(
                   "absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-8 lg:p-10 transition-opacity",
                   isActive
-                    ? "opacity-100 delay-0 duration-500"
-                    : "pointer-events-none opacity-0 duration-200 delay-0"
+                    ? "opacity-100"
+                    : "pointer-events-none opacity-0"
                 )}
               >
                 {/* Legibility gradient overlay */}

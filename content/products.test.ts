@@ -10,8 +10,9 @@ describe("ArenaOS content", () => {
     expect(arenaos?.revenueValue).toBe("Productised SaaS for chains across the globe");
   });
 
-  it("leaves every other ArenaOS field unchanged", () => {
+  it("leaves slug, name, tagline, revenueLabel, and accent unchanged", () => {
     const arenaos = getProduct("arenaos");
+    expect(arenaos?.slug).toBe("arenaos");
     expect(arenaos?.name).toBe("ArenaOS");
     expect(arenaos?.tagline).toBe("The operating system for booking-led businesses.");
     expect(arenaos?.revenueLabel).toBe("Pipeline");

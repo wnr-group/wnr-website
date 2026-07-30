@@ -14,10 +14,12 @@ describe("Products section", () => {
     expect(screen.queryByText("Hospitality")).not.toBeInTheDocument();
   });
 
-  it("still renders the products heading and grid", () => {
+  it("still renders the products heading and grid", async () => {
     render(<Products heading="Vertical operating systems, shipping today." />);
     expect(screen.getByText("Vertical operating systems, shipping today.")).toBeInTheDocument();
     expect(screen.getByText("Our Products")).toBeInTheDocument();
+    // Verify a stable product card is rendered from the dynamic grid
+    expect(await screen.findByText("ArenaOS")).toBeInTheDocument();
   });
 
   it("renders with the default heading when no heading prop is passed", () => {

@@ -8,9 +8,10 @@ describe("caseStudies content", () => {
     }
   });
 
-  it("contains no em dash characters in any title, result, or highlight", () => {
+  it("contains no em dash characters in any title, result, highlight, or industryLabel", () => {
     for (const study of caseStudies) {
       expect(study.title).not.toMatch(/—/);
+      expect(study.industryLabel).not.toMatch(/—/);
       if (study.result) expect(study.result).not.toMatch(/—/);
       for (const highlight of study.highlights) {
         expect(highlight).not.toMatch(/—/);
