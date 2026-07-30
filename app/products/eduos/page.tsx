@@ -6,7 +6,7 @@ import { getProduct } from "@/content/products";
 const eduos = getProduct("eduos");
 
 export const metadata: Metadata = {
-  title: "EduOS — The Operating Brain for Schools",
+  title: "EduOS: The Operating Brain for Schools",
   description: eduos?.oneLiner,
 };
 

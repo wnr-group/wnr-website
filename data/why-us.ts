@@ -11,7 +11,7 @@ export const whyUsItems: WhyUsItem[] = [
   {
     id: "partnership",
     title: "Long-term Partnership",
-    description: "We don't just launch projects—we stay to optimize, scale, and grow with your business. Our relationship begins where most engagements end.",
+    description: "We don't just launch projects. We stay to optimize, scale, and grow with your business. Our relationship begins where most engagements end.",
     icon: Handshake,
   },
   {
@@ -29,7 +29,7 @@ export const whyUsItems: WhyUsItem[] = [
   {
     id: "ai",
     title: "AI-Native Innovation",
-    description: "AI isn't an add-on—it's how we build. We embed intelligent automation into everyday operations to improve efficiency, decision-making, and continuous growth.",
+    description: "AI isn't an add-on. It's how we build. We embed intelligent automation into everyday operations to improve efficiency, decision-making, and continuous growth.",
     icon: Sparkles,
   },
 ];

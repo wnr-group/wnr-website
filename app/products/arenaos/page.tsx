@@ -6,7 +6,7 @@ import { getProduct } from "@/content/products";
 const arenaos = getProduct("arenaos");
 
 export const metadata: Metadata = {
-  title: "ArenaOS — The Full Business OS for Gaming Cafes",
+  title: "ArenaOS: The Full Business OS for Gaming Cafes",
   description: arenaos?.oneLiner,
 };
 

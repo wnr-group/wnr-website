@@ -5,9 +5,9 @@ import { Section, Eyebrow } from "@/components/ui/Section";
 import { CaseStudiesSection } from "@/components/insights/CaseStudiesSection";
 
 export const metadata: Metadata = {
-  title: "Insights — Case Studies & Perspective",
+  title: "Insights: Case Studies & Perspective",
   description:
-    "Custom platforms and measurable outcomes across education, retail, and logistics — plus notes on building AI-native operational systems.",
+    "Custom platforms and measurable outcomes across education, retail, and logistics, plus notes on building AI-native operational systems.",
 };
 
 const articles = [

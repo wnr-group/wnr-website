@@ -14,7 +14,7 @@ export const caseStudies: CaseStudy[] = [
     accent: "forest",
     title: "AI-Powered Student Success Platform",
     summary:
-      "An end-to-end education intelligence platform spanning the full student journey — from understanding learning patterns to predicting academic performance and guiding career decisions.",
+      "An end-to-end education intelligence platform spanning the full student journey, from understanding learning patterns to predicting academic performance and guiding career decisions.",
     result:
       "3x faster identification of at-risk students and improved academic retention across connected campuses.",
     highlights: [
@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     accent: "forest",
     title: "University Management System",
     summary:
-      "A comprehensive digital ERP platform modernizing university administration — admissions, academics, finance, examinations, HR, and campus operations — in one unified ecosystem.",
+      "A comprehensive digital ERP platform modernizing university administration: admissions, academics, finance, examinations, HR, and campus operations, in one unified ecosystem.",
     highlights: [
       "Student lifecycle management",
       "Digital admissions",
@@ -118,7 +118,7 @@ export const caseStudies: CaseStudy[] = [
     accent: "amber",
     title: "Hyperlocal Food Marketplace",
     summary:
-      "A community-driven food ordering platform connecting home chefs with customers seeking healthy, affordable home-cooked meals — built on a trusted local marketplace.",
+      "A community-driven food ordering platform connecting home chefs with customers seeking healthy, affordable home-cooked meals, built on a trusted local marketplace.",
     result:
       "40% increase in repeat customer orders and streamlined onboarding for 200+ local home chefs.",
     highlights: [
@@ -164,7 +164,7 @@ export const caseStudies: CaseStudy[] = [
     accent: "teal",
     title: "Digital Production Studio Website",
     summary:
-      "A premium digital presence for a creative production studio, built around storytelling and visual excellence — doubling as a portfolio and lead-generation platform.",
+      "A premium digital presence for a creative production studio, built around storytelling and visual excellence, doubling as a portfolio and lead-generation platform.",
     highlights: [
       "Dynamic project portfolio",
       "Multimedia showcase",

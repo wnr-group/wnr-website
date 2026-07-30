@@ -5,19 +5,19 @@ import { Eyebrow } from "@/components/ui/Section";
 import { CareerApplicationForm } from "@/components/CareerApplicationForm";
 
 export const metadata: Metadata = {
-  title: "Apply — Careers",
+  title: "Apply: Careers",
   description:
     "Submit your application to WnRTech. We review every application and respond within 5 business days if there's a match.",
   alternates: { canonical: "/careers/apply" },
   openGraph: {
-    title: "Apply — Careers | WnRTech",
+    title: "Apply: Careers | WnRTech",
     description: "Submit your application to WnRTech.",
     url: "/careers/apply",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Apply — Careers | WnRTech",
+    title: "Apply: Careers | WnRTech",
     description: "Submit your application to WnRTech.",
   },
 };
