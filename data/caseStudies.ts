@@ -64,7 +64,7 @@ export const caseStudies: CaseStudy[] = [
       "Mentor engagement",
       "Digital counselling ecosystem",
     ],
-    image: "/case-studies/student-career-guidance-platform.png",
+    image: "/case-studies/student-career-guidance-v3.png",
     visual: "career-guidance",
     tags: ["EdTech", "Mentorship"],
   },
