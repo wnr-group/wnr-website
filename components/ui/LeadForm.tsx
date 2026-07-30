@@ -22,7 +22,7 @@ export function LeadForm() {
           <Check size={20} />
         </span>
         <h3 className="font-display text-xl font-semibold text-ink">
-          Thank you — message received.
+          Thank you. Message received.
         </h3>
         <p className="text-[0.95rem] text-body">
           A member of our team will be in touch within one business day. In the
