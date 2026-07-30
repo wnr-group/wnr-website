@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { products, futureProducts } from "@/content/products";
+import { products } from "@/content/products";
 import dynamic from "next/dynamic";
 
 const ProductsSection = dynamic(
@@ -11,8 +11,7 @@ const ProductsSection = dynamic(
 );
 
 /* Products — an interactive grid: click a card to open its full detail
-   in place (ProductsSection), no navigation. Future products close the
-   section as a quiet strip, unchanged from before. */
+   in place (ProductsSection), no navigation. */
 export function Products({
   heading = "Vertical operating systems.",
 }: {
@@ -29,23 +28,6 @@ export function Products({
 
       <div className="mt-14">
         <ProductsSection products={products} />
-      </div>
-
-      {/* future products — quiet closing strip */}
-      <div className="mt-8 flex flex-col gap-4 rounded-3xl bg-mist px-8 py-7 md:flex-row md:items-center md:justify-between">
-        <h3 className="font-display text-lg font-semibold text-ink">
-          {futureProducts.heading}
-        </h3>
-        <ul className="flex flex-wrap gap-2.5">
-          {futureProducts.list.map((p) => (
-            <li
-              key={p}
-              className="rounded-full border border-line bg-paper px-4 py-1.5 text-sm text-muted"
-            >
-              {p}
-            </li>
-          ))}
-        </ul>
       </div>
     </Section>
   );

@@ -110,13 +110,6 @@ export const products: Product[] = [
   },
 ];
 
-// "Coming soon" future products grid — portfolio ambition.
-export const futureProducts = {
-  eyebrow: "The Portfolio",
-  heading: "More operating systems, coming soon.",
-  list: ["Healthcare", "Manufacturing", "Retail", "Construction", "Hospitality"],
-};
-
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
