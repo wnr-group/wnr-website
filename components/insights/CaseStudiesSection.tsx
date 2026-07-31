@@ -42,7 +42,7 @@ export function CaseStudiesSection() {
         Delivering digital transformation across industries.
       </h2>
       <p className="mt-6 max-w-2xl text-[length:var(--text-lead)] leading-relaxed text-body">
-        Custom platforms across education, commerce, and enterprise — grouped
+        Custom platforms across education, commerce, and enterprise, grouped
         by the industries we serve.
       </p>
 

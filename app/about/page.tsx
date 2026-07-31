@@ -12,7 +12,7 @@ import { AboutCta } from "@/components/about/AboutCta";
 import { aboutHero } from "@/content/about";
 
 export const metadata: Metadata = {
-  title: "About Us — Operational Intelligence & Enterprise Systems",
+  title: "About Us: Operational Intelligence & Enterprise Systems",
   description: aboutHero.lead,
 };
 

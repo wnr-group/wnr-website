@@ -12,6 +12,11 @@ const ACCORDION_CONFIG = {
   autoplayIntervalMs: 4300,
   transitionDuration: 0.55,
   transitionEase: [0.4, 0, 0.2, 1] as const,
+  // Content crossfade must start the instant the width transition starts
+  // (delay-0) and finish no later than the width transition, so there is
+  // never a frame where neither the collapsed nor expanded content is
+  // visible. Matches transitionDuration in milliseconds.
+  contentTransitionMs: 500,
 };
 
 const badgeTone: Record<CaseStudyAccent, string> = {
@@ -104,6 +109,9 @@ export function CaseStudyAccordionBanner({
       <div className="flex h-[440px] w-full gap-2.5 overflow-hidden rounded-3xl sm:h-[480px] sm:gap-3 md:h-[520px] lg:h-[560px] lg:gap-4">
         {panels.map((study, index) => {
           const isActive = index === activeIndex;
+          const isAdjacent =
+            index === (activeIndex + 1) % total ||
+            index === (activeIndex - 1 + total) % total;
           const contentTransitionStyle = Boolean(shouldReduceMotion)
             ? { transitionDuration: "0ms", transitionDelay: "0ms" }
             : undefined;
@@ -142,6 +150,7 @@ export function CaseStudyAccordionBanner({
                   : ACCORDION_CONFIG.transitionDuration,
                 ease: ACCORDION_CONFIG.transitionEase,
               }}
+              style={{ willChange: "flex-grow" }}
               className={cn(
                 "group relative h-full overflow-hidden rounded-2xl sm:rounded-3xl border transition-colors select-none",
                 isActive
@@ -163,6 +172,8 @@ export function CaseStudyAccordionBanner({
                     fill
                     sizes="(min-width: 1024px) 75vw, 100vw"
                     className="object-cover"
+                    preload={isActive}
+                    loading={isActive || isAdjacent ? "eager" : "lazy"}
                   />
                 ) : (
                   <CaseStudyVisual
@@ -205,14 +216,25 @@ export function CaseStudyAccordionBanner({
                 </span>
               </div>
 
-              {/* Expanded Panel Content Area */}
+              {/* Expanded Panel Content Area — fade-in starts the instant the
+                  width transition starts (delay-0) and completes alongside it,
+                  eliminating the dead window where neither collapsed nor
+                  expanded content was visible mid-transition. */}
               <div
-                style={contentTransitionStyle}
+                style={{
+                  ...contentTransitionStyle,
+                  transitionDuration: contentTransitionStyle
+                    ? undefined
+                    : isActive
+                    ? `${ACCORDION_CONFIG.contentTransitionMs}ms`
+                    : "200ms",
+                  transitionDelay: contentTransitionStyle ? undefined : "0ms",
+                }}
                 className={cn(
                   "absolute inset-0 z-20 flex flex-col justify-between p-6 sm:p-8 lg:p-10 transition-opacity",
                   isActive
-                    ? "opacity-100 duration-300 delay-300"
-                    : "pointer-events-none opacity-0 duration-200 delay-0"
+                    ? "opacity-100"
+                    : "pointer-events-none opacity-0"
                 )}
               >
                 {/* Legibility gradient overlay */}

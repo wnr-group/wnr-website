@@ -90,10 +90,10 @@ export const products: Product[] = [
     ctaLabel: "Explore ArenaOS",
     art: "/brand/product-arenaos.webp",
     accent: "amber",
-    target: "Gaming cafes with 10+ stations. India.",
-    moat: "India's only full gaming cafe OS.",
+    target: "Gaming cafes with 10+ stations",
+    moat: "India's first and only full gaming cafe OS",
     revenueLabel: "Pipeline",
-    revenueValue: "Productised SaaS for chains across India",
+    revenueValue: "Productised SaaS for chains across the globe",
     overview:
       "ArenaOS is the full business operating system for gaming cafes: station and session booking, real-time revenue tracking, and operational business intelligence in one system, replacing billing software that only records what was charged.",
     businessProblem:
@@ -109,13 +109,6 @@ export const products: Product[] = [
     ],
   },
 ];
-
-// "Coming soon" future products grid — portfolio ambition.
-export const futureProducts = {
-  eyebrow: "The Portfolio",
-  heading: "More operating systems, coming soon.",
-  list: ["Healthcare", "Manufacturing", "Retail", "Construction", "Hospitality"],
-};
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);

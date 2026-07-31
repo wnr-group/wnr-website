@@ -254,7 +254,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       {
         referenceNumber: applicationId,
         message:
-          "Application received. We'll be in touch if there's a fit — usually within 5 business days.",
+          "Application received. We'll be in touch if there's a fit, usually within 5 business days.",
       },
       requestId,
     );

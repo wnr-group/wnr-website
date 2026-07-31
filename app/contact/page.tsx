@@ -13,9 +13,9 @@ const contactPageSchema = {
 };
 
 export const metadata: Metadata = {
-  title: "Contact — Let's Talk About Your Operations",
+  title: "Contact: Let's Talk About Your Operations",
   description:
-    "Tell us about your business. We'll tell you how we can help. WnRTech — Operational intelligence for modern business.",
+    "Tell us about your business. We'll tell you how we can help. WnRTech: Operational intelligence for modern business.",
   alternates: { canonical: "/contact" },
 };
 

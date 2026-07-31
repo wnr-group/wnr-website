@@ -5,9 +5,9 @@ import { Cta } from "@/components/ui/Cta";
 import { Products } from "@/components/sections/Products";
 
 export const metadata: Metadata = {
-  title: "Products — Vertical Operating Systems",
+  title: "Products: Vertical Operating Systems",
   description:
-    "EduOS and ArenaOS — purpose-built operating systems for schools and gaming cafes, productised from real operational experience.",
+    "EduOS and ArenaOS: purpose-built operating systems for schools and gaming cafes, productised from real operational experience.",
 };
 
 export default function ProductsPage() {

@@ -9,7 +9,7 @@ import { Reveal } from "@/components/ui/motion";
 import { capabilitiesCta } from "@/content/arms";
 
 export const metadata: Metadata = {
-  title: "Capabilities — Consulting, Systems & AI Labs",
+  title: "Capabilities: Consulting, Systems & AI Labs",
   description:
     "Three operating arms that take a business from operational strategy to live system to intelligent automation.",
 };

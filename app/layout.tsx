@@ -21,15 +21,15 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wnrtech.com"),
   title: {
-    default: "WnRTech — Operational Intelligence for Modern Business",
+    default: "WnRTech: Operational Intelligence for Modern Business",
     template: "%s | WnRTech",
   },
   description:
-    "We build the operational brain of your business — custom platforms, AI-native workflows, and vertical SaaS products. We build, implement, train, and stay.",
+    "We build the operational brain of your business: custom platforms, AI-native workflows, and vertical SaaS products. We build, implement, train, and stay.",
   openGraph: {
-    title: "WnRTech — Operational Intelligence for Modern Business",
+    title: "WnRTech: Operational Intelligence for Modern Business",
     description:
-      "We build the operational brain of your business — custom platforms, AI-native workflows, and vertical SaaS products. We build, implement, train, and stay.",
+      "We build the operational brain of your business: custom platforms, AI-native workflows, and vertical SaaS products. We build, implement, train, and stay.",
     siteName: "WnRTech",
     locale: "en_IN",
     type: "website",
