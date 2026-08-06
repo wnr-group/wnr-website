@@ -21,7 +21,7 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wnrtech.com"),
   title: {
-    default: "WnRTech: Operational Intelligence for Modern Business",
+    default: "WnRTech: Building What’s Next ",
     template: "%s | WnRTech",
   },
   description:

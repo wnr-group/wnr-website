@@ -11,10 +11,22 @@ import type { ProductActionsProps } from "./types";
 export function ProductActions({ product }: ProductActionsProps) {
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <Cta href="/contact" variant="primary">
-        {product.ctaLabel}
-        <ArrowRight size={16} />
-      </Cta>
+      {product.slug === "eduos" ? (
+        <Cta
+          href="https://edu-os-web-blond.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary"
+        >
+          {product.ctaLabel}
+          <ArrowRight size={16} />
+        </Cta>
+      ) : (
+        <Cta href="/contact" variant="primary">
+          {product.ctaLabel}
+          <ArrowRight size={16} />
+        </Cta>
+      )}
       <Cta href={product.href} variant="outline">
         View Full Solution
       </Cta>
