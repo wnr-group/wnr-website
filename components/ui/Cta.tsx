@@ -9,6 +9,8 @@ interface CtaProps {
   variant?: Variant;
   className?: string;
   "aria-label"?: string;
+  target?: string;
+  rel?: string;
 }
 
 const base =
