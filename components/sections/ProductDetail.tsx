@@ -52,7 +52,7 @@ export function ProductDetail({
           <div className="flex flex-wrap items-center gap-4">
             {product.slug === "eduos" ? (
               <Cta
-                href="https://edu-os-web-blond.vercel.app/"
+                href="https://eduos.wnradvisory.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="primary"
